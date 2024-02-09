@@ -1,0 +1,1169 @@
+,DatasetID,ObservationID,Dataset,SpeciesName,AccSpeciesID,AccSpeciesName,ObsDataID,%nitrogen,%carbon,location,comma,lat,long
+682,412,3064733,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,32682523,34.83764,NA,"46.17,-92.87",",",46.17,-92.87
+685,412,3064748,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32683695,22.70756,NA,"46.17,-92.87",",",46.17,-92.87
+688,412,3064750,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32683850,24.39706,NA,"46.17,-92.87",",",46.17,-92.87
+691,412,3064765,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,32685028,37.8298,NA,"46.17,-92.87",",",46.17,-92.87
+694,412,3064780,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32686200,29.21657,NA,"46.17,-92.87",",",46.17,-92.87
+697,412,3064782,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32686355,32.70448,NA,"46.17,-92.87",",",46.17,-92.87
+247,227,1660348,Leaf Structure and Economics Spectrum,Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11304028,26.18,NA,"45.7833333333333,8.75",",",45.78333333,8.75
+250,227,1660349,Leaf Structure and Economics Spectrum,Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11304036,24.22,NA,"45.7833333333333,8.75",",",45.78333333,8.75
+253,227,1660350,Leaf Structure and Economics Spectrum,Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11304044,25.76,NA,"45.7833333333333,8.75",",",45.78333333,8.75
+256,228,1668603,Flora d Italia Functional Traits Hoard (FIFTH),Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11399252,12.10943,418.052,"45.7666666666667,8.85",",",45.76666667,8.85
+260,228,1668604,Flora d Italia Functional Traits Hoard (FIFTH),Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11399262,15.57342,420.0204,"45.7666666666667,8.85",",",45.76666667,8.85
+264,228,1668605,Flora d Italia Functional Traits Hoard (FIFTH),Sorghum halepense (L.) Pers.,51149,Sorghum halepense,11399272,20.00002,439.8453,"45.7666666666667,8.85",",",45.76666667,8.85
+11,130,28765,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712372,11.31368587,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+14,130,28766,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712395,11.64577104,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+17,130,28767,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712418,12.44067215,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+20,130,28768,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712441,13.58461742,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+23,130,28769,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712464,13.88925455,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+26,130,28770,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712487,13.9144946,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+29,130,28771,Global 15N Database,Bouteloua gracilis,7911,Bouteloua gracilis,712510,15.87086536,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+32,130,28831,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,713890,10.32463665,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+35,130,28832,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,713913,10.5308914,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+38,130,28833,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,713936,10.6250242,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+41,130,28834,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,713959,10.83107864,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+44,130,28835,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,713982,11.07650906,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+47,130,28836,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714005,11.07892715,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+50,130,28837,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714028,11.36443925,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+53,130,28838,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714051,11.37004225,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+56,130,28839,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714074,11.49520965,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+59,130,28840,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714097,11.77647968,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+62,130,28841,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714120,12.04608021,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+65,130,28842,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714143,12.95456648,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+68,130,28843,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714166,14.04767774,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+71,130,28844,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714189,14.77801106,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+74,130,28845,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,714212,16.4163335,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+77,130,28854,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714419,9.03996074,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+80,130,28855,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714442,9.39783767,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+83,130,28856,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714465,10.65014972,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+86,130,28857,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714488,10.80674216,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+89,130,28858,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714511,10.81420629,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+92,130,28859,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714534,11.07602297,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+95,130,28860,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714557,11.35700258,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+98,130,28861,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714580,11.44982206,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+101,130,28862,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714603,11.71502836,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+104,130,28863,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714626,11.84087535,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+107,130,28864,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714649,11.88618765,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+110,130,28865,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714672,12.03184158,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+113,130,28866,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714695,12.07395552,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+116,130,28867,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714718,12.45626053,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+119,130,28868,Global 15N Database,Sorghastrum nutans,51135,Sorghastrum nutans,714741,13.99054494,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+706,412,3081993,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947145,11.31368587,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+709,412,3081994,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947217,11.64577104,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+712,412,3081995,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947289,12.44067215,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+715,412,3081996,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947361,13.58461742,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+718,412,3081997,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947433,13.88925455,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+721,412,3081998,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947505,13.9144946,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+724,412,3081999,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,33947577,15.87086536,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+727,412,3082059,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952046,10.32463665,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+730,412,3082060,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952116,10.5308914,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+733,412,3082061,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952186,10.6250242,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+736,412,3082062,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952256,10.83107864,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+739,412,3082063,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952326,11.07650906,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+742,412,3082064,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952396,11.07892715,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+745,412,3082065,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952466,11.36443925,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+748,412,3082066,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952536,11.37004225,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+751,412,3082067,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952606,11.49520965,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+754,412,3082068,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952676,11.77647968,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+757,412,3082069,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952746,12.04608021,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+760,412,3082070,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952816,12.95456648,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+763,412,3082071,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952886,14.04767774,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+766,412,3082072,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33952956,14.77801106,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+769,412,3082073,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33953026,16.4163335,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+772,412,3082082,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33953712,9.03996074,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+775,412,3082083,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33953782,9.39783767,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+778,412,3082084,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33953852,10.65014972,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+781,412,3082085,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33953922,10.80674216,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+784,412,3082086,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33953992,10.81420629,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+787,412,3082087,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954062,11.07602297,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+790,412,3082088,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954132,11.35700258,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+793,412,3082089,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954202,11.44982206,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+796,412,3082090,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954272,11.71502836,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+799,412,3082091,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954342,11.84087535,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+802,412,3082092,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954412,11.88618765,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+805,412,3082093,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954482,12.03184158,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+808,412,3082094,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954552,12.07395552,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+811,412,3082095,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954622,12.45626053,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+814,412,3082096,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,33954692,13.99054494,NA,"45.4166667,-93.166667",",",45.4166667,-93.166667
+430,412,3060438,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32340556,10.71,448.824,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+434,412,3060444,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32341037,7.973,447.127,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+438,412,3060451,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32341594,8.364,441.781,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+442,412,3060464,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32342639,12.617,451.059,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+446,412,3060470,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32343121,12.565,441.5,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+450,412,3060480,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32343927,10.695,444.15,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+454,412,3060487,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32344490,12.349,451.767,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+458,412,3060488,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32344565,10.33,447.719,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+462,412,3060492,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32344887,12.938,460.219,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+466,412,3060497,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32345273,12.145,461.669,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+470,412,3060499,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32345430,11.462,449.529,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+474,412,3060508,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32346151,10.957,447.849,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+478,412,3060528,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32347771,14.55,454.97,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+482,412,3060534,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32348253,10.9,461.59,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+486,412,3060536,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32348410,14.73,450.57,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+490,412,3060545,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32349132,13.44,455.64,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+494,412,3060552,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32349695,13.45,457.1,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+498,412,3060559,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32350262,11.74,459.35,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+502,412,3060593,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32353019,12.45,449.44,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+506,412,3060601,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32353661,14.23,456.09,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+510,412,3060609,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32354308,12.17,448.64,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+514,412,3060616,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32354867,13.73,442.11,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+518,412,3060643,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32357027,15.51,455.79,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+522,412,3060654,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32357901,11.23,452.68,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+526,412,3060664,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32358694,14,446.5,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+530,412,3060747,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32365473,13.96,446.959,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+534,412,3060759,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32366446,10.725,446.954,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+538,412,3060768,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32367172,14.184,452.591,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+542,412,3060769,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32367247,14.317,450.025,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+546,412,3060776,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32367809,14.637,450.206,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+550,412,3060785,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32368528,13.34,454.322,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+554,412,3060787,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32368686,12.573,448.06,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+558,412,3060795,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32369325,12.802,446.065,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+562,412,3060806,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32370207,14.598,447.125,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+566,412,3060816,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32371015,11.553,451.729,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+570,412,3060817,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32371090,13.411,447.722,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+574,412,3060821,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32371412,11.901,443.784,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+578,412,3060828,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32371974,10.699,441.54,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+582,412,3060839,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32372868,13.38,445.88,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+586,412,3060862,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32374717,10.84,445.05,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+590,412,3060873,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32375596,12.2,440.7,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+594,412,3060884,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32376492,11.53,451.35,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+598,412,3060893,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32377218,12.11,442.2,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+602,412,3060900,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32377788,14.66,443.6,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+606,412,3060969,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32383377,13.565,441.606,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+610,412,3060979,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32384194,16.429,448.92,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+614,412,3060996,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32385561,19.231,446.551,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+618,412,3061026,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32388004,13.558,440.38,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+622,412,3061039,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32389043,16.7,448.77,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+626,412,3061049,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,32389851,11.93,453.25,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+630,412,3061050,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32389926,13.83,443.37,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+634,412,3061118,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32395490,15.02,441.29,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+638,412,3061122,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32395809,18.76,454.62,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+642,412,3061158,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32398772,18.953,448.616,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+646,412,3061274,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32408197,13.52,445.54,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+650,412,3061275,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32408272,13.27,437.73,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+654,412,3061280,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32408675,14.7,448.93,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+658,412,3061284,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32408996,13.61,448.99,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+662,412,3061294,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32409802,13.88,446.27,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+666,412,3061304,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32410595,15.39,439.31,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+670,412,3061312,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32411228,12.8,455.79,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+674,412,3061320,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32411861,13.92,446.6,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+678,412,3061328,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,32412504,14.13,446.54,"45.4166666666667,-93.1666666666667",",",45.41666667,-93.16666667
+217,20,1289208,GLOPNET - Global Plant Trait Network Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,8637996,15.0329987,NA,"45.41,-93.21",",",45.41,-93.21
+220,20,1289210,GLOPNET - Global Plant Trait Network Database,Sorghastrum nutans,51135,Sorghastrum nutans,8638238,19.6622462,NA,"45.41,-93.21",",",45.41,-93.21
+238,20,1290208,GLOPNET - Global Plant Trait Network Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,8750004,10.4,NA,"45.41,-93.21",",",45.41,-93.21
+241,20,1290211,GLOPNET - Global Plant Trait Network Database,Sorghastrum nutans,51135,Sorghastrum nutans,8750358,13.9,NA,"45.41,-93.21",",",45.41,-93.21
+1291,96,1312210,Global Respiration Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,9180853,15,NA,"45.41,-93.21",",",45.41,-93.21
+1294,96,1312212,Global Respiration Database,Sorghastrum nutans,51135,Sorghastrum nutans,9180933,19.7,NA,"45.41,-93.21",",",45.41,-93.21
+1306,96,1312340,Global Respiration Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,9186266,10.4,NA,"45.41,-93.21",",",45.41,-93.21
+1309,96,1312343,Global Respiration Database,Sorghastrum nutans,51135,Sorghastrum nutans,9186386,13.9,NA,"45.41,-93.21",",",45.41,-93.21
+275,286,2460061,Global Respiration Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,19967676,12.7,NA,"45.41,-93.21",",",45.41,-93.21
+278,286,2460064,Global Respiration Database,Sorghastrum nutans,51135,Sorghastrum nutans,19967802,16.8,NA,"45.41,-93.21",",",45.41,-93.21
+336,342,2501692,Photosynthesis Traits Worldwide,Schizachyrium scoparium,48859,Schizachyrium scoparium,20645013,15.0329987,NA,"45.41,-93.21",",",45.41,-93.21
+339,342,2501694,Photosynthesis Traits Worldwide,Sorghastrum nutans,51135,Sorghastrum nutans,20645159,19.6622462,NA,"45.41,-93.21",",",45.41,-93.21
+354,342,2502321,Photosynthesis Traits Worldwide,Schizachyrium scoparium,48859,Schizachyrium scoparium,20690878,10.4,NA,"45.41,-93.21",",",45.41,-93.21
+357,342,2502324,Photosynthesis Traits Worldwide,Sorghastrum nutans,51135,Sorghastrum nutans,20691097,13.9,NA,"45.41,-93.21",",",45.41,-93.21
+424,412,3041059,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,30824964,15.0329987,NA,"45.41,-93.21",",",45.41,-93.21
+427,412,3041061,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,30825119,19.6622462,NA,"45.41,-93.21",",",45.41,-93.21
+388,412,3029107,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,29898832,15.0329987,NA,"45.4,-93.2",",",45.4,-93.2
+391,412,3029109,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,29898991,19.6622462,NA,"45.4,-93.2",",",45.4,-93.2
+409,412,3030078,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,29974157,10.4,NA,"45.4,-93.21",",",45.4,-93.21
+412,412,3030081,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,29974399,13.9,NA,"45.4,-93.21",",",45.4,-93.21
+378,35,775560,"Reich-Oleksyn Global Leaf N, P Database",Sorghastrum nutants,51135,Sorghastrum nutans,3566167,8.3,NA,"44.4,-90",",",44.4,-90
+911,443,2764143,The China Plant Trait Database,Salsola sp.a,48050,Salsola sp,25678539,9.8,NA,"44.37,87.92",",",44.37,87.92
+914,443,2764144,The China Plant Trait Database,Salsola sp.b,48050,Salsola sp,25678607,26.1,NA,"44.37,87.92",",",44.37,87.92
+917,443,2764145,The China Plant Trait Database,Salsola sp.c,48050,Salsola sp,25678675,26.73,NA,"44.37,87.92",",",44.37,87.92
+5,130,27620,Global 15N Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,685161,10.1,NA,"43.19935,-90.059033",",",43.19935,-90.059033
+700,412,3080900,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,33866031,10.1,NA,"43.19935,-90.059033",",",43.19935,-90.059033
+290,296,2464317,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058821,15.57488203,412.5309176,"41.183333,-104.9",",",41.183333,-104.9
+294,296,2464318,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058843,18.25866113,434.8377637,"41.183333,-104.9",",",41.183333,-104.9
+298,296,2464319,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058865,16.02066577,414.3988279,"41.183333,-104.9",",",41.183333,-104.9
+302,296,2464320,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058887,13.8762137,425.3504803,"41.183333,-104.9",",",41.183333,-104.9
+306,296,2464321,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058909,12.87090788,417.7281104,"41.183333,-104.9",",",41.183333,-104.9
+310,296,2464322,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058931,15.03011399,414.5949818,"41.183333,-104.9",",",41.183333,-104.9
+314,296,2464323,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058953,14.89483764,411.5530138,"41.183333,-104.9",",",41.183333,-104.9
+318,296,2464324,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058975,12.88482404,416.5666886,"41.183333,-104.9",",",41.183333,-104.9
+322,296,2464325,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20058997,16.33711839,424.1091022,"41.183333,-104.9",",",41.183333,-104.9
+326,296,2464326,"Northern mixed-grass prairie species traits - Wyoming, USA",Bouteloua gracilis,7911,Bouteloua gracilis,20059019,11.92311308,283.4892719,"41.183333,-104.9",",",41.183333,-104.9
+223,20,1289417,GLOPNET - Global Plant Trait Network Database,Ambrosia trifida,3170,Ambrosia trifida,8661583,44.1,NA,"40.1,-88.23",",",40.1,-88.23
+342,342,2501783,Photosynthesis Traits Worldwide,Ambrosia trifida,3170,Ambrosia trifida,20651479,44.1,NA,"40.1,-88.23",",",40.1,-88.23
+394,412,3029310,The Global Leaf Traits,Ambrosia trifida,3170,Ambrosia trifida,29914353,44.1,NA,"40.1,-88.23",",",40.1,-88.23
+127,163,1334004,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Commelina erecta,14084,Commelina erecta,9510091,12.36,448.28,"39.09,-96.56",",",39.09,-96.56
+131,163,1334012,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Euphorbia spathulata,23591,Euphorbia spathulata,9510155,18.55,447.27,"39.09,-96.56",",",39.09,-96.56
+135,163,1334045,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Bouteloua gracilis,7911,Bouteloua gracilis,9510419,15.83,440.64,"39.09,-96.56",",",39.09,-96.56
+139,163,1334053,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Euphorbia dentata,23398,Euphorbia dentata,9510483,21.49,438.74,"39.09,-96.56",",",39.09,-96.56
+143,163,1334059,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Sorghum halepense,51149,Sorghum halepense,9510531,26.91,437.73,"39.09,-96.56",",",39.09,-96.56
+147,163,1334104,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Schizachyrium scoparium,48859,Schizachyrium scoparium,9510891,10.74,430.48,"39.09,-96.56",",",39.09,-96.56
+151,163,1334173,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",sporobolus compositus,64897,Sporobolus compositus,9511443,12.74,417.48,"39.09,-96.56",",",39.09,-96.56
+155,163,1334246,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Ambrosia trifida,3170,Ambrosia trifida,9512027,34.05,400.52,"39.09,-96.56",",",39.09,-96.56
+159,163,1334270,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Sorghastrum nutans,51135,Sorghastrum nutans,9512219,11.23,393.99,"39.09,-96.56",",",39.09,-96.56
+163,163,1334303,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Torilis arvensis,54487,Torilis arvensis,9512483,20.12,376.59,"39.09,-96.56",",",39.09,-96.56
+167,163,1334326,"Plant Traits for Grassland Species (Konza Prairie, Kansas, USA)",Parietaria pensylvanica,40308,Parietaria pensylvanica,9512667,13.36,362.1,"39.09,-96.56",",",39.09,-96.56
+820,412,3090839,The Global Leaf Traits,Commelina erecta,14084,Commelina erecta,34656869,12.36,448.28,"39.09,-96.56",",",39.09,-96.56
+824,412,3090847,The Global Leaf Traits,Euphorbia spathulata,23591,Euphorbia spathulata,34657502,18.55,447.27,"39.09,-96.56",",",39.09,-96.56
+828,412,3090880,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,34660104,15.83,440.64,"39.09,-96.56",",",39.09,-96.56
+832,412,3090888,The Global Leaf Traits,Euphorbia dentata,23398,Euphorbia dentata,34660740,21.49,438.74,"39.09,-96.56",",",39.09,-96.56
+836,412,3090894,The Global Leaf Traits,Sorghum halepense,51149,Sorghum halepense,34661223,26.91,437.73,"39.09,-96.56",",",39.09,-96.56
+840,412,3090939,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,34664762,10.74,430.48,"39.09,-96.56",",",39.09,-96.56
+844,412,3091008,The Global Leaf Traits,sporobolus compositus,64897,Sporobolus compositus,34670218,12.74,417.48,"39.09,-96.56",",",39.09,-96.56
+848,412,3091081,The Global Leaf Traits,Ambrosia trifida,3170,Ambrosia trifida,34675997,34.05,400.52,"39.09,-96.56",",",39.09,-96.56
+852,412,3091105,The Global Leaf Traits,Sorghastrum nutans,51135,Sorghastrum nutans,34677903,11.23,393.99,"39.09,-96.56",",",39.09,-96.56
+856,412,3091138,The Global Leaf Traits,Torilis arvensis,54487,Torilis arvensis,34680491,20.12,376.59,"39.09,-96.56",",",39.09,-96.56
+860,412,3091161,The Global Leaf Traits,Parietaria pensylvanica,40308,Parietaria pensylvanica,34682317,13.36,362.1,"39.09,-96.56",",",39.09,-96.56
+1197,756,6430483,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363005,11.51007533,NA,"37.695,-89.239",",",37.695,-89.239
+1200,756,6430484,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363016,12.13238835,NA,"37.695,-89.239",",",37.695,-89.239
+1203,756,6430485,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363027,8.217561245,NA,"37.695,-89.239",",",37.695,-89.239
+1206,756,6430486,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363038,13.40159416,NA,"37.695,-89.239",",",37.695,-89.239
+1209,756,6430487,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363049,9.635415673,NA,"37.695,-89.239",",",37.695,-89.239
+1212,756,6430488,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363060,11.49292231,NA,"37.695,-89.239",",",37.695,-89.239
+1215,756,6430489,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363071,11.84272647,NA,"37.695,-89.239",",",37.695,-89.239
+1218,756,6430490,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363082,13.63524795,NA,"37.695,-89.239",",",37.695,-89.239
+1221,756,6430491,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363093,9.919950366,NA,"37.695,-89.239",",",37.695,-89.239
+1224,756,6430492,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363104,12.49698281,NA,"37.695,-89.239",",",37.695,-89.239
+1227,756,6430493,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363115,11.17680311,NA,"37.695,-89.239",",",37.695,-89.239
+1230,756,6430494,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363126,11.64797664,NA,"37.695,-89.239",",",37.695,-89.239
+1233,756,6430495,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363137,12.83074975,NA,"37.695,-89.239",",",37.695,-89.239
+1236,756,6430496,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363148,10.69785357,NA,"37.695,-89.239",",",37.695,-89.239
+1239,756,6430497,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363159,9.816730618,NA,"37.695,-89.239",",",37.695,-89.239
+1242,756,6430498,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363170,7.336620092,NA,"37.695,-89.239",",",37.695,-89.239
+1245,756,6430499,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363181,8.852289915,NA,"37.695,-89.239",",",37.695,-89.239
+1248,756,6430500,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363192,8.962153196,NA,"37.695,-89.239",",",37.695,-89.239
+1251,756,6430501,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363203,9.505745769,NA,"37.695,-89.239",",",37.695,-89.239
+1254,756,6430502,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363214,12.63754129,NA,"37.695,-89.239",",",37.695,-89.239
+1257,756,6430503,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363225,9.091061354,NA,"37.695,-89.239",",",37.695,-89.239
+1260,756,6430504,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363236,7.189416289,NA,"37.695,-89.239",",",37.695,-89.239
+1263,756,6430505,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363247,8.248801231,NA,"37.695,-89.239",",",37.695,-89.239
+1266,756,6430506,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363258,8.804228902,NA,"37.695,-89.239",",",37.695,-89.239
+1269,756,6430507,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363269,7.226155996,NA,"37.695,-89.239",",",37.695,-89.239
+1272,756,6430508,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363280,9.4106251,NA,"37.695,-89.239",",",37.695,-89.239
+1275,756,6430509,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363291,4.439492822,NA,"37.695,-89.239",",",37.695,-89.239
+1278,756,6430510,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363302,5.706791282,NA,"37.695,-89.239",",",37.695,-89.239
+1281,756,6430511,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363313,5.515626073,NA,"37.695,-89.239",",",37.695,-89.239
+1284,756,6430512,Intraspecific trait variation of dominant grasses in North American Tallgrass Prairie,Sorghastrum nutans,51135,Sorghastrum nutans,63363324,6.457158327,NA,"37.695,-89.239",",",37.695,-89.239
+907,412,3164643,The Global Leaf Traits,Prosopis glandulosa,44133,Prosopis glandulosa,40534930,39.675,477.365,"36.386708,-111.8493294",",",36.386708,-111.8493294
+179,193,1398088,Plant Traits for Pinus and Juniperus Forests in Arizona,Bouteloua gracilis,7911,Bouteloua gracilis,10237341,13.8,423.85,"35.2,-111.62",",",35.2,-111.62
+191,193,1401445,Plant Traits for Pinus and Juniperus Forests in Arizona,Schizachyrium scoparium,48859,Schizachyrium scoparium,10269596,7.35,454.99,"35.2,-111.62",",",35.2,-111.62
+195,193,1401446,Plant Traits for Pinus and Juniperus Forests in Arizona,Schizachyrium scoparium,48859,Schizachyrium scoparium,10269603,7.72,445.11,"35.2,-111.62",",",35.2,-111.62
+199,193,1401447,Plant Traits for Pinus and Juniperus Forests in Arizona,Schizachyrium scoparium,48859,Schizachyrium scoparium,10269611,15.96,448.12,"35.2,-111.62",",",35.2,-111.62
+203,193,1401448,Plant Traits for Pinus and Juniperus Forests in Arizona,Schizachyrium scoparium,48859,Schizachyrium scoparium,10269621,7.74,449.38,"35.2,-111.62",",",35.2,-111.62
+207,193,1401449,Plant Traits for Pinus and Juniperus Forests in Arizona,Schizachyrium scoparium,48859,Schizachyrium scoparium,10269629,7.21,445.17,"35.2,-111.62",",",35.2,-111.62
+872,412,3100569,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,35408459,13.8,423.85,"35.2,-111.62",",",35.2,-111.62
+884,412,3102849,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,35586620,7.35,454.99,"35.2,-111.62",",",35.2,-111.62
+888,412,3102850,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,35586694,7.72,445.11,"35.2,-111.62",",",35.2,-111.62
+892,412,3102851,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,35586769,15.96,448.12,"35.2,-111.62",",",35.2,-111.62
+896,412,3102852,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,35586844,7.74,449.38,"35.2,-111.62",",",35.2,-111.62
+900,412,3102853,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,35586919,7.21,445.17,"35.2,-111.62",",",35.2,-111.62
+171,193,1398086,Plant Traits for Pinus and Juniperus Forests in Arizona,Bouteloua gracilis,7911,Bouteloua gracilis,10237327,14.83,411.22,"35.148,-111.611",",",35.148,-111.611
+175,193,1398087,Plant Traits for Pinus and Juniperus Forests in Arizona,Bouteloua gracilis,7911,Bouteloua gracilis,10237334,17.75,421.35,"35.148,-111.611",",",35.148,-111.611
+864,412,3100567,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,35408305,14.83,411.22,"35.148,-111.611",",",35.148,-111.611
+868,412,3100568,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,35408382,17.75,421.35,"35.148,-111.611",",",35.148,-111.611
+183,193,1398089,Plant Traits for Pinus and Juniperus Forests in Arizona,Bouteloua gracilis,7911,Bouteloua gracilis,10237350,15.45,428.02,"35.138,-111.644",",",35.138,-111.644
+187,193,1398090,Plant Traits for Pinus and Juniperus Forests in Arizona,Bouteloua gracilis,7911,Bouteloua gracilis,10237357,15.26,413.66,"35.138,-111.644",",",35.138,-111.644
+876,412,3100570,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,35408535,15.45,428.02,"35.138,-111.644",",",35.138,-111.644
+880,412,3100571,The Global Leaf Traits,Bouteloua gracilis,7911,Bouteloua gracilis,35408612,15.26,413.66,"35.138,-111.644",",",35.138,-111.644
+1052,67,1308738,Leaf Physiology Database,Prosopis glandulosa,44133,Prosopis glandulosa,9097466,24.9,NA,"34.62,-106.9",",",34.62,-106.9
+1061,67,1308878,Leaf Physiology Database,Prosopis glandulosa,44133,Prosopis glandulosa,9101914,24.9,NA,"34.62,-106.9",",",34.62,-106.9
+400,412,3029765,The Global Leaf Traits,Prosopis glandulosa,44133,Prosopis glandulosa,29949708,24.9,NA,"34.37,-107",",",34.37,-107
+415,412,3031500,The Global Leaf Traits,Lyonia lucida,34627,Lyonia lucida,30077821,13.1,NA,"34.2,-79.4",",",34.2,-79.4
+229,20,1289884,GLOPNET - Global Plant Trait Network Database,Prosopis glandulosa,44133,Prosopis glandulosa,8712942,24.9,NA,"34,-107",",",34,-107
+1297,96,1312275,Global Respiration Database,Prosopis glandulosa,44133,Prosopis glandulosa,9183573,24.9,NA,"34,-107",",",34,-107
+287,286,2460531,Global Respiration Database,Prosopis glandulosa,44133,Prosopis glandulosa,19989997,24.9,NA,"34,-107",",",34,-107
+345,342,2502091,Photosynthesis Traits Worldwide,Prosopis glandulosa,44133,Prosopis glandulosa,20674144,24.9,NA,"34,-107",",",34,-107
+232,20,1289886,GLOPNET - Global Plant Trait Network Database,Lyonia lucida,34627,Lyonia lucida,8713191,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+235,20,1289890,GLOPNET - Global Plant Trait Network Database,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,8713701,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+1055,67,1308743,Leaf Physiology Database,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,9097626,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+1058,67,1308750,Leaf Physiology Database,Lyonia lucida,34627,Lyonia lucida,9097859,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+1064,67,1308889,Leaf Physiology Database,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,9102200,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+1067,67,1308902,Leaf Physiology Database,Lyonia lucida,34627,Lyonia lucida,9102559,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+1300,96,1312277,Global Respiration Database,Lyonia lucida,34627,Lyonia lucida,9183656,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+1303,96,1312281,Global Respiration Database,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,9183826,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+281,286,2460434,Global Respiration Database,Lyonia lucida,34627,Lyonia lucida,19985690,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+284,286,2460438,Global Respiration Database,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,19985850,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+348,342,2502092,Photosynthesis Traits Worldwide,Lyonia lucida,34627,Lyonia lucida,20674217,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+351,342,2502096,Photosynthesis Traits Worldwide,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,20674509,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+403,412,3029767,The Global Leaf Traits,Lyonia lucida,34627,Lyonia lucida,29949877,9.2,NA,"33.33,-79.22",",",33.33,-79.22
+406,412,3029771,The Global Leaf Traits,Pterocaulon pycnostachyum,44869,Pterocaulon pycnostachyum,29950149,19.7,NA,"33.33,-79.22",",",33.33,-79.22
+956,642,6234419,USA-China Biodiversity (USA samples),Rubus trivialis,71125,Rubus trivialis,60841071,17.6,424.2,"32.89059,-87.444",",",32.89059,-87.444
+960,642,6234447,USA-China Biodiversity (USA samples),Dichanthelium,421856,Dichanthelium sp,60841491,17,451.4,"32.89059,-87.444",",",32.89059,-87.444
+271,240,1674799,Nutrient Resorption Efficiency Database,Prosopis glandulosa,44133,Prosopis glandulosa,11599680,35,NA,"32.5,-106.8",",",32.5,-106.8
+421,412,3036197,The Global Leaf Traits,Prosopis glandulosa,44133,Prosopis glandulosa,30442644,35,NA,"32.5,-106.8",",",32.5,-106.8
+214,20,1288616,GLOPNET - Global Plant Trait Network Database,Lyonia lucida,34627,Lyonia lucida,8572420,7,NA,"30.73,-82.13",",",30.73,-82.13
+333,342,2501234,Photosynthesis Traits Worldwide,Lyonia lucida,34627,Lyonia lucida,20612124,7,NA,"30.73,-82.13",",",30.73,-82.13
+385,412,3028515,The Global Leaf Traits,Lyonia lucida,34627,Lyonia lucida,29852032,7,NA,"30.73,-82.13",",",30.73,-82.13
+124,159,1322458,Traits of US Desert Woody Plant Species,Prosopis glandulosa,44133,Prosopis glandulosa,9373673,40.98,NA,"30.7,-105.06",",",30.7,-105.06
+817,412,3086969,The Global Leaf Traits,Prosopis glandulosa,44133,Prosopis glandulosa,34345307,40.98,NA,"30.7,-105.06",",",30.7,-105.06
+944,642,6233572,USA-China Biodiversity (USA samples),Lyonia lucida,34627,Lyonia lucida,60823235,11.5,547.3,"29.70997,-81.96843",",",29.70997,-81.96843
+936,642,6233552,USA-China Biodiversity (USA samples),Lyonia lucida,34627,Lyonia lucida,60822790,12.6,531.9,"29.70433,-81.99178",",",29.70433,-81.99178
+940,642,6233557,USA-China Biodiversity (USA samples),Lyonia lucida,34627,Lyonia lucida,60822902,12.4,545.8,"29.70433,-81.99178",",",29.70433,-81.99178
+948,642,6233601,USA-China Biodiversity (USA samples),Lyonia lucida,34627,Lyonia lucida,60823877,11,545.3,"29.70236,-82.00886",",",29.70236,-82.00886
+952,642,6233662,USA-China Biodiversity (USA samples),Lyonia lucida,34627,Lyonia lucida,60825226,9.4,541.4,"29.69519,-81.95411",",",29.69519,-81.95411
+211,20,1288479,GLOPNET - Global Plant Trait Network Database,Quercus minima,45432,Quercus minima,8556910,8.9,NA,"29.63,-82.36",",",29.63,-82.36
+330,342,2501185,Photosynthesis Traits Worldwide,Quercus minima,45432,Quercus minima,20608528,8.9,NA,"29.63,-82.36",",",29.63,-82.36
+382,412,3028378,The Global Leaf Traits,Quercus minima,45432,Quercus minima,29841427,17.8,NA,"29.63,-82.36",",",29.63,-82.36
+904,412,3161939,The Global Leaf Traits,Quercus minima (Sarg.) Small,45432,Quercus minima,40328677,8.9,NA,"29.2,-82.99",",",29.2,-82.99
+226,20,1289434,GLOPNET - Global Plant Trait Network Database,Prosopis glandulosa,44133,Prosopis glandulosa,8663506,28,NA,"27.73,-98",",",27.73,-98
+397,412,3029327,The Global Leaf Traits,Prosopis glandulosa,44133,Prosopis glandulosa,29915689,28,NA,"27.63,-98.2",",",27.63,-98.2
+8,130,28527,Global 15N Database,Salsola sp.,48050,Salsola sp,706828,22.4,NA,"-29.516425,21.9643382",",",-29.516425,21.9643382
+703,412,3081756,The Global Leaf Traits,Salsola sp,48050,Salsola sp,33928881,22.4,NA,"-29.516425,21.9643382",",",-29.516425,21.9643382
+1287,89,968078,ArtDeco Database,Sorghum halepense,51149,Sorghum halepense,6148827,22.2,NA,"-31.4,-64.2",",",-31.4,-64.2
+268,240,1674387,Nutrient Resorption Efficiency Database,Schizachyrium scoparium,48859,Schizachyrium scoparium,11593155,31.6,NA,"-34.6,-58.5",",",-34.6,-58.5
+418,412,3035814,The Global Leaf Traits,Schizachyrium scoparium,48859,Schizachyrium scoparium,30413563,31.6,NA,"-34.6,-58.5",",",-34.6,-58.5
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,",",",",,
+,,,,,,,,,,,,,

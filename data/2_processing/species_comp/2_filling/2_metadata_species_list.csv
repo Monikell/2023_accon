@@ -1,0 +1,74 @@
+site,type,family,code_field,code_field_updated,taxon,pathway,duration,duration2,con_acq,notes_con_acq,status,code_usda,notes_taxon,taxon_morpho,notes
+lubb,forb,chenopodiaceae,chin2,chin2,chenopodium incanum,c3,annual,,acquisitive,,native,chin2,,,
+lubb,forb,amaranthaceae,hyod,satr,salsola tragus,c4,annual,,acquisitive,,introduced,satr12,"misid initially, hyod, hymenoxys odorata",,"initially misid, some samples labeled hyod."
+lubb,forb,amaranthaceae,saka,satr,salsola tragus,c4,annual,,acquisitive,,introduced,satr12,"misid initially, saka, salsola kali",,"confusion about species initially, some samples labeled saka "
+sevi,forb,amaranthaceae,satr,satr,salsola tragus,c4,annual,,acquisitive,,introduced,satr12,,,
+temple,forb,asteraceae,amtr,amtr,ambrosia trifida,,annual,,acquisitive,https://nph.onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-8137.1979.tb02313.x,native,amtr,,,
+temple,graminoid,poaceae,brar,brar,bromus arvensis,c3,annual,,,,introduced,brar5,,,
+temple,forb,euphorbiaceae,eude,eude,euphorbia dentata,,annual,,,,native,eude4,,,"native is orange and says ""L"
+temple,forb,euphorbiaceae,eubpa,eubpa,euphorbia spathulata,,annual,annual/ perennial,,,native,eusp,,,
+temple,forb,asteraceae,gapu,gapu,gaillardia pulchella,,annual,annual/ perennial,,,native,gapu,,,
+temple,forb,rubiaceae,2pgate,2pgate,galium texense,,annual,,,,native,gate3,,,
+temple,forb,rubiaceae,gate,gate,galium texense,,annual,,,,native,gate3,,,
+temple,forb,lamiaceae,moci,moci,monarda citriodora,,annual,annual/ perennial,,,native,moci,,,
+temple,forb,urticaceae,pape,pape,parietaria pensylvanica,,annual,,,,native,pape5,,sticky plant,
+temple,forb,apiaceae,toar,toar,torilis arvensis,,annual,,,,introduced,toar,,,
+temple,forb,apiaceae,apiace,apiace,apiaceae sp.,,unknown,,unknown,,unknown,apiace,,,
+temple,graminoid,poaceae,poacea,poacea,poaceae sp.,,unknown,,unknown,,unknown,poacea,,,
+arch,forb,annonaceae,arse,arse,asimina reticulata,,perennial,,conservative,https://www.regionalconservation.org/beta/nfyn/plantdetail.asp?tx=Asimreti,native,asre7,,glaumid / orange,
+arch,graminoid,poaceae,axfu,axfu,axonopus furcatus,,perennial,,,,native,axfu,axfu_pase5,,"vegetative state very similar between pase and axfu. might have mixed species in the field. ""The best difference between paspalum setaceum and axonopus furcatus in vegetative form would be to look at the shape of the leaves. Paspalum setaceum has more pointy leaves than axonopus furcatus (more rounded, blunt at the end of the lamina)"" - Sonnier"
+arch,forb,asteraceae,carph,carph,carphephorus odoratissimus,,perennial,,,,native,caod3,,turkey vein spoon,
+arch,graminoid,poaceae,dicha,dicha,dichanthelium sp.,c3,perennial,,acquisitive,,native,dicha2,,,
+arch,forb,asteraceae,eumo,eumo,eupatorium mohrii,,perennial,,,,native,eumo4,,redline,
+arch,forb,clusiaceae,hyed,hyed,hypericum edisonianum,,perennial,,,,native,hyed,,,
+arch,forb,onagraceae,lusu,lusu,ludwigia suffruticosa,,perennial,,,,native,lusu11,,"alt. prom midvein, prom mid vein",
+arch,forb,ericaceae,lylu,lylu,lyonia lucida,,perennial,,,,native,lylu3,,alt. egg,
+arch,graminoid,poaceae,scrh_hairy,scrh_hairy,panicum longifolium,c3_c4,perennial,,,,native,parip,,,"not 100% sure on species, panicle not fully developed. Switted the species code for UC daivs to fit, lenqth requrimetns, scrhhairy -> PANIC "" likely Panicum longifolium (moved recently to Coleataenia longifolia, but we still used the old name in our dataset). I see characters that suggest Panicum longifolium, but the inflorescence is not fully developed and midvein is protruding but only slightly."""
+arch,graminoid,poaceae,scrh_hairy,scrh_hairy,panicum sp.,c3_c4,perennial,,,,native/ introduced,panic,,,"not 100% sure on species, panicle not fully developed"
+arch,graminoid,poaceae,pase,pase,paspalum setaceum,,perennial,,,,native,pase5,"axfu_pase5, misid initially pano (paspalum notatum)",,"vegetative state very similar between pase and axfu. might have mixed species in the field. ""The best difference between paspalum setaceum and axonopus furcatus in vegetative form would be to look at the shape of the leaves. Paspalum setaceum has more pointy leaves than axonopus furcatus (more rounded, blunt at the end of the lamina)"" - Sonnier"
+arch,forb,asteraceae,spiderpoint,pigr,pityopsis graminifolia,,perennial,,,,native,"pigr4",,spiderpoint. silky aster,uc davis updated code to fit within 20 character requirments SpiderPoint -> pigr
+arch,forb,asteraceae,ptpy,ptpy,pterocaulon pycnostachyum,,perennial,,,,native,"ptpy2",,,
+arch,forb,fagaceae,qumi,qumi,quercus minima,,perennial,,,,native,qumi2,,,
+arch,graminoid,poaceae,scrh,scrh,schizachyrium rhizomatum,c4,perennial,,,,native,scrh,,,
+lubb,forb,euphorbiaceae,arhuh,arhuh,argythamnia humilis,,perennial,,,,native,arhu5,,,
+lubb,graminoid,poaceae,bogr2,bogr2,bouteloua gracilis,c4,perennial,,conservative,,native,bogr2,,,
+lubb,forb,fabaceae,prgl2,prgl2,prosopis glandulosa,,perennial,,,,native,prgl2,,,
+lubb,forb,solanaceae,soel,soel,solanum elaeagnifolium,,perennial,,,,native,soel,,,
+lubb,forb,lamiaceae,tela,tela,teucrium laciniatum,,perennial,,,,native,tela,,,
+sevi,graminoid,poaceae,boer,boer,bouteloua eriopoda,c4,perennial,,conservative,,native,boer4,,,
+sevi,forb,fabaceae,hodr,hodr,hoffmannseggia drepanocarpa,,perennial,,,,native,hodr,,,
+sevi,forb,fabaceae,poja,poja,pomaria jamesii,,perennial,,,,native,poja5,,,
+sevi,forb,solanaceae,soel,soel,solanum elaeagnifolium,,perennial,,,,native,soel,,,
+sevi,graminoid,poaceae,spfl,spfl,sporobolus flexuosus,c4,perennial,,,,native,"spfl2",,,
+sevi,forb,asteraceae,xasp,xasp,xanthisma spinulosum,,perennial,,,,native,mapi,,,"updated species Machaeranthera pinnatifida, MAPI"
+temple,forb,asteraceae,cien,cien,cirsium engelmannii,,perennial,,acquisitive,,native,cien2,,,
+temple,forb,menispermaceae,coca,coca,cocculus carolinus,,perennial,,acquisitive,"https://tnyards.utk.edu/cocculus-carolinus/#:~:text=10%2D14%20feet%20height%20by,6%2D10%20feet%20per%20year.",native,coca,,,
+temple,forb,commelinaceae,coer,coer,commelina erecta,,perennial,,acquisitive,https://regionalconservation.org/beta/nfyn/plantdetail.asp?tx=Commerec,native,coer,,,
+temple,forb,fabaceae,mipl,miro,mimosa roemeriana,,perennial,,,,native,miro6,synonym mimosa quadrivalvis var. platycarpa. ,,"updated taxon is mimosa roemeriana miro6, plant labels have mipl"
+temple,forb,solanaceae,phmo,phmo,physalis mollis,,perennial,,,,native,"phmo9",,,
+temple,forb,apiace,ponu,ponu,polytaenia nuttallii,,perennial,,,,native,ponu4,,,
+temple,forb,fabaceae,pste,pste,psoralidium tenuiflorum,,perennial,,,,native,pste5,,,
+temple,forb,rosaceae,rutr,rutr,rubus trivialis,,perennial,,,,native,rutr,,,
+temple,graminoid,poaceae,scsc,scsc,schizachyrium scoparium,c4,perennial,,,,native,scsc,,,
+temple,graminoid,poaceae,sonu,sonu,sorghastrum nutans,c4,perennial,,,,native,sonu2,,,
+temple,graminoid,poaceae,soha,soha,sorghum halepense,c4,perennial,,,,introduced,"soha",,,
+temple,graminoid,poaceae,spco,spco,sporobolus compositus,,perennial,,,,native,"spco16",,,
+temple,forb,euphorbiaceae,trbr,trbr,tragia brevispica,,perennial,,,,native,"trbr4",,,
+temple,forb,lamiaceae,saaz,saaz,salvia azurea,,perennial,,,,native,saaz,,,
+arch,forb,clusiaceae,hyre,hyre,hypericum reductum,,perennial,,,,native,hyte11,"updated to hypericum tenuifolium, hyte11 ",,used older taxon (h. reductum) for simplicity
+sevi,forb,poaceae,crcr,crcr,cryptantha crassisepala,,annual,,,,native,crcr3,,stabbfuzz,"not sampled for measurments, dead"
+sevi,forb,poaceae,depi,depi,descurainia pinnata,,annual,,acquisitive,mk thought,native,depi,,,"not sampled for measurments, dead. Annual, biennial or seldom a perennial"
+sevi,forb,euphorbiaceae,eupho,eupho,euphorbia sp.,unknown,unknown,,unknown,,unknown,eupho,,,
+temple,forb,asteraceae,astera,astera,asteraceae sp. ,unknown,unknown,,unknown,,unknown,astera,,,
+temple,forb,brassicaceae,brassi,brassi,brassicaceae sp.,unknown,unknown,,unknown,,unknown,brassi,,,
+temple,forb,euphorbiaceae,eupho,eupho,euphorbia sp.,unknown,unknown,,unknown,,unknown,eupho,,,
+temple,forb,euphorbiaceae,sodi,sodi,solanum dimidiatum,,perennial,,,,native,sodi,,,
+lubb,forb,euphorbiaceae,chla10,chla10,chamaesyce lata,,perennial,,,,native,chla10,,,
+sevi,forb,euphorbiaceae,chama,chama,chamaesyce sp.,,unknown,,unknown,,unknown,chama15,,,
+temple,forb,asteraceae,ceme,ceme,centaurea melitensis,,annual,,,,introduced,ceme2,,,"annual, biennial"
+temple,graminoid,poaceae,elca,elca,elymus canadensis,,perennial,,,,native,elca4,,,
+temple,forb,geraniaceae,erte,erte,erodium texanum,,annual,,acquisitive,mk thought,native,erte13,,,"annual, biennial"
+temple,forb,oxalidaceae,oxst,oxst,oxalis stricta,,perennial,,,,native,oxst,,,
+temple,forb,Iridaceae,sisyr,sisyr,sisyrinchium sp.,,annual,,,,native,sisyr,,,
+temple,forb,asteraceae,syer,syer,symphyotrichum ericoides,,perennial,,,,native,syer,,,
+temple,forb,asteraceae,trpe4,trpe,triodanis perfoliata,,annual,,,,native,trpe4,,,

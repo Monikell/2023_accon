@@ -1,0 +1,43 @@
+date,people,site,con,machine,plot,trt,code,rep,Q10. ID matches user defined variable?,Q11. Performed auto match before curve?,Q12. Did leaf fit entire cuvette?,Q13. If Q12.) is no what was the leaf width? (cm),Q14. If answered Q13.) did you enter the width into licor? (cm),curve_start,envelope,notes
+6/30/2023,MK,arch,27deg/sunny,alb,11,ctl,DICHA,4,y,y,n,0.6,y,10:54,,SLA needed
+6/30/2023,MK,arch,27deg/sunny,yat,18,npk,DICHA,4,y,y,n,0.9,n,14:30,,SLA needed; leaf ripped (possibly during curve)
+6/23/2023,MK,arch,sunny,yat,8,npk,DICHA,1,y,y,n,0.6,y,10:58,232,werid leaf shape; licor plays plot 1 instead of plot 8
+6/23/2023,MK,arch,sunny,yat,1,ctl,DICHA,1,y,y,n,0.9,y,13:27,,
+6/24/2023,MK,arch,sunny,yat,11,ctl,DICHA,1,y,y,n,0.6,y,11:15,,
+6/24/2023,MK,arch,sunny,yat,18,npk,DICHA,1,y,y,n,0.8,y,12:37,,SLA = okay! big leaf 
+6/26/2023,MK,arch,sunny,yat,21,ctl,DICHA,1,y,y,n,0.6,y,10:34,,
+6/26/2023,MK,arch,sunny,alb,28,npk,DICHA,1,mia,mia,n,1,y,12:04,,SLA needed ??
+6/30/2023,MK,arch,27deg/sunny,yat,11,ctl,HYED,4,y,y,n,0.6,n,11:18,,SLA needed
+6/30/2023,MK,arch,27deg/sunny,alb,18,npk,HYED,4,y,y,n,0.6,n,12:53,,SLA needed
+6/26/2023,MK,arch,sunny,alb,8,npk,HYED,1,y,y,n,0.6,y,14:25,,SLA needed
+6/26/2023,MK,arch,sunny,alb,1,ctl,HYED,1,y,y,n,0.6,y,13:41,,SLA needed
+6/24/2023,MK,arch,sunny,yat,11,ctl,HYED,1,y,y,n,mia,n,10:26,,SLA needed
+6/24/2023,MK,arch,sunny,alb,18,npk,HYED,1,y,y,n,0.6,y,13:15,,SLA needed
+6/26/2023,MK,arch,sunny,yat,21,ctl,HYED,1,y,y,n,0.6,y,8:47,,SLA needed
+6/26/2023,MK,arch,sunny,yat,28,npk,HYED,1,y,y,n,0.6,y,11:00,,used yadi not sure of time; posibly 11???; one leaf
+6/26/2023,MK,arch,sunny,yat,28,npk,HYED,3,y,y,n,0.6,y,11:50,295,SLA needed; one leaf
+6/30/2023,MK,arch,27deg/sunny,alb,11,ctl,PANO,4,y,y,n,1,y,12:19,,
+6/30/2023,MK,arch,27deg/sunny,yat,18,npk,PANO,4,y,y,n,0.8,y,13:21,,
+6/23/2023,MK,arch,sunny,alb,8,npk,PANO,1,y,y,n,1.2,y,11:00,229,envelope # 229; licor says DICHA_01 should be 
+6/23/2023,MK,arch,sunny,yat,1,ctl,PANO,1,y,y,n,0.7,y,14:01,,
+6/24/2023,MK,arch,sunny,alb,11,ctl,PANO,1,y,y,n,1.2,y,11:04,,curve taken at 10:18; bad 
+6/24/2023,MK,arch,sunny,alb,18,npk,PANO,1,y,y,n,0.9,y,11:44,,
+6/26/2023,MK,arch,sunny,yat,21,ctl,PANO,1,y,y,n,1,y,13:58,,
+6/26/2023,MK,arch,sunny,yat,28,npk,PANO,1,y,y,n,1.3,y,12:30,,misssed time
+6/30/2023,MK,arch,27deg/sunny,alb,11,ctl,QUMI,4,y,y,n,mia,n,9:57,,I think it filled the cuvette but also calsulate SLA
+6/30/2023,MK,arch,27deg/sunny,alb,18,npk,QUMI,4,y,y,n,mia,n,13:28,,SLA needed
+6/23/2023,MK,arch,sunny,alb,8,npk,QUMI,1,y,y,n,mia,n,9:57,225,SLA needed; weird leaf shape; envelope # 225; says plot 01 instead of 08 (licor)
+6/23/2023,MK,arch,sunny,yat,1,ctl,QUMI,1,y,y,n,mia,n,12:33,199,SLA needed
+6/23/2023,MK,arch,sunny,alb,11,ctl,QUMI,1,y,y,n,mia,n,14:07,,SLA needed
+6/24/2023,MK,arch,sunny,alb,18,npk,QUMI,1,y,y,n,mia,n,12:39,,SLA needed
+6/26/2023,MK,arch,sunny,yat,21,ctl,QUMI,1,y,y,n,mia,n,9:55,,weird leaf shape 
+6/26/2023,MK,arch,sunny,alb,28,npk,QUMI,1,y,y,n,mia,n,12:51,,SLA needed; young
+6/30/2023,MK,arch,27deg/sunny,yat,11,ctl,SCRH,4,y,y,n,1.5,y,10:13,,
+6/30/2023,MK,arch,27deg/sunny,alb,18,npk,SCRH,4,y,y,n,mia,n,14:18,,forgot to enter leaf width; posibly entered 
+6/23/2023,MK,arch,sunny,yat,8,npk,SCRH,1,y,y,n,1.6,y,9:57,217,weird leaf shape; envelope # 217; says plot 01 instead of 08 (licor)
+6/23/2023,MK,arch,sunny,alb,1,ctl,SCRH,1,y,y,n,1.5,y,12:44,,
+6/24/2023,MK,arch,sunny,yat,11,ctl,SCRH,1,y,y,n,1.1,y,9:52,,
+6/24/2023,MK,arch,sunny,yat,21,ctl,SCRH,3,y,y,n,1.2,y,13:16,289,backup for rep 1
+6/24/2023,MK,arch,sunny,yat,18,npk,SCRH,1,y,y,n,1.8,y,13:38,,
+6/26/2023,MK,arch,sunny,alb,21,ctl,SCRH,1,y,y,n,1.3,y,10:20,,random_20; 0 points photo
+6/26/2023,MK,arch,sunny,alb,28,npk,SCRH,1,y,y,n,1.3,y,11:20,,missed time probably on 11:20

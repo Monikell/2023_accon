@@ -1,0 +1,1685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml packageId="knb-lter-sev.333.1"
+  system="https://pasta.edirepository.org"
+  xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0"
+  xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/ eml.xsd">
+  <access
+    authSystem="https://pasta.edirepository.org/authentication"
+    order="allowFirst" scope="document"
+      system="https://pasta.edirepository.org">
+    <allow>
+      <principal>uid=SEV,o=LTER,dc=ecoinformatics,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <alternateIdentifier
+        system="https://doi.org">doi:10.6073/pasta/5b3a6d80a1c6d3121a2196cb40838849</alternateIdentifier><title>SEV-LTER Plant Traits Database</title>
+    <creator>
+      <individualName>
+        <givenName>Timothy</givenName>
+        <givenName>E</givenName>
+        <surName>Farkas</surName>
+      </individualName>
+      <electronicMailAddress>timothy.farkas@gmail.com</electronicMailAddress>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Benjamin</givenName>
+        <givenName>P</givenName>
+        <surName>Gerstner</surName>
+      </individualName>
+      <organizationName>University of New Mexico</organizationName>
+      <electronicMailAddress>bgerstner@unm.edu</electronicMailAddress>
+      <userId
+        directory="https://orcid.org">https://orcid.org/0000-0003-0884-6142</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Kenneth</givenName>
+        <givenName>D</givenName>
+        <surName>Whitney</surName>
+      </individualName>
+      <organizationName>University of New Mexico</organizationName>
+      <electronicMailAddress>whitneyk@unm.edu</electronicMailAddress>
+      <userId
+        directory="https://orcid.org">https://orcid.org/0000-0002-2523-5469</userId>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Jennifer</givenName>
+        <surName>Noble</surName>
+      </individualName>
+      <organizationName>University of New Mexico</organizationName>
+      <electronicMailAddress>j1noble@yahoo.com</electronicMailAddress>
+      <role>seed collectory</role>
+    </associatedParty>
+    <pubDate>2021-08-26</pubDate>
+    <abstract>
+      <para>
+    This dataset contains measurements of morphological (leaf, stem,
+    root, and seed), nutrient, and isotopic traits for plant species
+    growing in the Sevilleta National Wildlife Refuge. Approximately 104
+    species were sampled in or near four core sites of the SEV-LTER
+    (core_blue, core_black, core_creosote, and core_PJ) plus the
+    Sevilleta Field Station between 2017 and 2021. In addition, seed
+    masses were measured from a 2016-era seed collection provided by
+    Jenny Noble and added to the dataset; for these, site = NA.
+  </para>
+    </abstract>
+    <keywordSet>
+      <keyword>SEV-LTER</keyword>
+      <keyword>seed mass</keyword>
+      <keyword>fine root density</keyword>
+      <keyword>stem density</keyword>
+    </keywordSet>
+    <keywordSet>
+      <keyword>plant properties</keyword>
+      <keyword>morphometrics</keyword>
+      <keyword>specific leaf area</keyword>
+      <keyword>carbon to nitrogen ratio</keyword>
+      <keyword>foliar nitrogen</keyword>
+      <keyword>percent carbon</keyword>
+      <keyword>percent nitrogen</keyword>
+      <keyword>plant biomass</keyword>
+      <keyword>plant height</keyword>
+      <keyword>isotopes</keyword>
+      <keyword>deserts</keyword>
+      <keyword>grasslands</keyword>
+      <keywordThesaurus>LTER controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>
+      <para>This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data ("Data User" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available "as is." The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.
+</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>core_black - Five Points Black Grama is a core monitoring site established in 1999 at the transition between Chihuahuan Desert shrubland and Chihuahuan Desert Grassland ecosystems. The Five Points Black Grama site is ecotonal, bordering Chihuahuan Desert shrubland at its southern extent and Great Plains Grassland at its northern, more mesic boundary. Characteristically, the dominant grass is black grama (Bouteloua eriopoda).</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-106.736</westBoundingCoordinate>
+          <eastBoundingCoordinate>-106.736</eastBoundingCoordinate>
+          <northBoundingCoordinate>34.3331</northBoundingCoordinate>
+          <southBoundingCoordinate>34.3331</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <geographicCoverage>
+        <geographicDescription>core_blue - The Blue Grama (Great Plains grassland) core site was established in 2002 in blue grama dominated grassland along the piedmont of the Los Pinos Mountains. Vegetation is characterized as Great Plains Grassland, dominated by blue grama (Bouteloua gracilis), along with black grama (B. eriopoda), and galleta grass (Pleuraphis jamesii), and with tree cholla (Cylindropuntia imbricata), dropseed (Sporobulus spp.), sand muhly (Muhlenbergia arenicola), and Great Plains yucca (Yucca glauca) as associated species.</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-106.631</westBoundingCoordinate>
+          <eastBoundingCoordinate>-106.631</eastBoundingCoordinate>
+          <northBoundingCoordinate>34.3348</northBoundingCoordinate>
+          <southBoundingCoordinate>34.3348</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <geographicCoverage>
+        <geographicDescription>core_creosote - The creosote core site was established in 1999 in an area dominated by creosote bush (Larrea tridentata), with sparse herbaceous cover. The Five Points Creosote site is characterized as Chihuahuan Desert Shrubland, dominated by a creosote overstory, with broom snakeweed, purple prickly pear (Opuntia macrocentra), and soapweed yucca as co-occurring shrubs. The site is also characterized by numerous, dense, grass-dominated patches, reflecting proximity to the Five Points Black Grama Site. Common grasses are black grama (Bouteloua eriopoda), fluffgrass (Dasyochloa pulchellum), burrograss (Scleropogon brevifolia), bushmuhly (Muhlenbergia porteri), and galleta grass (Pleuraphis jamesii). Notable forbs include field bahia (Bahia absinthifolia), baby aster (Chaetopappa ericoides), plains hiddenflower (Cryptantha crassisepala), Indian rushpea (Hoffmannseggia glauca), Fendlers bladderpod (Lesquerella fendleri), and globemallow (Sphaeralcea spp.).</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-106.736</westBoundingCoordinate>
+          <eastBoundingCoordinate>-106.736</eastBoundingCoordinate>
+          <northBoundingCoordinate>34.3331</northBoundingCoordinate>
+          <southBoundingCoordinate>34.3331</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <geographicCoverage>
+        <geographicDescription>core_PJ - The Cerro Montosa pinon-juniper site has been the location of major Sevilleta LTER research since 1989. The vegetation is New Mexico pinon-juniper Woodland, dominated by Colorado pinon (Pinus edulis) and one-seed juniper (Juniperus monosperma), and accompanied by gray oak (Quercus grisea). There is a diverse shrub component, including scrub live oak (Q. turbinella), mountain mahogany (Cercocarpus montanus), broom snakeweed (Gutierrezia sarothrae), sacahuista (Nolina microcarpa), red barberry (Mahonia haematocarpa), Apache plume (Fallugia paradoxa), tree cholla (Opuntia imbricata), skunkbush (Rhus trilobata), and banana yucca (Yucca baccata). Grass diversity is also high, and open spaces between trees are dominated by blue grama (Bouteloua gracilis), with hairy and sideoats grama (B. hirsuta and B. curtipendula) and black grama (B. eriopoda) also abundant. Other common grasses include purple threeawn (Aristida purpurea), wolftail (Lycurus phleoides), mountain and ring muhly (Muhlenbergia montanus and M. torreyi), and New Mexican porcupinegrass (Heterostipa neomexicana). Common forbs include small-flowered milkvetch (Astragalus nuttallianus), white sagebrush (Artemesia ludoviciana), Fendler's arabis (Arabis fendleri), Fendler's sandmat (Chamaesyce fendleri), New Mexico thistle (Cirsium neomexicanum), false pennyroyal (Hedeoma oblongifolia), bastard sage (Eriogonum wrightii), pingue rubberweed (Hymenoxys richardsonii), large four o'clock (Mirabilis multiflora), Fendler's penstemon (Penstemon fendleri), and globemallows (Sphaeralcea spp.).</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-106.535</westBoundingCoordinate>
+          <eastBoundingCoordinate>-106.535</eastBoundingCoordinate>
+          <northBoundingCoordinate>34.368</northBoundingCoordinate>
+          <southBoundingCoordinate>34.368</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <geographicCoverage>
+        <geographicDescription>Sevilleta_Field_Station - The Sevilleta Field Station was established in 1989.</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-106.885</westBoundingCoordinate>
+          <eastBoundingCoordinate>-106.885</eastBoundingCoordinate>
+          <northBoundingCoordinate>34.354</northBoundingCoordinate>
+          <southBoundingCoordinate>34.354</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2017-08-01</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2021-08-30</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>ongoing</description>
+    </maintenance>
+    <contact>
+      <individualName>
+        <givenName>Kenneth</givenName>
+        <givenName>D</givenName>
+        <surName>Whitney</surName>
+      </individualName>
+      <organizationName>University of New Mexico</organizationName>
+      <electronicMailAddress>whitneyk@unm.edu</electronicMailAddress>
+      <userId
+          directory="https://orcid.org">https://orcid.org/0000-0002-2523-5469</userId>
+    </contact>
+    <contact>
+      <organizationName>University of New Mexico</organizationName>
+      <positionName>Information Manager</positionName>
+      <electronicMailAddress>sevim@unm.edu</electronicMailAddress>
+    </contact>
+    <publisher><organizationName>Environmental Data Initiative</organizationName><electronicMailAddress>info@environmentaldatainitiative.org</electronicMailAddress><onlineUrl>https://environmentaldatainitiative.org</onlineUrl></publisher><pubPlace>Environmental Data Initiative</pubPlace><methods>
+      <methodStep>
+        <description>
+          <para>
+    Study Site -
+  </para>
+          <para>
+    All sampling was conducted within The Sevilleta National Wildlife
+    Refuge (SNWR) in central New Mexico. We focused on plant species
+    inhabiting blue grama (Bouteloua gracilis)-dominated shortgrass
+    steppe (Great Plains grassland), black grama (Bouteloua
+    eriopoda)-dominated Chihuahuan Desert grassland, creosote bush
+    (Larrea tridentata)-dominated Chihuahuan Desert shrubland, and pinon
+    (Pinus edulis)- and juniper (Juniperus monosperma)-dominated forest
+    in the mountainous, higher-elevation regions.
+  </para>
+          <para>
+    Plant Tissue Collections -
+  </para>
+          <para>
+    Leaf, stem, taproot, seed, and isotope measurements were often made
+    on the same set of plants (N range 1 to 10 per species) collected
+    from the Sevilleta National Wildlife Refuge. The main collection
+    time was between September and October 2017, but further sampling
+    for missing species or traits continued through Spring 2021. When
+    plant species were represented in multiple habitat types, we
+    attempted to collect all samples from the habitat type in which they
+    were most common. In the case of grasses and forbs, we collected
+    entire plants or clonal sections into Ziploc bags enclosing paper
+    towels moistened with deionized water and transported them in a
+    refrigerated cooler to the University of New Mexico main campus in
+    Albuquerque. We separately collected taproot, stem, leaf, and seed
+    samples from different parts of larger shrubs, preserving and
+    transporting them as above. When in laboratory, samples were kept at
+    20C for up to one week prior to processing for trait measurements.
+    Fine-root samples were taken on haphazardly sampled plants in
+    November 2017 using the same collection methods as above, but care
+    was taken to collect entire root systems intact. Because not all
+    plants sampled for leaf, stem, and root tissue were fruiting at the
+    time of collection, additional seed collections were made between
+    October 2017 and June 2018 to supplement the initial collection; in
+    addition, a seed collection from the Sevilleta made by Jennifer
+    Noble provided many missing species. Trait measurements as described
+    below closely followed the plant trait handbook of
+    Pérez-Harguindeguy et al. (2013).
+  </para>
+          <para>
+    Leaf traits -
+  </para>
+          <para>
+    We removed up to 5 leaves or leaflets per plant (excluding petioles)
+    from haphazardly selected locations across each plant sample,
+    supplementing with additional leaves (maximum of 20) when leaves
+    were very small, and hydrated them for at least 24 hours (up to one
+    week) in deionized water at 20C. We then imaged leaves on a Canon
+    9000F Mark II flatbed scanner, with default settings (300 dpi, full
+    color) with a single image per plant sample, dissecting curled
+    leaves so as to image the entirety of leaf surface area. Immediately
+    after scanning, leaves were patted dry and weighed (wet mass) as a
+    group to a precision of 0.1mg (Mettler Toledo New Classic MF
+    balance). Leaves were then dried to constant weight at 60C and
+    reweighed (dry mass). Leaf dry matter content (ldmc) was calculated
+    as dry mass divided by wet mass.
+  </para>
+          <para>
+    We used ImageJ (Build 1.52a) to automatically measure the area of
+    each leaf in the scanned images, checked the automation on each
+    image, and measured the area of leaves with failed automation by
+    hand. We calculated specific leaf area (sla) as the total leaf area
+    imaged (sum of all leaves) divided by their dry mass.
+  </para>
+          <para>
+    Foliar Elemental Isotope Composition -
+  </para>
+          <para>
+    We assayed the foliage of up to 3 plant samples per species at the
+    UNM Center for Stable Isotopes to determine the relative composition
+    of carbon and nitrogen, as well as the composition of C13 and N15
+    relative to C12 and N14, respectively. Foliage was dried to constant
+    weight, powdered with a steel-bead tissuelyser (sample was put in
+    two mL round bottom centrifuge tubes with two 3.2mm chrome steel
+    ball bearings (BioSpec Products Cat. No. 11079132c), run on Qiagen
+    Tissuelyser II at a frequency of 30 rep/sec, for two minutes). A
+    target of 3mg of powdered tissue was sampled for analysis, measured
+    on a microbalance.
+  </para>
+          <para>
+    Stem and root traits -
+  </para>
+          <para>
+    We excised ~1-to-3cm sections of the primary stem just above the
+    soil interface and primary root just below the soil interface, and
+    rehydrated them in deionized water at 20C for a minimum of 24 hours
+    before taking volumetric and mass measurements. For plants lacking a
+    clear primary stem (e.g., with radial stem arrangement), we randomly
+    chose one secondary stem to sample. For plants without a primary
+    root (e.g., grasses), we excised an upper section of a randomly
+    chosen fibrous root. We estimated the volume of stem and root
+    sections by measuring the diameter at the top and bottom of each
+    section, as well as total length, with digital calipers (precision =
+    0.1mm); we calculated volume using the formula for a truncated cone.
+    We patted each section dry and weighed as above (wet mass), then
+    dried to constant weight at 60C and reweighed (dry mass). We
+    calculated root and stem density (rdens and sdens, respectively) as
+    the dry mass divided by volume, and calculated root and stem dry
+    matter content (rdmc and sdmc, respectively) as the dry mass divided
+    by wet mass.
+  </para>
+          <para>
+    To estimate root traits, we collected fine root systems from up to
+    three plant samples per species. We excised fine root sections from
+    the lowest level of branching order observed to allow for meaningful
+    cross-species comparisons of specific root length. Sections were
+    preserved in 50% EtOH for ~4 months, imaged on a flatbed scanner (as
+    for leaves), then transferred to deionized water. After no less than
+    24 hours, fine-root sections were patted dry and weighed on a
+    microbalance, dried to constant weight at 60C, then reweighed (dry
+    mass). Fine-root dry matter content (fr_dmc) was calculated as the
+    dry mass divided by wet mass.
+  </para>
+          <para>
+    We used the SmartRoot (v. 4.21) plugin to ImageJ (Build 1.52a)
+    (Lobet et al. 2011) to measure the total length and average diameter
+    of imaged fine roots, following the protocol outlined in the
+    provided quick start user guide. Specific root length (srl) was
+    calculated as fine-root dry mass divided by total root length. Root
+    diameter was calculated as the arithmetic average of all imaged
+    fine-root sections. Fine-root density (fr_dens) was calculated as
+    dry mass divided by volume.
+  </para>
+          <para>
+    Seed traits -
+  </para>
+          <para>
+    We collected up to 20 seeds per plant sample on up to 5 individuals
+    per species, choosing only fully developed, ostensibly viable seeds
+    with hardened seed coats, and avoiding anomalously shriveled or
+    flattened seeds. Groups of seeds were imaged with a Nikon D70 DSLR
+    on a tripod, dried at 60C for 1 week, then weighed together on a
+    microbalance. Seed mass (seed_mass) was calculated as the arithmetic
+    average mass of seeds per sample.
+  </para>
+          <para>
+    Life history characteristics -
+  </para>
+          <para>
+    Life history characteristics of each species, including annuality
+    vs. perenniality (LifeHistory), native vs. exotic status (Native),
+    photosynthetic pathway (PhotoPath), and functional group
+    (FunctionalGroup) were appended from the Sevilleta Long Term
+    Ecological Research Program Plant Species List, publication date
+    2019-09-30 (doi:10.6073/pasta/685df487cb89f424969904bcdf4f2926).
+  </para>
+          <para>
+    Quality control -
+  </para>
+          <para>
+    Data were checked via visual inspections of distributions, followed
+    by double checking of data entry.
+  </para>
+          <para>
+    References -
+  </para>
+          <para>
+    Lobet, G., L. Pagès, and X. Draye. 2011. A novel image analysis
+    toolbox enabling quantitative analysis of root system architecture.
+    Plant Physiology pp.111.179895.
+  </para>
+          <para>
+    Pérez-Harguindeguy, N., S. Díaz, E. Garnier, S. Lavorel, H. Poorter,
+    P. Jaureguiberry, M. S. Bret-Harte, et al. 2013. New handbook for
+    standardised measurement of plant functional traits worldwide.
+    Australian Journal of Botany 61:167–234.
+  </para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>Repeatability and genetic architecture of adaptive introgression: a long-term experimental evolution study in sunflowers</title>
+      <personnel>
+        <individualName>
+          <givenName>Kenneth</givenName>
+          <givenName>D</givenName>
+          <surName>Whitney</surName>
+        </individualName>
+        <organizationName>University of New Mexico</organizationName>
+        <electronicMailAddress>whitneyk@unm.edu</electronicMailAddress>
+        <userId
+          directory="https://orcid.org">https://orcid.org/0000-0002-2523-5469</userId>
+        <role>Principal Investigator</role>
+      </personnel>
+      <funding>NSF DEB 1257965</funding>
+    </project>
+    <dataTable>
+      <entityName>sev333_plant_traits.csv</entityName>
+      <entityDescription>This dataset contains measurements of morphological (leaf, stem, root, and seed), nutrient, and isotopic traits for plant species growing in the Sevilleta National Wildlife Refuge. </entityDescription>
+      <physical>
+        <objectName>sev333_plant_traits.csv</objectName>
+        <size
+          unit="bytes">262516</size>
+        <authentication
+                    method="MD5">2476d477b5e7f718eb453b7b755c675a</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>https://pasta.lternet.edu/package/data/eml/knb-lter-sev/333/1/d6b91bac4e7d8e92e71c70f5d34d2af4</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>sampleID</attributeName>
+          <attributeDefinition>Unique identification tag for individual plant</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Unique identification tag for individual plant</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Kartez</attributeName>
+          <attributeDefinition>Species code - see https://plants.usda.gov/</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Species code - see https://plants.usda.gov/</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>family</attributeName>
+          <attributeDefinition>plant family</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>plant family</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>genus_new</attributeName>
+          <attributeDefinition>plant genus</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>plant genus</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>species_new</attributeName>
+          <attributeDefinition>plant species epithet</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>plant species epithet</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>genus_old</attributeName>
+          <attributeDefinition>alternative genus name</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>alternative genus name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>species_old</attributeName>
+          <attributeDefinition>alternative species name</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>alternative species name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Native</attributeName>
+          <attributeDefinition>native indicator</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>n</code>
+                    <definition>exotic</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>y</code>
+                    <definition>native</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>PhotoPath</attributeName>
+          <attributeDefinition>photosynthetic pathway</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>C3</code>
+                    <definition>C3 photopath</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>C4</code>
+                    <definition>C4 photopath</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>LifeHistory</attributeName>
+          <attributeDefinition>perenniality</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>a</code>
+                    <definition>annual</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>p</code>
+                    <definition>perennial</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>FunctionalGroup</attributeName>
+          <attributeDefinition>growth form</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>f</code>
+                    <definition>forb</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>g</code>
+                    <definition>grass</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>s</code>
+                    <definition>shrub</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>site</attributeName>
+          <attributeDefinition>collection site</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>collection site</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_sum_area</attributeName>
+          <attributeDefinition>Sum of leaf area scanned</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeterSquared</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.36193476</minimum>
+                  <maximum
+                    exclusive="false">41.97217412</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_n_pieces</attributeName>
+          <attributeDefinition>Number of leaves/leaf pieces scanned</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">1</minimum>
+                  <maximum
+                    exclusive="false">20</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_whole_ind</attributeName>
+          <attributeDefinition>Indicator of whether leaf �pieces� are whole leaves - Logical; if TRUE, then the average area of a single leaf  = lf_sum_area/lf_n_pieces;
+if FALSE, then the average area of a single leaf cannot be calculated</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Indicator of whether leaf �pieces� are whole leaves - Logical; if TRUE, then the average area of a single leaf  = lf_sum_area/lf_n_pieces;
+if FALSE, then the average area of a single leaf cannot be calculated</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_wet_mass</attributeName>
+          <attributeDefinition>mass of hydrated leaves</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.0054</minimum>
+                  <maximum
+                    exclusive="false">1.9592</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_dry_mass</attributeName>
+          <attributeDefinition>mass of dehyrated leaves</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.0012</minimum>
+                  <maximum
+                    exclusive="false">0.5972</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>sla</attributeName>
+          <attributeDefinition>specific leaf area</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>centimeterSquaredPerGram</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">17.2100206</minimum>
+                  <maximum
+                    exclusive="false">865.2588154</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>ldmc</attributeName>
+          <attributeDefinition>leaf dry matter content</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.03196347</minimum>
+                  <maximum
+                    exclusive="false">0.535353535</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_petiole_ind</attributeName>
+          <attributeDefinition>indicator of whether petioles were included in samples - Logical; only TRUE for some early samples</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>indicator of whether petioles were included in samples - Logical; only TRUE for some early samples</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_mass</attributeName>
+          <attributeDefinition>amount of leaf tissue analysed for CN isotopes</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.503</minimum>
+                  <maximum
+                    exclusive="false">6.14</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_d15N</attributeName>
+          <attributeDefinition>corrected delta 15N</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">-5.7143125</minimum>
+                  <maximum
+                    exclusive="false">11.53965</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_d13C</attributeName>
+          <attributeDefinition>corrected delta 13C</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">-32.110625</minimum>
+                  <maximum
+                    exclusive="false">-12.57466667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_pN</attributeName>
+          <attributeDefinition>percent nitrogen</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.519206</minimum>
+                  <maximum
+                    exclusive="false">6.05636506</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_pC</attributeName>
+          <attributeDefinition>percent carbon</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">32.34997533</minimum>
+                  <maximum
+                    exclusive="false">59.31204376</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>lf_iso_CN</attributeName>
+          <attributeDefinition>carbon nitrogen ratio (= pC / pN)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">7.561932788</minimum>
+                  <maximum
+                    exclusive="false">89.82597697</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_wet_mass</attributeName>
+          <attributeDefinition>hydrated mass of stem section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.0012</minimum>
+                  <maximum
+                    exclusive="false">4.5758</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_length</attributeName>
+          <attributeDefinition>length of stem section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">2.5</minimum>
+                  <maximum
+                    exclusive="false">81.6</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_diam_1</attributeName>
+          <attributeDefinition>diameter of stem at top of section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.1</minimum>
+                  <maximum
+                    exclusive="false">11.1</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_diam_2</attributeName>
+          <attributeDefinition>diameter of stem at bottom of section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.1</minimum>
+                  <maximum
+                    exclusive="false">11.9</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_wet_mass</attributeName>
+          <attributeDefinition>hydrated mass of gross root (taproot) section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">5e-04</minimum>
+                  <maximum
+                    exclusive="false">8.595</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_length</attributeName>
+          <attributeDefinition>length of gross root section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">6.6</minimum>
+                  <maximum
+                    exclusive="false">87</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_diam_1</attributeName>
+          <attributeDefinition>diameter of gross root at top of section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.1</minimum>
+                  <maximum
+                    exclusive="false">17.93</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_diam_2</attributeName>
+          <attributeDefinition>diameter of gross root at bottom of section</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.1</minimum>
+                  <maximum
+                    exclusive="false">13.46</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_dry_mass_1</attributeName>
+          <attributeDefinition>dehyrdrated mass of stem section (reading 1)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">2e-04</minimum>
+                  <maximum
+                    exclusive="false">2.9206</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>stem_dry_mass_2</attributeName>
+          <attributeDefinition>dehyrdrated mass of stem section (reading 2)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">1e-04</minimum>
+                  <maximum
+                    exclusive="false">2.9081</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>sdmc</attributeName>
+          <attributeDefinition>stem dry matter content</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.010672704</minimum>
+                  <maximum
+                    exclusive="false">0.67768595</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>sdens</attributeName>
+          <attributeDefinition>stem density</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>gramPerCubicMillimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">2.98e-05</minimum>
+                  <maximum
+                    exclusive="false">0.005551243</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_dry_mass_1</attributeName>
+          <attributeDefinition>dehydrated mass of gross root section (reading 1)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">1e-04</minimum>
+                  <maximum
+                    exclusive="false">4.156</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>root_dry_mass_2</attributeName>
+          <attributeDefinition>dehydrated mass of gross root section (reading 2)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">1e-04</minimum>
+                  <maximum
+                    exclusive="false">2.0673</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>rdmc</attributeName>
+          <attributeDefinition>root dry matter content</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.032904149</minimum>
+                  <maximum
+                    exclusive="false">6.991150442</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>rdens</attributeName>
+          <attributeDefinition>root density</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>gramPerCubicMillimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">5.78e-05</minimum>
+                  <maximum
+                    exclusive="false">0.00579624</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fine_root_length_sum</attributeName>
+          <attributeDefinition>sum of length of fine root sections</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.2263658</minimum>
+                  <maximum
+                    exclusive="false">218.7234565</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fine_root_p95_diam</attributeName>
+          <attributeDefinition>95th percentile for diameter of fine root sections</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.015305503</minimum>
+                  <maximum
+                    exclusive="false">0.203628618</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fine_root_volume_sum</attributeName>
+          <attributeDefinition>sum of volume of fine root sections</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeterSquared</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.000671</minimum>
+                  <maximum
+                    exclusive="false">0.696883274</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fine_root_wet_mass</attributeName>
+          <attributeDefinition>pooled, hydrated mass of fine root sections</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.00028</minimum>
+                  <maximum
+                    exclusive="false">663.64</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fine_root_dry_mass</attributeName>
+          <attributeDefinition>pooled, dehydrated mass of fine root sections</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.000196</minimum>
+                  <maximum
+                    exclusive="false">197.13</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fr_dmc</attributeName>
+          <attributeDefinition>fine root dry matter content</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.004570101</minimum>
+                  <maximum
+                    exclusive="false">0.7</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>srl</attributeName>
+          <attributeDefinition>specific root length</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>gramsPerCentimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">4.25e-05</minimum>
+                  <maximum
+                    exclusive="false">5.392647597</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>fr_dens</attributeName>
+          <attributeDefinition>fine root density</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>gramsPerCubicCentimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">4.963227567</minimum>
+                  <maximum
+                    exclusive="false">447.6555004</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>seed_mass_sum</attributeName>
+          <attributeDefinition>sum of mass of seeds</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.116</minimum>
+                  <maximum
+                    exclusive="false">90.649</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>seed_n</attributeName>
+          <attributeDefinition>number of seeds massed</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">1</minimum>
+                  <maximum
+                    exclusive="false">20</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>seed_mass</attributeName>
+          <attributeDefinition>average mass of an individual seed</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligram</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum
+                    exclusive="false">0.0327</minimum>
+                  <maximum
+          exclusive="false">15.004</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>Missing</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>895</numberOfRecords>
+    </dataTable>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <unitList>
+        <unit
+          id="centimeterSquaredPerGram" multiplierToSI=""
+          name="centimeterSquaredPerGram" parentSI=""
+          unitType="">
+          <description>Centimeters squared per gram</description>
+        </unit>
+        <unit
+          id="gramPerCubicMillimeter" multiplierToSI=""
+          name="gramPerCubicMillimeter" parentSI=""
+          unitType="">
+          <description>Grams per cubic millimeter</description>
+        </unit>
+        <unit
+          id="gramsPerCentimeter" multiplierToSI=""
+          name="gramsPerCentimeter" parentSI="" unitType="">
+          <description>Grams per centimeter</description>
+        </unit>
+      </unitList>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>

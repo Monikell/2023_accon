@@ -1,0 +1,92 @@
+date ,people,site,plot,trt,code,rep,multi_time,envelope_multi,p_height_cm,ddh_90_mm,ddh_180_mm,envelope_stem,_extra,notes
+9/10/2023,mk,sevi,6,npk,boer,1,9:38,470,13,0.96,1.07,471,472,"hardpotentially bad curve might discard. Individual 615 (multi. envelope) measured as potential replacement. ddh measured at 6cm, short/ irregular stem"
+9/10/2023,mk,sevi,6,npk,boer,2,8:32,612,20,0.79,0.97,613,614,soft
+9/10/2023,mk,sevi,6,npk,satr,1,9:37,473,33,4.94,4.23,474,475,"hardmulti says ""rep 2"" should be rep 1"
+9/10/2023,mk,sevi,6,npk,satr,2,8:38,609,36,3.38,3.34,610,611,soft
+9/9/2023,mk,sevi,6,npk,xasp,1,10:39,476,17,1.6,1.95,477,478,"hard""hard"" measurement taken. Mutli not measured on licor leaf due to human error."
+9/10/2023,mk,sevi,6,npk,xasp,2,8:45,606,15,1.16,1.63,607,608,softlower additional ddh measurments 1.53 cm and 1.79 cm
+9/9/2023,mk,sevi,6,npk,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,6,npk,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/10/2023,mk,sevi,6,npk,boer,1,12:42,615,29,0.97,1,616,617,hardgood curve
+9/11/2023,mk,sevi,8,ctrl,poja,1,10:16,497,11,1.07,1,498,499,"hard2nd multi. taken at 10:17, different/ more open leaves (not licor leaf) "
+9/11/2023,mk,sevi,8,ctrl,poja,3,10:33,482,18,0.99,1.07,483,484,hard
+9/10/2023,mk,sevi,8,ctrl,boer,1,12:59,485,17,0.26,0.7,486,487,hardddh at 9.0cm short stem
+9/13/2023,mk,sevi,8,ctrl,boer,2,8:28,627,21,0.86,0.86,628,629,soft
+9/9/2023,mk,sevi,8,ctrl,satr,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,8,ctrl,satr,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,8,ctrl,xasp,1,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,8,ctrl,xasp,2,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,8,ctrl,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,8,ctrl,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/10/2023,mk,sevi,12,ctrl,poja,1,11:30,513,16,1.39,1.45,514,515,hardddh at 9.5cm
+9/10/2023,mk,sevi,12,ctrl,boer,1,11:13,500,16,0.94,0.96,502,503,"hardmultispeq measured on different leaf, lost licor leaf. ddh measured at 5cm, short stem"
+9/13/2023,mk,sevi,12,ctrl,boer,2,8:55,642,22,0.84,0.78,643,644,soft
+9/13/2023,mk,sevi,12,ctrl,poja,2,8:59,645,19,1.25,1.41,646,647,soft
+9/11/2023,mk,sevi,15,npk,poja,1,10:00,528,16,1.05,1.13,529,530,"hardddh at 7.5cm, small stem. "
+9/9/2023,mk,sevi,12,ctrl,satr,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,12,ctrl,satr,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,12,ctrl,xasp,1,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,12,ctrl,xasp,2,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,12,ctrl,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,12,ctrl,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/12/2023,mk,sevi,15,npk,boer,1,12:04,516,21,0.88,0.91,517,518,hard
+9/9/2023,mk,sevi,6,npk,poja,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/12/2023,mk,sevi,15,npk,boer,2,11:21,600,16,0.86,0.99,601,602,softddh at 9cm
+9/12/2023,mk,sevi,15,npk,satr,1,11:39,519,26,3.23,3.4,520,521,"hardddh at 9cm, ddh at 2cm 4.82 and 4.42. Multi measured different leaf. Stem broken for licor individual. "
+9/12/2023,mk,sevi,15,npk,satr,2,11:24,597,31,3.63,3.79,598,599,"softddh at 10cm, ddh at 1cm 4.84 and 4.71."
+9/12/2023,mk,sevi,15,npk,poja,2,11:44,594,18,1.51,1.42,595,596,soft
+9/9/2023,mk,sevi,6,npk,poja,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,8,ctrl,poja,2,na,na,na,na,na,na,na,"naThis plot has a total of 3 reps for this species, use rep #3 as the ""soft"" trait version for this plot. "
+9/9/2023,mk,sevi,17,npk,poja,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,15,npk,xasp,1,na,na,na,na,na,na,na,"naremoved from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,15,npk,xasp,2,na,na,na,na,na,na,na,"naremoved from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,15,npk,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,15,npk,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/13/2023,mk,sevi,15,npk,poja,3,9:18,639,17,1.66,1.73,640,641,"softnote say ""plot 17"" not sure what that means hahha. Multispeq"
+9/10/2023,mk,sevi,17,npk,boer,1,14:31,531,17,0.83,0.97,532,533,"hardmulti measured not on the licor leaf (licor leaf disconnected), used different leaf on same individual."
+9/13/2023,mk,sevi,17,npk,boer,2,8:37,624,19,0.76,0.8,625,626,soft
+9/10/2023,mk,sevi,17,npk,satr,1,14:27,534,23,envelope,envelope,535,536,hard
+9/13/2023,mk,sevi,17,npk,satr,2,9:07,621,20,2.85,3.04,622,623,"softddh at 10cm, ddh at 2cm 3.00 and 3.82"
+9/13/2023,mk,sevi,17,npk,xasp,1,8:41,636,16,1.46,1.48,637,638,"softremoved from consideration for hard, leaves too small to accurately measure with licore"
+9/13/2023,mk,sevi,17,npk,xasp,2,8:48,618,17,2.28,2.75,619,620,softddh at 7cm
+9/9/2023,mk,sevi,17,npk,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,17,npk,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,22,ctrl,poja,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/10/2023,mk,sevi,17,npk,poja/ hodr,1,14:35,543,13,1.18,1.44,544,545,"hardERROR: wrong species, was supposed to be poja instead hodr species ID error. ddh at 1.5 cm"
+9/12/2023,mk,sevi,22,ctrl,boer,1,12:32,546,22,1.13,1.12,547,548,hard
+9/12/2023,mk,sevi,22,ctrl,boer,2,14:59,561,29,0.83,0.87,562,563,soft
+9/12/2023,mk,sevi,22,ctrl,spfl,1,17:46,567,16,1.66,2.22,568,569,soft
+9/12/2023,mk,sevi,22,ctrl,spfl,2,17:51,570,12,1.67,1.78,571,572,softddh at 4cm
+9/12/2023,mk,sevi,22,ctrl,hodr,1,14:54,573,6,1.84,1.63,574,575,"softddh at 3cm, ddh at 1cm 3.87 and 3.78, oddly shaped stem"
+9/9/2023,mk,sevi,22,ctrl,satr,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,22,ctrl,satr,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,22,ctrl,xasp,1,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,22,ctrl,xasp,2,na,na,na,na,na,na,na,"nanot physically in the plot will need to find in another plot, removed from consideration for hard, leaves too small to accurately measure with licore"
+9/9/2023,mk,sevi,22,ctrl,soel,1,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,22,ctrl,soel,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/9/2023,mk,sevi,22,ctrl,poja,2,na,na,na,na,na,na,na,nanot physically in the plot will need to find in another plot
+9/12/2023,mk,sevi,22,ctrl,hodr,2,14:56,576,9,1.92,1.87,577,578,soft
+9/11/2023,mk,sevi,25,npk,soel,1,11:40,494,10,2.44,2.31,495,496,hardddh at 9cm
+9/11/2023,mk,sevi,25,npk,soel,2,12:42,525,8,2.89,2.77,526,527,hard
+9/11/2023,mk,sevi,25,npk,soel,3,13:01,540,14,3.5,3.62,541,542,hard
+9/12/2023,mk,sevi,25,npk,soel,4,14:35,585,9,2.89,2.85,586,587,softddh at 5cm
+9/11/2023,mk,sevi,35,ctrl,poja,1,10:26,558,23,1.48,1.44,559,560,hard
+9/11/2023,mk,sevi,35,ctrl,soel,1,11:27,479,13,1.72,1.92,480,481,"hard2 multi measurments, 2nd include midrib at 11:29"
+9/11/2023,mk,sevi,35,ctrl,soel,2,12:55,510,13,2.56,2.67,511,512,hardddh at 8.5cm
+9/12/2023,mk,sevi,35,ctrl,satr,1,12:45,488,21,1.56,1.99,489,490,hardplot 8 replacement
+9/12/2023,mk,sevi,35,ctrl,soel,3,13:02,591,13,2.08,2.13,592,593,softddh at 8cm
+9/12/2023,mk,sevi,35,ctrl,soel,4,13:04,588,16,2.06,2.41,589,590,soft
+9/12/2023,mk,sevi,35,ctrl,satr,2,13:20,504,17,envelope,envelope,505,506,hardplot 12 replacement
+9/12/2023,mk,sevi,35,ctrl,satr,3,13:41,549,27,envelope,envelope,550,551,hardplot 22 replacement
+9/12/2023,mk,sevi,35,ctrl,boer,1,16:08,552,16,1.03,1.03,553,554,soft
+9/12/2023,mk,sevi,35,ctrl,satr,4,17:37,522,16,2.91,2.75,523,524,"hardddh at 10 cm, ddh at 3cm 2.42 and 2.35. 2 m outside of plot to the west. multi. on different leaf, licor disconnected leaf"
+9/12/2023,mk,sevi,35,ctrl,satr,5,18:16,630,18,envelope,envelope,631,632,"soft6m west of plot. multi says ""plot 40"" which is wrong. "
+9/12/2023,mk,sevi,35,ctrl,satr,6,18:22,633,30,envelope,envelope,634,635,soft4m west of plot
+9/12/2023,mk,sevi,39,npk,poja,1,14:07,537,17,1.41,1.34,538,539,hard
+9/12/2023,mk,sevi,39,npk,soel,1,14:21,579,12,2.54,2.74,580,581,softddh at 5cm
+9/12/2023,mk,sevi,39,npk,soel,2,14:32,582,13,2.58,2.05,583,584,softddh at 7cm
+9/12/2023,mk,sevi,39,npk,boer,1,15:37,491,23,0.95,1.03,492,493,soft
+9/12/2023,mk,sevi,39,npk,satr,1,16:44,507,13,envelope,envelope,508,509,soft
+9/11/2023,mk,sevi,40,ctrl,soel,1,12:56,555,12,1.91,1.84,556,557,hardddh at 6cm
+9/12/2023,mk,sevi,40,ctrl,soel,2,13:07,603,8,1.99,1.85,604,605,softddh at 3.5cm
+9/12/2023,mk,sevi,40,ctrl,poja,1,18:08,564,28,2.03,1.97,565,566,soft

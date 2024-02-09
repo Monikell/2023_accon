@@ -1,0 +1,31 @@
+date,people,site,cond,machine,plot,trt,code,rep,Q10. ID matches user defined variable?,Q11. Performed auto match before curve?,Q12. Did leaf fit entire cuvette?,Q13. If Q12.) is n what was the leaf width? (cm),Q14. If answered Q14.) did you enter the width into licor? (cm),curve_start,notes
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,21,ctl,AMTR,1,y,y,y,NA,NA,8:56,
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,28,npk,AMTR,1,y,y,y,NA,NA,13:42,
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,11,ctl,AMTR,1,y,y,n,NA,NA,8:55,
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,18,npk,AMTR,1,y,y,y,NA,NA,11:00,
+5/25/2023,EG,tmpl,22C; cloudy,yat,8,npk,AMTR,1,y,y,y,NA,NA,11:55,check licor name might be SOHA
+5/24/2023,EG,tmpl,20C; cloudy,yat,1,ctl,AMTR,4,y,y,y,NA,NA,9:55,
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,28,npk,COCA,1,y,y,n,NA,NA,13:00,SLA needed 
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,18,npk,COCA,1,y,y,n,NA,NA,12:46,SLA needed; curve may be at ~11:31
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,21,ctl,COCA,1,y,y,n,mia,n,15:38,SLA needed
+5/25/2023,EG,tmpl,22C; cloudy,yat,11,ctl ,COCA,1,y,y,y,mia,mia,14:33,
+5/24/2023,EG,tmpl,20C; cloudy,yat,1,ctl,COCA,1,y,y,y,NA,NA,10:36,
+5/25/2023,EG,tmpl,22C; cloudy,yat,8,npk,copca,1,y,y,n,NA,NA,12:44,issue with temp 30-33C
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,28,npk,SCSC,1,y,y,n,1.3,y,12:09,SLA needed
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,11,ctl,SCSC,1,y,y,n,1.4,y,9:51,time may nt be accurate
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,18,npk,SCSC,1,y,y,n,1.23,y,15:00,
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,21,ctl ,SCSC,1,y,y,n,2.1,y,16:17,
+5/25/2023,EG,tmpl,22C; cloudy,yat,8,npk,SCSC,1,y,y,mia,1.6,y,13:36,issue with temp 32C
+5/24/2023,EG,tmpl,20C; cloudy,yat,1,ctl,SCSC,4,y,y,n,1,y,10:36,3 blades
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,21,ctl,SOHA,1,y,y,n,1.4,y,9:36,
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,28,npk,SOHA,1,y,y,n,1.7,y,11:33,SLA needed
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,11,ctl,SOHA,1,y,y,n,1.4,y,10:14,
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,18,npk,SOHA,1,y,y,n,1.7,y,14:25,
+5/25/2023,EG,tmpl,22C; cloudy,yat,8,npk,SOHA,1,y,y,n,2.3,y,10:56,5/28 = okay
+5/24/2023,EG,tmpl,20C; cloudy,yat,1,ctl,SOHA,1,y,y,n,2.1,y,9:17,
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,21,ctl,TOAR,1,y,y,n,mia,n,10:08,SLA needed 
+5/26/2023,"EG, MK",tmpl,29C; synny,yat,18,npk,TOAR,1,y,y,n,NA,NA,13:12,SLA needed
+5/25/2023,EG,tmpl,22C; cloudy,yat,8,npk,TOAR,1,y,y,n,2,y,12:23,leaf area measures 5/24
+5/25/2023,EG,tmpl,22C; cloudy,yat,11,ctl,TOAR,1,y,y,n,NA,mia,14:05,
+5/24/2023,EG,tmpl,20C; cloudy,yat,1,ctl,TOAR,1,y,y,n,n,n,mia,SLA needed 
+5/27/2023,"EG, MK",tmpl,20C; synny/hazy,yat,28,npk,TOAT,1,y,y,n ,mia,n,12:37,SLA needed
