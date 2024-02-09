@@ -1,5 +1,0 @@
-Manifest file for knb-lter-sev.333.1.zip created on Wed Dec 20 22:19:03 UTC 2023
-sev333_plant_traits.csv (262516 bytes)
-knb-lter-sev.333.1.xml (69225 bytes)
-knb-lter-sev.333.1.txt (37941 bytes)
-knb-lter-sev.333.1.report.xml (33074 bytes)
