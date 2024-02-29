@@ -11,6 +11,7 @@ library(car)
 library(emmeans)
 library(lme4)
 library(nlme)
+library(multcompView)
 
 ## load data, sla, comp, weight data
 sla.comp <- read.csv("data/00_data_sla.comp.csv")
@@ -58,9 +59,16 @@ summarize_sla.comp_cwm <- sla.comp %>%
 
 colnames(summarize_sla.comp_cwm)
 
-sla_lmer <- lme(sla_cwm ~ trt + site, random = ~(1|block), data = summarize_sla.comp_cwm) #nested rdnm 
-
-
+sla_lmer <- lmer(sla_cwm ~ trt * site + (1|block:site), 
+                 data = summarize_sla.comp_cwm) #nested rdnm 
+plot(resid(sla_lmer) ~ fitted(sla_lmer))
+summary(sla_lmer)
+Anova(sla_lmer)
+emmeans(sla_lmer, ~site)
+emmeans(sla_lmer, ~trt)
+emmeans(sla_lmer, ~trt*site)
+pairs(emmeans(sla_lmer, ~trt, at = list(site ='temple')))
+cld(emmeans(sla_lmer, ~trt, at = list(site ='temple')))
 
 # check model fit Evan
 # Check model assumptions
