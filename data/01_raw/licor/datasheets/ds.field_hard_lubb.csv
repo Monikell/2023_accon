@@ -1,0 +1,56 @@
+date,people,site,conditions,machine,plot,trt,code,rep,ID matches user defined variable?,Performed auto match before curve?,Did leaf fit entire cuvette?,leaf width? (cm) (if needed),enter width into licor?,curve_start_time,envelope_multi,notes_licor
+2023-06-06,"MK, EP",lubb,17deg/sunny,albert,08,control,bogr2,02,y,y,n,0.5,y,10:30,,
+2023-06-06,"MK, EP",lubb,17deg/sunny,albert,28,control,bogr2,02,y,n,n,mia,mia,15:58,,need to measure leaf area
+2023-06-07,"MK, EG, GG",lubb,cloudy,alb/gib?,28,control,bogr2,02,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,28,control,bogr2,02,y,n,n,0.4,y,14:51,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,yadi,37,control,bogr2,02,y,y,n,0.6,Y,14:12,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,,08,control,bogr2,02,,,,,,,,
+2023-06-06,"MK, EP",lubb,17deg/sunny,albert,27,npk,bogr2,02,y,y,n,0.6,y,15:05,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,gibson,29,npk,bogr2,02,y,y,n,0.6,Y,11:31,,
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,05,npk,bogr2,02,y,y,n,0.65,y,12:30,132,MK 2023/06/15
+2023-06-07,"MK, EG, GG",lubb,,,05,npk,bogr2,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,,,27,npk,bogr2,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,gibson,37,control,chin2,02,y,y,y,NA,NA,12:25,,
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,08,control,chin2,02,y,y,y,NA,NA,10:46,,
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,28,control,chin2,02,y,y,y,NA,NA,14:04,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,,08,control,chin2,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,,28,control,chin2,02,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,05,npk,chin2,02,y,y,n,NA,NA,12:23,,new file 
+2023-06-07,"MK, EG, GG",lubb,cloudy,gibson,29,npk,chin2,02,y,y,y,NA,NA,10:42,,
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,27,npk,chin2,02,y,y,y,NA,NA,13:18,,
+2023-06-07,"MK, EG, GG",lubb,,,05,npk,chin2,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,,,27,npk,chin2,02,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,08,control,prgl2,02,y,y,n,NA,NA,11:15,,SLA needed
+2023-06-16,MK,lubb,17deg/sunny,gibson,08,control,prgl2,07,y,y,n,0.6,y,10:14,178,"""s"" curve photo @ 10:22; envelope # 178"
+2023-06-16,MK,lubb,17deg/sunny,gibson,08,control,prgl2,08,y,y,n,0.6,y,10:51,181,"""s"" curve photo @ 10:58; envelope # 181"
+2023-06-16,MK,lubb,17deg/sunny,gibson,08,control,prgl2,09,y,y,n,0.6,y,11:42,184,"back up for rep 7; ""H2O range match suspended"""
+2023-06-07,"MK, EG, GG",lubb,cloudy,stan,37,control,prgl2,02,y,y,n,mia,n,13:34,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,cloudy,yadi,37,control,prgl2,03,y,y,n,mia,n,15:14,,SLA needed; machine overheated temp ~ 32deg vs 28deg
+2023-06-07,"MK, EG, GG",lubb,cloudy,,08,control,prgl2,02,y,y,n,mia,n,14:26,,SLA needed; put leaves at 0.6
+2023-06-07,"MK, EG, GG",lubb,cloudy,,28,control,prgl2,,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,27,npk,prgl2,02,y,y,n,mia,mia,13:23,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,cloudy,gibson,27,npk,prgl2,03,y,y,n,mia,n,15:20,,SLA needed
+2023-06-16,MK,lubb,17deg/sunny,gibson,27,npk,prgl2,05,n,y,n,0.6,y,8:20,173,
+2023-06-16,MK,lubb,17deg/sunny,gibson,27,npk,prgl2,06,y,y,n,0.6,y,9:11,175,
+2023-06-07,"MK, EG, GG",lubb,cloudy,stan,27,npk,prgl2,04,y,y,n,mia,n,15:28,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,,,05,npk,prgl2,,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,,,27,npk,prgl2,02,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,08,control,satr,02,y,y,n,0.3,y,10:25,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,28,control,satr,02,y,y,n,0.4,y,13:58,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,gibson,37,control,satr,02,y,y,n,0.3,y,13:08,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,,08,control,satr,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,,28,control,satr,02,,,,,,,,
+2023-06-06,MK,lubb,17deg/sunny,gibson,27,npk,satr,02,y,y,n,0.3,y,12:58,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,stan,29,npk,satr,02,y,y,n,0.3,Y,10:52,,
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,05,npk,satr,02,y,y,n,0.45,y,11:49,,
+2023-06-07,"MK, EG, GG",lubb,,,05,npk,satr,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,,,27,npk,satr,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,cloudy,stan,37,control,soel,02,y,y,n,mia,n,12:44,,SLA needed
+2023-06-06,"MK, EP, EG, NS",lubb,17deg/sunny,yadi,28,control,soel,02,y,y,n,NA,NA,14:01,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,cloudy,,08,control,soel,02,y,y,n,mia,n,14:20,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,cloudy,,28,control,soel,02,mia,mia,mia,mia,mia,mia,,
+2023-06-06,"MK, EP",lubb,17deg/sunny,albert,05,npk,soel,02,y,y,n,2,y,12:55,,SLA needed
+2023-06-06,"MK, EP",lubb,17deg/sunny,albert,27,npk,soel,02,y,y,n,NA,NA,13:55,,SLA needed
+2023-06-07,"MK, EG, GG",lubb,cloudy,stan,29,npk,soel,02,y,y,n,mia,n,11:50,,
+2023-06-07,"MK, EG, GG",lubb,,,05,npk,soel,02,,,,,,,,
+2023-06-07,"MK, EG, GG",lubb,,,27,npk,soel,02,,,,,,,,

@@ -1,0 +1,36 @@
+date,people,site,conditions,machine,plot,trt,code,rep,ID matches user defined variable?,Performed auto match before curve?,Did leaf fit entire cuvette?,leaf width? (cm) (if needed),enter width into licor?,curve_start_time,envelope_multi,notes_licor
+2023-09-10,mkelley,sevi,cloudy/ rainy,albert,12,control,boer,1,yes,yes,,0.1,yes,10:34,500,
+2023-09-12,mkelley,sevi,cloudy/ rainy,albert,35,control,boer,1,yes,yes,,sla needed,na,14:25,,"Extra. 14:25 bad curve. the wnd curve around 14:15 was the incorrect species (an aristida sp.). Hard rain, protection over head and body of licor (bins, clear, photos) "
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",albert,35,control,poja,1,yes,yes,,sla needed,na,10:08,558,bad curve at 09:03
+2023-09-12,mkelley,sevi,cloudy/ rainy,albert,35,control,satr,1,yes,yes,no,0.1,yes,12:25,,
+2023-09-12,mkelley,sevi,cloudy/ rainy,albert,35,control,satr,3,yes,yes,,0.1,yes,13:24,549,
+2023-09-12,mkelley,sevi,cloudy/ rainy,albert,35,control,satr,4,yes,yes,,0.1,yes,16:48,522,Outside of plot ~ 2 meters. 
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",albert,35,control,soel,1,yes,yes,no,sla needed,na,10:54,479,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",albert,35,control,soel,2,yes,yes,,sla needed,na,11:31,510,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",albert,40,control,soel,1,yes,yes,,sla needed,na,12:16,555,
+2023-09-09,mkelley,sevi,na,none,8,control,xasp,1,na,na,,na,na,na,na,"Leaves too small for this species to sample, individuals dropped."
+2023-09-09,mkelley,sevi,na,none,12,control,xasp,1,na,na,,na,na,na,na,"Leaves too small for this species to sample, individuals dropped."
+2023-09-09,mkelley,sevi,na,none,22,control,xasp,1,na,na,,na,na,na,na,"Leaves too small for this species to sample, individuals dropped."
+2023-09-10,mkelley,sevi,cloudy/ rainy,yadi,8,control,boer,1,no,yes,no,0.1,yes,12:20,485,"iffy curve, Evan says it might be okay. ID wrong says ""sevi_12, poja-01"""
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,22,control,boer,1,yes,yes,,0.2,yes,12:11,546,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,8,control,poja,3,yes,yes,no,sla needed,na,10:19,482,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,8,control,poja,1,yes,yes,,sla needed,na,09:01,,
+2023-09-10,mkelley,sevi,cloudy/ rainy,yadi,12,control,poja,1,yes,yes,,sla needed,na,11:08,513,"may have measured abaxial side of leaftlets, extra curve done for plot 8 to helfully improve the outcome."
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,35,control,satr,2,yes,yes,,0.1,yes,12:56,,
+2023-09-10,mkelley,sevi,cloudy/ rainy,albert,6,npk,boer,1,yes,yes,no,na,note,11:59,615,"need to check value in licor, value entered should be correct "
+2023-09-12,mkelley,sevi,cloudy/ rainy,albert,15,npk,boer,1,yes,yes,,sla needed,na,11:41,,Forgot ruler for SLA number
+2023-09-10,mkelley,sevi,cloudy/ rainy,albert,17,npk,boer,1,yes,yes,,0.3,yes,13:30,531,
+2023-09-10,mkelley,sevi,cloudy/ rainy,albert,6,npk,satr,1,no,yes,no,sla needed,na,08:59,473,"forgot to update id, says ""sevi_"" only"
+2023-09-10,mkelley,sevi,cloudy/ rainy,albert,17,npk,satr,1,yes,yes,,sla needed,na,12:56,534,
+2023-09-09,mkelley,sevi,na,none,15,npk,xasp,1,na,na,,na,na,na,na,"Leaves too small for this species to sample, individuals dropped."
+2023-09-09,mkelley,sevi,na,none,17,npk,xasp,1,na,na,,na,na,na,na,"Leaves too small for this species to sample, individuals dropped."
+2023-09-09,mkelley,sevi,"sunny, hot",stan,6,npk,xasp,1,no,yes,,sla needed,na,10:04,476,"curve made, not sure how good? Leaves too small for this species to sample, individuals dropped."
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,39,npk,boer,1,yes,yes,,0.4,na,15:11,,"2 leaves. Hard rain, protection over head and body of licor (bins, clear, photos) "
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,15,npk,poja,1,yes,yes,,sla needed,na,08:07,528,
+2023-09-10,mkelley,sevi,cloudy/ rainy,yadi,17,npk,poja,1,yes,yes,,sla needed,na,13:13,543,
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,39,npk,poja,1,yes,yes,,sla needed,na,13:48,537,
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,15,npk,satr,1,yes,yes,,sla needed,na,11:16,,Forgot ruler for SLA number
+2023-09-12,mkelley,sevi,cloudy/ rainy,yadi,39,npk,satr,1,yes,yes,,0.1,yes,16:20,507,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,25,npk,soel,1,yes,yes,,sla needed,na,11:09,494,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,25,npk,soel,2,yes,yes,,sla needed,na,11:40,525,
+2023-09-11,mkelley,sevi,"morning/afternoon rainy, late afternoon rain",yadi,25,npk,soel,3,yes,yes,,sla needed,na,12:46,540,

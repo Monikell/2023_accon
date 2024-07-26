@@ -1,0 +1,85 @@
+site,family,taxon_code_field,taxon_code,taxon,type,duration,duration2,status,code_usda,taxon_morpho,photo_pathway,notes_species.information
+temple,rubiaceae,"2pgate, gate, gate2",gate,galium texense,forb,annual,,native,gate3,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,note,2plant,2plant,unknown,note,unknown,,unknown,none,,unknown,
+arch,note,2plant,2plant,unknown,note,unknown,,unknown,none,,unknown,
+lubb,note,2plant,2plant,unknown,note,unknown,,unknown,none,,unknown,
+temple,note,2plant,2plant,unknown,note,unknown,,unknown,none,,unknown,
+temple,rubiaceae,2plantgate,galiu,galium sp.,forb,unknown,,unknown,galiu,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,amtr,amtr,ambrosia trifida,forb,annual,,native,amtr,,c3,photopathway based on carbon delta 13 values
+temple,apiaceae,apiace,apiace,apiaceae sp.,forb,unknown,,unknown,apiace,,unknown,
+lubb,euphorbiaceae,arhuh,arhu,argythamnia humilis,forb,perennial,,native,arhu5,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,annonaceae,"arse, glaudmind, orange",asre,asimina reticulata,forb,perennial,,native,asre7,glaumid / orange,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,astera,astera,asteraceae sp.,forb,unknown,,unknown,astera,,unknown,
+sevi,poaceae,boer,boer,bouteloua eriopoda,graminoid,perennial,,native,boer4,,c4,photopathway based on carbon delta 13 values
+lubb,poaceae,bogr2,bogr2,bouteloua gracilis,graminoid,perennial,,native,bogr2,,c4,photopathway based on carbon delta 13 values
+temple,poaceae,"brar, brja",brar,bromus arvensis,graminoid,annual,,introduced,brar5,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+lubb,brassicaceae,brassi,brassi,brassicaceae sp.,forb,unknown,,unknown,brassi,,unknown,
+temple,brassicaceae,brassi,brassi,brassicaceae sp.,forb,unknown,,unknown,brassi,,unknown,
+arch,asteraceae,"carph, turkey_vein_spoon",carph,carphephorus odoratissimus,forb,perennial,,native,caod3,turkey vein spoon,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,ceme,ceme,centaurea melitensis,forb,annual,,introduced,ceme2,,c3,"annual, biennial_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,euphorbiaceae,"chama, chsp",chama,chamaesyce sp.,forb,unknown,,unknown,chama15,,c4,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+lubb,chenopodiaceae,chin2,chin2,chenopodium incanum,forb,annual,,native,chin2,,c3,photopathway based on carbon delta 13 values
+lubb,euphorbiaceae,chla10,chla10,chamaesyce lata,forb,perennial,,native,chla10,,c4,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,cien,cien,cirsium engelmannii,forb,perennial,,native,cien2,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,menispermaceae,coca,coca,cocculus carolinus,forb,perennial,,native,coca,,c3,photopathway based on carbon delta 13 values
+temple,commelinaceae,coer,coer,commelina erecta,forb,perennial,,native,coer,,c3,photopathway based on carbon delta 13 values
+sevi,boraginaceae,crcr,crcr,cryptantha crassisepala,forb,annual,,native,crcr3,stabbfuzz,c3,"not sampled for measurments, dead_based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,brassicaceae,depi,depi,descurainia pinnata,forb,annual,,native,depi,,c3,"not sampled for measurments, dead. Annual, biennial or seldom a perennial_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,poaceae,dicha,dicha,dichanthelium sp.,graminoid,perennial,,native,dicha2,,c3,photopathway based on carbon delta 13 values
+temple,poaceae,elca,elca,elymus canadensis,graminoid,perennial,,native,elca4,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,geraniaceae,erte,erte,erodium texanum,forb,annual,,native,erte13,,c3,"annual, biennial_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,euphorbiaceae,eude,eude,euphorbia dentata,forb,annual,,native,eude4,,c3,"native is orange and says ""L_photopathway based on carbon delta 13 values"
+arch,asteraceae,"eumo, redline",eumo,eupatorium mohrii,forb,perennial,,native,eumo4,redline,c3,photopathway based on carbon delta 13 values
+temple,euphorbiaceae,eupho,eupho,euphorbia sp.,forb,unknown,,unknown,eupho,,unknown,
+sevi,euphorbiaceae,eupho,eupho,euphorbia sp.,forb,unknown,,unknown,eupho,,unknown,
+temple,euphorbiaceae,"eusp, eubpa",eusp,euphorbia spathulata,forb,annual,annual/ perennial,native,eusp,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,gapu,gapu,gaillardia pulchella,forb,annual,annual/ perennial,native,gapu,,c3,photo. pathway based on gaillardia aristata_photopathway based on carbon delta 13 values
+temple,rubiaceae,gate,rubiac,rubiaceae sp.,forb,unknown,,unknown,rubiac,,unknown,
+sevi,fabaceae,hodr,hodr,hoffmannseggia drepanocarpa,forb,perennial,,native,hodr,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,clusiaceae,hyed,hyed,hypericum edisonianum,forb,perennial,,native,hyed,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+lubb,amaranthaceae,"hyod, satr, saka",satr,salsola tragus,forb,annual,,introduced,satr12,,c4,"initially misid as (hyod) hymenoxys odorata, and then saka (salsola kali) some physical samples still labeled as either hyod, or saka_photopathway based on carbon delta 13 values"
+arch,clusiaceae,hyre,hyre,hypericum reductum,forb,perennial,,native,hyte11,,c3,"species officailly updated to hypericum tenuifolium, hyte11. Used older taxon (h. reductum) for simplicity_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,onagraceae,"lusu, alt. prom midvein, prom mid vein",lusu,ludwigia suffruticosa,forb,perennial,,native,lusu11,"alt. prom midvein, prom mid vein",c3,"photo. pathway based on other species on try same genus: Ludwigia glandulosa, Ludwigia linearis, Ludwigia maritima, Ludwigia sphaerocarpa
+_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,ericaceae,"lylu, alt_egg",lylu,lyonia lucida,forb,perennial,,native,lylu3,alt. egg,c3,photopathway based on carbon delta 13 values
+temple,fabaceae,"mipl, mipl, mipl, mipu",miro,mimosa roemeriana,forb,perennial,,native,miro6,,c3,"Initailly used ""mipl"" code should have been miro (mimosa roemeriana). Basically all physical samples I believe say ""mipl"" of some sort. Update to miro when possible.  _photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,lamiaceae,moci,moci,monarda citriodora,forb,annual,annual/ perennial,native,moci,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,oxalidaceae,oxst,oxst,oxalis stricta,forb,perennial,,native,oxst,,c3,photopathway based on carbon delta 13 values
+temple,urticaceae,"pape, sticky plant, pape2",pape,parietaria pensylvanica,forb,annual,,native,pape5,sticky plant,c3,photopathway based on carbon delta 13 values
+arch,poaceae,"pase, axfu, pano",pase,paspalum setaceum,graminoid,perennial,,native,pase5,,c4,"misid initially pano (paspalum notatum), potentially axfu (aconopus furcatus). vegetative state very similar between pase and axfu (axonopus furcatus). might have mixed species in the field. ""The best difference between paspalum setaceum and axonopus furcatus in vegetative form would be to look at the shape of the leaves. Paspalum setaceum has more pointy leaves than axonopus furcatus (more rounded, blunt at the end of the lamina)"" - Sonnier_photopathway based on carbon delta 13 values"
+temple,solanaceae,phmo,phmo,physalis mollis,forb,perennial,,native,"phmo9
+",,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,poaceae,"poacea, grass, grass spear",poacea,poaceae sp.,graminoid,unknown,,unknown,poacea,,unknown,
+sevi,fabaceae,poja,poja,pomaria jamesii,forb,perennial,,native,poja5,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,apiaceae,ponu,ponu,polytaenia nuttallii,forb,perennial,,native,ponu4,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+lubb,fabaceae,prgl2,prgl2,prosopis glandulosa,forb,perennial,,native,prgl2,,c3,photopathway based on carbon delta 13 values
+temple,fabaceae,pste,pste,psoralidium tenuiflorum,forb,perennial,,native,pste5,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+arch,asteraceae,ptpy,ptpy,pterocaulon pycnostachyum,forb,perennial,,native,"ptpy2
+",,c3,photopathway based on carbon delta 13 values
+arch,fagaceae,qumi,qumi,quercus minima,forb,perennial,,native,qumi2,,c3,photopathway based on carbon delta 13 values
+temple,rosaceae,rutr,rutr,rubus trivialis,forb,perennial,,native,rutr,,c3,"photo. pathway based on other species of rubus. r. glandulosus, r. kirungensis, r. lucens, r. silesiacus. _photopathway based on carbon delta 13 values"
+temple,lamiaceae,saaz,saaz,salvia azurea,forb,perennial,,native,saaz,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,amaranthaceae,"satr, sakassp., tragu_salsola kali ssp. ",satr,salsola tragus,forb,annual,,introduced,satr12,,c4,photopathway based on carbon delta 13 values
+arch,poaceae,scrh,scrh,schizachyrium rhizomatum,graminoid,perennial,,native,scrh,,c4,photo. pathway based on s. scoparium species on try_photopathway based on carbon delta 13 values
+arch,poaceae,"scrh_hairy, panic, parip",panic,panicum sp.,graminoid,perennial,,native/ introduced,panic,,c4,"not 100% sure on species, panicle not fully developed. Switched the species code for UC daivs to fit lenqth requrimetns, scrhhairy -> PANIC. Note from Dr. Soneir of arhc.us : ""likely Panicum longifolium (moved recently to Coleataenia longifolia, but we still used the old name in our dataset). I see characters that suggest Panicum longifolium, but the inflorescence is not fully developed and midvein is protruding but only slightly.""_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,poaceae,scsc,scsc,schizachyrium scoparium,graminoid,perennial,,native,scsc,,c4,photopathway based on carbon delta 13 values
+temple,Iridaceae,sisyr,sisyr,sisyrinchium sp.,forb,annual,,native,sisyr,,unknown,
+temple,euphorbiaceae,sodi,sodi,solanum dimidiatum,forb,perennial,,native,sodi,,c3,"photo. pathway based on other solanum species on try database (many species)_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,solanaceae,soel,soel,solanum elaeagnifolium,forb,perennial,,native,soel,,c3,photopathway based on carbon delta 13 values
+lubb,solanaceae,soel,soel,solanum elaeagnifolium,forb,perennial,,native,soel,,c3,photopathway based on carbon delta 13 values
+temple,poaceae,soha,soha,sorghum halepense,graminoid,perennial,,introduced,"soha
+",,c4,photopathway based on carbon delta 13 values
+temple,poaceae,sonu,sonu,sorghastrum nutans,graminoid,perennial,,native,sonu2,,c4,photopathway based on carbon delta 13 values
+temple,poaceae,spco,spco,sporobolus compositus,graminoid,perennial,,native,"spco16
+",,c4,photopathway based on carbon delta 13 values
+sevi,poaceae,spfl,spfl,sporobolus flexuosus,graminoid,perennial,,native,"spfl2
+",,c4,photopathway based on carbon delta 13 values
+arch,asteraceae,spiderpoint,pigr,pityopsis graminifolia,forb,perennial,,native,"pigr4
+",spiderpoint. silky aster,c3,"uc davis updated code to fit within 20 character requirments SpiderPoint -> pigr_photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,syer,syer,symphyotrichum ericoides,forb,perennial,,native,syer,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+lubb,lamiaceae,tela,tela,teucrium laciniatum,forb,perennial,,native,tela,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,apiaceae,toar,toar,torilis arvensis,forb,annual,,introduced,toar,,c3,photopathway based on carbon delta 13 values
+temple,euphorbiaceae,trbr,trbr,tragia brevispica,forb,perennial,.,native,"trbr4
+",,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+temple,asteraceae,trpe4,trpe,triodanis perfoliata,forb,annual,,native,trpe4,,c3,"photopathway based on reading and internet sources, or assumptions based on the plant family and/or genus"
+sevi,asteraceae,xasp,xasp,xanthisma spinulosum,forb,perennial,,native,mapi,,c3,officailly species updated to mapi (machaeranthera pinnatifida). Used older species (xasp) name for simplicity._photopathway based on carbon delta 13 values
