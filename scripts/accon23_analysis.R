@@ -11,20 +11,20 @@
 library(tidyverse)
 library(dplyr)
 library(lme4)
+library(ggplot2)
+library(car) ## "Anova"
+library(emmeans)
+
 
 
 ### load data ------------------------------------------------------------------
-
-
 ## data
 # soft data = field and lab data collected
-raw_data_soft <- read.csv("data/02_cleaned/field/accon_field.lab_2023.csv")
-raw_data_species.comp <- read.csv('data/02_cleaned/field/accon_species.comp_2023.csv')
-
+raw_data_soft <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
+raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
 
 ## metadata
-metadata_plots <- read.csv("data/00_meta/plot-descriptions-02-August-2019.csv")
-
+metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 
 ################################################################################
 ## soft traits - calculating soft plant trait information
@@ -224,6 +224,11 @@ metadata_plot_treatment <-
   metadata_plots[,c("site_code","Treatment","plot","block","N","P","K")]
 names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
 
+# creating binary for treatment type
+metadata_plot_treatment <- metadata_plot_treatment %>%
+  mutate(treatment_binary = 
+           ifelse(treatment == "NPK" | treatment == "NPK+Fence", 1, 0))
+
 # merging diversity for plots with metadata
 spcomp_evenness_plots <- 
   left_join(spcomp_evenness_plots, metadata_plot_treatment)
@@ -252,7 +257,8 @@ spcomp_evenness_treatment$evenness <-
 ## species composition - models
 ################################################################################
 
-## add in treatment binary factors
+## add parameters as factors
+## mk: probably just need to have either NPK or control.
 spcomp_evenness_plots$nfac <- as.factor(spcomp_evenness_plots$n)
 spcomp_evenness_plots$pfac <- as.factor(spcomp_evenness_plots$p)
 spcomp_evenness_plots$kfac <- as.factor(spcomp_evenness_plots$k)
@@ -263,9 +269,63 @@ spcomp_evenness_plots$sitefac <- as.factor(spcomp_evenness_plots$site_code)
 spcomp_data_4lmer <- spcomp_evenness_plots
 
 
-## statistical models of diversity across sites -------------------------------
+######################################################################### LEMON
+
+## got rid of the flugg extra treatment types
+
+
+## add in treatments as binary factors, only focusing on NPK or control 
+## trying to focus just on treatment with this plot..
+spcomp_evenness_trtbinary <- spcomp_evenness_plots
+
+spcomp_evenness_trtbinary$trtfac <- as.factor(spcomp_evenness_trtbinary$treatment_binary)
+spcomp_evenness_trtbinary$plotfac <- as.factor(spcomp_evenness_trtbinary$plot)
+spcomp_evenness_trtbinary$sitefac <- as.factor(spcomp_evenness_trtbinary$site_code)
+spcomp_evenness_trtbinary$treatmentfac <- as.factor(spcomp_evenness_trtbinary$treatment)
+
+## updating data name for simplicity/ to keep track! 
+spcomp_data_4lmer_LEMON <- spcomp_evenness_trtbinary
+
+######################################################################### LEMON
+
+
+## statistical models of diversity across sites --------------------------------
+
+## trying with first 
 mod_div.site.trt <-lmer(log(diversity_plot) ~ sitefac * nfac * pfac * kfac + 
                           (1 | plotfac) + (1 | block), 
                         data = (spcomp_data_4lmer))
 
-colnames(spcomp_data_4lmer)
+
+## residual plot
+plot(resid(mod_div.site.trt) ~fitted(mod_div.site.trt))
+
+
+## anova info
+Anova(mod_div.site.trt)
+
+
+## eemeans - LEMON Stopped here, issue with eemeans
+
+######################################################################### LEMON
+
+## got rid of the unnecessary extra treatment types
+
+mod_div.site.trt_LEMON <-lmer(log(diversity_plot) ~ sitefac * treatmentfac + 
+                          (1 | plotfac) + (1 | block), 
+                        data = (spcomp_data_4lmer_LEMON))
+
+### try smaller model for "isSingular" issue
+# https://stackoverflow.com/questions/60028673/lme4-error-boundary-singular-fit-see-issingular
+
+
+## residual plot
+plot(resid(mod_div.site.trt_LEMON) ~fitted(mod_div.site.trt_LEMON))
+
+
+## anova info
+Anova(mod_div.site.trt_LEMON)
+
+
+######################################################################### LEMON
+
