@@ -5,6 +5,9 @@
 ## Project code/ name: ACCON (AC-quisitive CON-servative)
 ################################################################################
 
+### Notes 
+# LEMON = last stopped
+# help = issue/ not sure
 
 ### load libraries -------------------------------------------------------------
 
@@ -12,9 +15,10 @@ library(tidyverse)
 library(dplyr)
 library(lme4)
 library(ggplot2)
-library(car) ## "Anova"
+library(car) # "Anova"
 library(emmeans)
-
+library(multcompView) # "cld" for emmeans
+library(multcomp) # "cld" for emmeans 
 
 
 ### load data ------------------------------------------------------------------
@@ -25,6 +29,7 @@ raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2
 
 ## metadata
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
+
 
 ################################################################################
 ## soft traits - calculating soft plant trait information
@@ -38,9 +43,33 @@ df_soft_cleaned <- raw_data_soft
 ## lowering column names and the treatment column Values
 names(df_soft_cleaned) <- tolower(colnames(df_soft_cleaned))
 
-
 ## renaming data set to be modified
 df_soft_calc. <- df_soft_cleaned
+
+
+### adding percent cover to the soft dataset ----------
+
+## creating shorter version of plot metadata
+metadata_plot_treatment <- 
+  metadata_plots[,c("site_code","Treatment","plot","block")]
+
+# easier to merge col. names
+names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
+
+## merging plot information with species comp information
+df_spcomp_avg.cover <- left_join(raw_data_species.comp, metadata_plot_treatment)
+
+
+## getting sp.comp cover average
+# MRK: HELP, make sure getting the average between plot is okay
+ df_grouped_spcomp_avg.cover <- df_spcomp_avg.cover %>%
+   group_by(site_code, plot, taxon_code) %>%
+   summarise(average.cover = mean(percent_cover, na.rm = TRUE))
+
+
+# mergining soft and species composition percent cover together
+df_soft_calc. <- left_join(df_soft_calc., df_grouped_spcomp_avg.cover, 
+                  by = c("site_code", "plot", "taxon_code"))
 
 
 ### specific leaf area (SLA) ---------------------------------------------------
@@ -153,8 +182,67 @@ df_soft_calc.$ssd_displacement <-
 
 
 ### soft plant data calculated creating new data frame  ------------------------
-df_soft_full <- df_soft_calc.
+soft_full <- df_soft_calc.
 
+
+### exploring data -------------------------------------------------------------
+
+## sla
+hist(soft_full$sla)
+hist(log(soft_full$sla))
+
+## leaf thickness
+hist(soft_full$leaf_thickness)
+hist(log(soft_full$leaf_thickness))
+
+## leaf carbon total
+hist(soft_full$c_total) # looks normal
+hist(log(soft_full$c_total)) # not needed?
+
+## leaf carbon 13
+hist(soft_full$c_delta.13)
+# hist(log(soft_full$c_delta.13)) # "NaNs produced"
+
+## leaf nitrogen total
+hist(soft_full$n_total)
+hist(log(soft_full$n_total))
+
+## leaf nitrogen 15
+hist(soft_full$n_delta.15)
+hist(log(soft_full$n_delta.15))
+
+## leaf dry-matter content
+hist(soft_full$ldmc)
+hist(log(soft_full$ldmc))
+
+## stem-specific density
+hist(soft_full$ssd_dimensional)
+hist(log(soft_full$ssd_dimensional))
+
+## plant height
+hist(soft_full$plant_height)
+hist(log(soft_full$plant_height))
+
+## leaf angle
+hist(soft_full$leaf.angle)
+hist(log(soft_full$leaf.angle))
+
+
+################################################################################
+## soft traits - community weighted means (cwm)
+################################################################################
+
+### LEMON
+
+## calculating cwm
+summarize_cwm_sla <- soft_full %>%
+  group_by(site_code, treatment, block) %>% 
+  summarise(cwm_sla = weighted.mean(sla, average.cover))
+
+
+################################################################################
+## soft traits - PCA
+################################################################################
 
 
 ################################################################################
@@ -219,17 +307,12 @@ spcomp_evenness_plots <-
   left_join(spcomp_diversity_site.plot, spcomp_richness_site.plot, 
             by = c("site_code","plot"))
 
-# creating df for metadata plot info. to merge with plot data
-metadata_plot_treatment <- 
-  metadata_plots[,c("site_code","Treatment","plot","block","N","P","K")]
-names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
+# # updating metadata plot info. to merge with species comp. data
+# metadata_plot_treatment <- 
+#   metadata_plots[,c("site_code","Treatment","plot","block")]
+# names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
 
-# creating binary for treatment type
-metadata_plot_treatment <- metadata_plot_treatment %>%
-  mutate(treatment_binary = 
-           ifelse(treatment == "NPK" | treatment == "NPK+Fence", 1, 0))
-
-# merging diversity for plots with metadata
+# merging diversity for plots with metadata plot treatment information
 spcomp_evenness_plots <- 
   left_join(spcomp_evenness_plots, metadata_plot_treatment)
 
@@ -257,75 +340,64 @@ spcomp_evenness_treatment$evenness <-
 ## species composition - models
 ################################################################################
 
-## add parameters as factors
-## mk: probably just need to have either NPK or control.
-spcomp_evenness_plots$nfac <- as.factor(spcomp_evenness_plots$n)
-spcomp_evenness_plots$pfac <- as.factor(spcomp_evenness_plots$p)
-spcomp_evenness_plots$kfac <- as.factor(spcomp_evenness_plots$k)
+## convert parameters; vector into a factor, (data categorical vs. continuous)
 spcomp_evenness_plots$plotfac <- as.factor(spcomp_evenness_plots$plot)
 spcomp_evenness_plots$sitefac <- as.factor(spcomp_evenness_plots$site_code)
+spcomp_evenness_plots$trtfac <- as.factor(spcomp_evenness_plots$treatment)
 
 ## updating data name for simplicity
 spcomp_data_4lmer <- spcomp_evenness_plots
 
 
-######################################################################### LEMON
+### exploring data -------------------------------------------------------------
 
-## got rid of the flugg extra treatment types
+# raw
+hist(spcomp_data_4lmer$diversity_plot)
+hist(spcomp_data_4lmer$richness_plot)
+hist(spcomp_data_4lmer$evenness)
 
-
-## add in treatments as binary factors, only focusing on NPK or control 
-## trying to focus just on treatment with this plot..
-spcomp_evenness_trtbinary <- spcomp_evenness_plots
-
-spcomp_evenness_trtbinary$trtfac <- as.factor(spcomp_evenness_trtbinary$treatment_binary)
-spcomp_evenness_trtbinary$plotfac <- as.factor(spcomp_evenness_trtbinary$plot)
-spcomp_evenness_trtbinary$sitefac <- as.factor(spcomp_evenness_trtbinary$site_code)
-spcomp_evenness_trtbinary$treatmentfac <- as.factor(spcomp_evenness_trtbinary$treatment)
-
-## updating data name for simplicity/ to keep track! 
-spcomp_data_4lmer_LEMON <- spcomp_evenness_trtbinary
-
-######################################################################### LEMON
+# log
+hist(log(spcomp_data_4lmer$diversity_plot))
+hist(log(spcomp_data_4lmer$richness_plot))
+hist(log(spcomp_data_4lmer$evenness))
 
 
-## statistical models of diversity across sites --------------------------------
 
-## trying with first 
-mod_div.site.trt <-lmer(log(diversity_plot) ~ sitefac * nfac * pfac * kfac + 
+### model 01: p.comp diversity across sites ------------------------------------
+
+## model
+mod_div.site.trt <-lmer(log(diversity_plot) ~ sitefac * trtfac + 
                           (1 | plotfac) + (1 | block), 
                         data = (spcomp_data_4lmer))
 
 
-## residual plot
+## Q-Q plot for the residuals
 plot(resid(mod_div.site.trt) ~fitted(mod_div.site.trt))
+plot(mod_div.site.trt, which = 2) # plot residual too, but with a line
+# MRK: HELP, looks like some heteroscedasticity?
 
 
-## anova info
-Anova(mod_div.site.trt)
+## anova
+# MRK: site most influence
+Anova(mod_div.site.trt) ## sitefac *** 
+
+## post-hoc pairwise comparisons of the estimated marginal means (emmeans)
+cld(emmeans(mod_div.site.trt, ~sitefac))
 
 
-## eemeans - LEMON Stopped here, issue with eemeans
+### model 02:  sp.comp evenness across sites -----------------------------------
 
-######################################################################### LEMON
-
-## got rid of the unnecessary extra treatment types
-
-mod_div.site.trt_LEMON <-lmer(log(diversity_plot) ~ sitefac * treatmentfac + 
+## model 
+mod_evenness.site.trt <-lmer(log(evenness) ~ sitefac * trtfac + 
                           (1 | plotfac) + (1 | block), 
-                        data = (spcomp_data_4lmer_LEMON))
+                        data = (spcomp_data_4lmer))
 
-### try smaller model for "isSingular" issue
-# https://stackoverflow.com/questions/60028673/lme4-error-boundary-singular-fit-see-issingular
+## Q-Q plot for the residuals
+plot(resid(mod_evenness.site.trt) ~fitted(mod_evenness.site.trt))
+plot(mod_evenness.site.trt, which = 2)
 
+## anova
+Anova(mod_evenness.site.trt) ## sitefac ***
 
-## residual plot
-plot(resid(mod_div.site.trt_LEMON) ~fitted(mod_div.site.trt_LEMON))
-
-
-## anova info
-Anova(mod_div.site.trt_LEMON)
-
-
-######################################################################### LEMON
-
+## emmeans 
+cld(emmeans(mod_evenness.site.trt, ~sitefac)) 
