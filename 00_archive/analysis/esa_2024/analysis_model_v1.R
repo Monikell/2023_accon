@@ -13,8 +13,10 @@ library(lme4)
 library(nlme)
 library(multcompView)
 
+
+
 ## load data, sla, comp, weight data
-sla.comp <- read.csv("data/00_data_sla.comp.csv")
+sla.comp <- read.csv("./data/00_data_sla.comp.csv")
 
 ## Todo: need to add block as a random. 
 
@@ -37,6 +39,7 @@ sla.comp$block[sla.comp$site == "temple" & sla.comp$plot < 9] <- "block_1"
 sla.comp$block[sla.comp$site == "temple" & sla.comp$plot >= 11& sla.comp$plot < 21] <- "block_2"
 sla.comp$block[sla.comp$site == "temple" & sla.comp$plot >= 21] <- "block_3"
 
+write.csv(sla.comp,"./data/r_product/sla.comp.csv")
 
 ##############################################################################
 ## community weighted means (internet)
@@ -53,6 +56,10 @@ summarize_sla.comp_cwm <- sla.comp %>%
   summarise(
     sla_cwm = weighted.mean(sla_cm2.g.1, percent_cover)
   )
+
+
+View(summarize_sla.comp_cwm)
+
 
 # Model
 # model <- lm(sla_cwm ~ trt * site, data = summarize_sla.comp_cwm) # old model
