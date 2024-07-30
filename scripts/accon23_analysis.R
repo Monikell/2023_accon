@@ -9,6 +9,10 @@
 # LEMON = last stopped
 # HELP = issue/ not sure
 
+### internet help
+# residual plots and heteroscedasticity (cone trends)
+# https://statsnotebook.io/blog/analysis/linearity_homoscedasticity/ 
+
 ### load libraries -------------------------------------------------------------
 
 library(tidyverse)
@@ -19,7 +23,8 @@ library(car) # "Anova"
 library(emmeans)
 library(multcompView) # "cld" for emmeans
 library(multcomp) # "cld" for emmeans 
-
+library(corrr)
+library(vegan)
 
 ### load data ------------------------------------------------------------------
 ## data
@@ -193,50 +198,6 @@ df_soft_calc.$ssd_displacement <-
 soft_full <- df_soft_calc.
 
 
-
-### exploring data -------------------------------------------------------------
-
-## sla
-hist(soft_full$sla)
-hist(log(soft_full$sla))
-
-## leaf thickness
-hist(soft_full$leaf_thickness)
-hist(log(soft_full$leaf_thickness))
-
-## leaf carbon total
-hist(soft_full$c_total) # looks normal
-hist(log(soft_full$c_total)) # not needed?
-
-## leaf carbon 13
-hist(soft_full$c_delta.13)
-# hist(log(soft_full$c_delta.13)) # "NaNs produced"
-
-## leaf nitrogen total
-hist(soft_full$n_total)
-hist(log(soft_full$n_total))
-
-## leaf nitrogen 15
-hist(soft_full$n_delta.15)
-hist(log(soft_full$n_delta.15))
-
-## leaf dry-matter content
-hist(soft_full$ldmc)
-hist(log(soft_full$ldmc))
-
-## stem-specific density
-hist(soft_full$ssd_dimensional)
-hist(log(soft_full$ssd_dimensional))
-
-## plant height
-hist(soft_full$plant_height)
-hist(log(soft_full$plant_height))
-
-## leaf angle
-hist(soft_full$leaf.angle)
-hist(log(soft_full$leaf.angle))
-
-
 ################################################################################
 ## soft traits - community weighted means (CWM)
 ################################################################################
@@ -286,25 +247,28 @@ write.csv(soft_spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
 ## looking for NA values
 any(is.na(soft_spcomp$sla))
 
+## histo
+hist(soft_full$sla)
+hist(log(soft_full$sla))
+
 ## cwm calculation
 summarize_cwm_sla <- soft_spcomp %>%
   group_by(site, plot, treatment, block) %>% 
-  summarise(cwm_sla = weighted.mean(sla, average.cover))
+  summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
 
 ## model (nested rdmn)
-# MRK: "isSingular", model too complex/ not enough data #----------------------- HELP
+# MRK: "isSingular", model too complex/ not enough data #----------------------- HELP, "isSingular"
 lmer_sla <- lmer(cwm_sla ~ treatment * site + (1 | block:site), 
                  data = summarize_cwm_sla)
 
 ## plot
-# MRK: cone structure... okay? some large outliers
 plot(lmer_sla, which = 2)
 
 ## anova
-Anova(lmer_sla) ## site ***, treatment:site_code marginally significant
+Anova(lmer_sla) ## site ***, treatment:site *
 
 ## emmeans
-emmeans(lmer_sla, ~site) 
+emmeans(lmer_sla, ~site)
 
 
 ### CWM: SLA (with updated sevi block) ----------------------------------------- HELP (sevi block 3/3)
@@ -317,7 +281,7 @@ any(is.na(soft_spcomp$sla))
 ## cwm calculation
 summarize_cwm_sla_block.update <- soft_spcomp %>%
   group_by(site, plot, treatment, block_sevi.update) %>% 
-  summarise(cwm_sla = weighted.mean(sla, average.cover))
+  summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
 
 ## model (nested rdmn)
 # MRK: "isSingular", model too complex?? 
@@ -327,10 +291,10 @@ lmer_sla_block.update <-
 
 ## plot
 # MRK: cone structure... okay? some large outliers
-plot(lmer_sla_block.update, which = 2) 
+plot(lmer_sla_block.update, which = 2)
 
 ## anova
-Anova(lmer_sla_block.update) ## site ***, treatment:site **
+Anova(lmer_sla_block.update) ## site ***, treatment:site ***
 
 ## emmeans
 emmeans(lmer_sla_block.update, ~site) #temple highest emmean
@@ -338,7 +302,11 @@ emmeans(lmer_sla_block.update, ~treatment)
 emmeans(lmer_sla_block.update, ~treatment*site)
 
 # looking deeper, p-value (so close, p = 0.0659)
-pairs(emmeans(lmer_sla, ~treatment, at = list(site = 'temple'))) 
+pairs(emmeans(lmer_sla, ~treatment, at = list(site = 'temple'))) #p 0.1061
+pairs(emmeans(lmer_sla, ~treatment, at = list(site = 'arch'))) #p 0.1003
+pairs(emmeans(lmer_sla, ~treatment, at = list(site = 'lubb')))
+pairs(emmeans(lmer_sla, ~treatment, at = list(site = 'sevi')))
+
 
 # visualize and interpret pairwise comparison (trt not sig. from each other)
 cld(emmeans(lmer_sla, ~treatment, at = list (site = 'temple')))
@@ -352,13 +320,21 @@ qqline(residuals_lmer_sla)
 
 ### CWM: Leaf thickness --------------------------------------------------------
 
+## histo
+hist(soft_full$leaf_thickness)
+hist(log(soft_full$leaf_thickness))
+qqnorm(log(soft_full$leaf_thickness))
+qqline(log(soft_full$leaf_thickness))
+
 ## looking for NA values
 any(is.na(soft_spcomp$leaf_thickness))
+unique(soft_spcomp$leaf_thickness)
 
 ## cwm calculation
 summarize_leaf.thickness <- soft_spcomp %>%
   group_by(site, plot, treatment, block_sevi.update) %>% 
-  summarise(cwm_leaf.thickness = weighted.mean(leaf_thickness, average.cover))
+  summarise(cwm_leaf.thickness = 
+              log(weighted.mean(leaf_thickness, average.cover)))
 
 ## model (nested rdmn)
 lmer_leaf.thickness <- 
@@ -366,7 +342,7 @@ lmer_leaf.thickness <-
        data = summarize_leaf.thickness)
 
 ## plot
-plot(lmer_leaf.thickness, which = 2) 
+plot(lmer_leaf.thickness, which = 2)
 
 ## anova
 Anova(lmer_leaf.thickness) # site **
@@ -376,7 +352,7 @@ emmeans(lmer_leaf.thickness, ~site)
 emmeans(lmer_leaf.thickness, ~treatment)
 emmeans(lmer_leaf.thickness, ~treatment*site)
 
-# looking deeper, p-value (so close, p = 0.0659)
+# looking deeper
 pairs(emmeans(lmer_leaf.thickness, ~treatment, at = list(site = 'temple')))
 pairs(emmeans(lmer_leaf.thickness, ~treatment, at = list(site = 'lubb')))
 
@@ -392,8 +368,14 @@ qqline(residuals_lmer_leaf.thickness)
 
 ### CWM: leaf carbon total -----------------------------------------------------
 
+## histo & qq
+hist(soft_full$c_total) # looks alright
+qqnorm(soft_full$c_total)
+qqline(soft_full$c_total)
+
 ## looking for NA values
 any(is.na(soft_spcomp$c_total))
+unique(soft_spcomp$c_total)
 
 ## cwm calculation
 summarize_leaf.carbon.total <- soft_spcomp %>%
@@ -417,7 +399,7 @@ emmeans(lmer_leaf.carbon.total, ~site)
 emmeans(lmer_leaf.carbon.total, ~treatment)
 emmeans(lmer_leaf.carbon.total, ~treatment*site)
 
-# looking deeper, p-value (so close, p = 0.0659)
+# looking deeper, p-value
 pairs(emmeans(lmer_leaf.carbon.total, ~treatment, at = list(site = 'temple')))
 pairs(emmeans(lmer_leaf.carbon.total, ~treatment, at = list(site = 'lubb')))
 pairs(emmeans(lmer_leaf.carbon.total, ~treatment, at = list(site = 'sevi')))
@@ -435,39 +417,49 @@ qqline(residuals_lmer_leaf.carbon.total)
 
 ### CWM: leaf nitrogen total ---------------------------------------------------
 
+## leaf nitrogen total
+hist(soft_full$n_total)
+hist(log(soft_full$n_total))
+qqnorm(soft_full$n_total)
+qqline(soft_full$n_total)
+qqnorm(log(soft_full$n_total))
+qqline(log(soft_full$n_total))
+
 ## looking for NA values
 any(is.na(soft_spcomp$n_total))
+unique(soft_spcomp$n_total)
 
 ## cwm calculation
 summarize_leaf.nitrogen.total <- soft_spcomp %>%
   group_by(site, plot, treatment, block_sevi.update) %>% 
-  summarise(cwm_leaf.nitrogen.total = weighted.mean(n_total, average.cover, 
-                                                    na.rm = TRUE))
+  summarise(cwm_leaf.nitrogen.total = log(weighted.mean(n_total, average.cover, 
+                                                    na.rm = TRUE)))
 
 ## model (nested rdmn)
 lmer_leaf.nitrogen.total <- 
-  lmer(cwm_leaf.nitrogen.total ~ treatment * site + (1 | block_sevi.update:site), 
-       data = summarize_leaf.nitrogen.total)
+  lmer(cwm_leaf.nitrogen.total ~ treatment * site + 
+         (1 | block_sevi.update:site), data = summarize_leaf.nitrogen.total)
 
 ## plot
-plot(lmer_leaf.nitrogen.total, which = 2) ## ----------------------------------- HELP: residual plot cone
+plot(lmer_leaf.nitrogen.total, which = 2)
 
 ## anova
-Anova(lmer_leaf.nitrogen.total) # site ***
+Anova(lmer_leaf.nitrogen.total) # site ***, treatment *
 
 ## emmeans
 emmeans(lmer_leaf.nitrogen.total, ~site) # lubb with highest emmean
 emmeans(lmer_leaf.nitrogen.total, ~treatment)
 emmeans(lmer_leaf.nitrogen.total, ~treatment*site)
 
-# looking deeper, p-value (so close, p = 0.0659)
+# looking deeper, p-value
 pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'temple')))
 pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'lubb')))
+# MRK, sevi has 0.0557
 pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'sevi')))
 pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'arch')))
 
 # visualize and interpret pairwise comparison (trt not sig. from each other)
-cld(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list (site = 'lubb')))
+cld(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list (site = 'sevi')))
 
 ## q-q plot
 residuals_lmer_leaf.nitrogen.total <- residuals(lmer_leaf.nitrogen.total)
@@ -478,60 +470,251 @@ qqline(residuals_lmer_leaf.nitrogen.total)
 
 ### CWM: SSD  ------------------------------------------------------------------
 
+## histo
+hist(soft_full$ssd_dimensional)
+hist(log(soft_full$ssd_dimensional))
+
 ## looking for NA values
 any(is.na(soft_spcomp$ssd_dimensional))
+unique(soft_spcomp$ssd_dimensional)
 
 ## cwm calculation
 summarize_ssd <- soft_spcomp %>%
   group_by(site, plot, treatment, block_sevi.update) %>% 
-  summarise(cwm_ssd = weighted.mean(ssd_dimensional, 
-                                    average.cover, na.rm = TRUE))
+  summarise(cwm_ssd = log(weighted.mean(ssd_dimensional, 
+                                    average.cover, na.rm = TRUE)))
 
 ## model (nested rdmn)
-lmer_ssd <- lmer(cwm_ssd ~ treatment * site + 
-                   (1 | block_sevi.update:site),
-       data = summarize_ssd)
+lmer_ssd <- lmer(cwm_ssd ~ treatment * site + (1 | block_sevi.update:site), 
+                 data = summarize_ssd)
 
 ## plot
-plot(lmer_ssd, which = 2) ######################################################### LEMON
+plot(lmer_ssd, which = 2)
 
 ## anova
-Anova(lmer_leaf.nitrogen.total) # site ***
-
-## emmeans
-emmeans(lmer_leaf.nitrogen.total, ~site) # lubb with highest emmean
-emmeans(lmer_leaf.nitrogen.total, ~treatment)
-emmeans(lmer_leaf.nitrogen.total, ~treatment*site)
-
-# looking deeper, p-value (so close, p = 0.0659)
-pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'temple')))
-pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'lubb')))
-pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'sevi')))
-pairs(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list(site = 'arch')))
-
-# visualize and interpret pairwise comparison (trt not sig. from each other)
-cld(emmeans(lmer_leaf.nitrogen.total, ~treatment, at = list (site = 'lubb')))
+Anova(lmer_ssd) # none
 
 ## q-q plot
-residuals_lmer_leaf.nitrogen.total <- residuals(lmer_leaf.nitrogen.total)
+residuals_lmer_ssd <- residuals(lmer_ssd)
 # Create Q-Q plot of residuals
-qqnorm(residuals_lmer_leaf.nitrogen.total)
-qqline(residuals_lmer_leaf.nitrogen.total)
+qqnorm(residuals_lmer_ssd)
+qqline(residuals_lmer_ssd)
 
 
+### CWM: plant height ----------------------------------------------------------
+
+## histo
+hist(soft_full$plant_height)
+hist(log(soft_full$plant_height))
+qqnorm(soft_spcomp$plant_height)
+qqnorm(log(soft_spcomp$plant_height))
+
+
+## looking for NA values
+any(is.na(soft_spcomp$plant_height))
+
+## cwm calculation
+summarize_plant.height <- soft_spcomp %>%
+  group_by(site, plot, treatment, block_sevi.update) %>% 
+  summarise(cwm_plant.height = log(weighted.mean(plant_height, average.cover)))
+
+## model (nested rdmn)
+lmer_plant.height <- 
+  lmer(cwm_plant.height ~ treatment * site + (1 | block_sevi.update:site), 
+       data = summarize_plant.height)
+
+## plot
+plot(lmer_plant.height, which = 2)
+
+## anova
+Anova(lmer_plant.height) # site ***, treatment .
+
+## emmeans
+emmeans(lmer_plant.height, ~site) # temple & lubb
+emmeans(lmer_plant.height, ~treatment)
+emmeans(lmer_plant.height, ~treatment*site)
+
+# looking deeper, p-value
+# temple close with a p of 0.0894
+pairs(emmeans(lmer_plant.height, ~treatment, at = list(site = 'temple')))
+pairs(emmeans(lmer_plant.height, ~treatment, at = list(site = 'lubb')))
+
+# visualize and interpret pairwise comparison (trt not sig. from each other)
+cld(emmeans(lmer_plant.height, ~treatment, at = list (site = 'temple')))
+cld(emmeans(lmer_plant.height, ~treatment, at = list (site = 'lubb')))
+
+
+## q-q plot
+residuals_lmer_plant.height <- residuals(lmer_plant.height)
+# Create Q-Q plot of residuals
+qqnorm(residuals_lmer_plant.height)
+qqline(residuals_lmer_plant.height)
+
+
+### CWM: LDMC ------------------------------------------------------------------
+
+## leaf dry-matter content
+hist(soft_full$ldmc)
+hist(log(soft_full$ldmc))
+qqnorm(soft_spcomp$ldmc)
+qqnorm(log(soft_spcomp$ldmc))
+qqline(log(soft_spcomp$ldmc))
+
+## looking for NA values
+any(is.na(soft_spcomp$ldmc))
+unique(soft_spcomp$ldmc)
+
+## log needed
+hist(soft_spcomp$ldmc)
+hist(log(soft_spcomp$ldmc))
+
+## cwm calculation
+summarize_ldmc <- soft_spcomp %>%
+  group_by(site, plot, treatment, block_sevi.update) %>% 
+  summarise(cwm_ldmc = log(weighted.mean(ldmc, average.cover,
+                                                 na.rm = TRUE)))
+
+## model (nested rdmn)
+lmer_ldmc <- 
+  lmer(cwm_ldmc ~ treatment * site + (1 | block_sevi.update:site), 
+       data = summarize_ldmc)
+
+## plot
+plot(lmer_ldmc, which = 2)
+
+## anova
+Anova(lmer_ldmc) # site ***
+
+## emmeans
+emmeans(lmer_ldmc, ~site)
+emmeans(lmer_ldmc, ~treatment)
+emmeans(lmer_ldmc, ~treatment*site)
+
+# looking deeper, p-value
+# temple close with a p of 0.0894
+pairs(emmeans(lmer_ldmc, ~treatment, at = list(site = 'temple')))
+
+# visualize and interpret pairwise comparison (trt not sig. from each other)
+cld(emmeans(lmer_ldmc, ~treatment, at = list (site = 'temple')))
+
+
+## q-q plot
+residuals_lmer_ldmc <- residuals(lmer_ldmc)
+# Create Q-Q plot of residuals
+qqnorm(residuals_lmer_ldmc)
+qqline(residuals_lmer_ldmc)
+
+
+## CWM: δ13C -------------------------------------------------------------------
+
+## histo & qq, = bimodal
+hist(soft_spcomp$c_delta.13) 
+qqnorm(soft_spcomp$c_delta.13) 
+
+## looking for NA values
+any(is.na(soft_spcomp$c_delta.13))
+unique(soft_spcomp$c_delta.13) # negative values no log
+
+
+## cwm calculation
+summarize_c_delta.13 <- soft_spcomp %>%
+  group_by(site, plot, treatment, block_sevi.update) %>% 
+  summarise(cwm_c_delta.13 = weighted.mean(c_delta.13, average.cover, 
+                                           na.rm = TRUE))
+
+## model (nested rdmn)
+lmer_c_delta.13 <- 
+  lmer(cwm_c_delta.13 ~ treatment * site + (1 | block_sevi.update:site), 
+       data = summarize_c_delta.13)
+
+## plot
+plot(lmer_c_delta.13, which = 2)
+
+## anova
+Anova(lmer_c_delta.13) # site *
+
+## emmeans
+emmeans(lmer_c_delta.13, ~site)
+emmeans(lmer_c_delta.13, ~treatment)
+emmeans(lmer_c_delta.13, ~treatment*site)
+
+# looking deeper, p-value
+# temple close with a p of 0.0894
+pairs(emmeans(lmer_c_delta.13, ~treatment, at = list(site = 'sevi')))
+pairs(emmeans(lmer_c_delta.13, ~treatment, at = list(site = 'temple')))
+
+# visualize and interpret pairwise comparison (trt not sig. from each other)
+cld(emmeans(lmer_c_delta.13, ~treatment, at = list (site = 'temple')))
+
+## q-q plot
+residuals_lmer_c_delta.13 <- residuals(lmer_c_delta.13)
+# Create Q-Q plot of residuals
+qqnorm(residuals_lmer_c_delta.13)
+qqline(residuals_lmer_c_delta.13)
+
+
+## CWM: δ15N -------------------------------------------------------------------
+
+## histo
+hist(soft_spcomp$n_delta.15)
+qqnorm(soft_spcomp$n_delta.15)
+qqline(soft_spcomp$n_delta.15)
+
+## looking for NA values
+any(is.na(soft_spcomp$n_delta.15))
+unique(soft_spcomp$n_delta.15) # negative values no log
+
+## cwm calculation
+summarize_n_delta.15 <- soft_spcomp %>%
+  group_by(site, plot, treatment, block_sevi.update) %>% 
+  summarise(cwm_n_delta.15 = weighted.mean(n_delta.15, average.cover))
+
+## model (nested rdmn)
+lmer_n_delta.15 <- 
+  lmer(cwm_n_delta.15 ~ treatment * site + (1 | block_sevi.update:site), 
+       data = summarize_n_delta.15)
+
+## plot
+plot(lmer_n_delta.15, which = 2)
+
+## anova
+Anova(lmer_n_delta.15) # site ***, treatment:site ***
+
+## emmeans
+emmeans(lmer_n_delta.15, ~site)
+emmeans(lmer_n_delta.15, ~treatment)
+emmeans(lmer_n_delta.15, ~treatment*site)
+
+# looking deeper, p-value
+# temple close with a p of 0.0894
+pairs(emmeans(lmer_n_delta.15, ~treatment, at = list(site = 'sevi')))
+pairs(emmeans(lmer_n_delta.15, ~treatment, at = list(site = 'temple')))
+pairs(emmeans(lmer_n_delta.15, ~treatment, at = list(site = 'arch')))
+pairs(emmeans(lmer_n_delta.15, ~treatment, at = list(site = 'lubb'))) #p.0.0021
+
+# visualize and interpret pairwise comparison (trt not sig. from each other)
+cld(emmeans(lmer_n_delta.15, ~treatment, at = list (site = 'lubb'))) ## YAY!
+
+## q-q plot
+residuals_lmer_n_delta.15 <- residuals(lmer_n_delta.15)
+# Create Q-Q plot of residuals
+qqnorm(residuals_lmer_n_delta.15)
+qqline(residuals_lmer_n_delta.15)
 
 
 ################################################################################
 ## soft traits - PCA
-################################################################################
+################################################################################ LEMON
+
+install.packages("ggcorrplot")
+library(ggcorrplot)
+
+install.packages("FactoMineR")
+library(FactoMineR)
 
 
 
-
-
-
-
-
+## https://www.datacamp.com/tutorial/pca-analysis-r
 
 
 
@@ -689,3 +872,8 @@ Anova(mod_evenness.site.trt) ## sitefac ***
 
 ## emmeans 
 cld(emmeans(mod_evenness.site.trt, ~sitefac)) 
+
+################################################################################
+## species composition - diversity index
+################################################################################
+

@@ -12,7 +12,7 @@ library(emmeans)
 library(lme4)
 library(nlme)
 library(multcompView)
-
+library(multcomp)
 
 
 ## load data, sla, comp, weight data
@@ -50,6 +50,9 @@ write.csv(sla.comp,"./data/r_product/sla.comp.csv")
 
 ## Model (Nick and Evan)
 
+##### LEMON - issue, need NA values for sp.comp to be zero, not NA. 
+##### except for the "galiu" in plot 1 of temple, that needs to be 0.5
+
 # calculating cwm (Evan, ditch duration might be weighing down things)
 summarize_sla.comp_cwm <- sla.comp %>%
   group_by(site, plot, trt, block) %>%
@@ -57,25 +60,29 @@ summarize_sla.comp_cwm <- sla.comp %>%
     sla_cwm = weighted.mean(sla_cm2.g.1, percent_cover)
   )
 
-
-View(summarize_sla.comp_cwm)
-
-
-# Model
+## Model 01 - OLD
 # model <- lm(sla_cwm ~ trt * site, data = summarize_sla.comp_cwm) # old model
 
-colnames(summarize_sla.comp_cwm)
-
+## model 01 - NEW
 sla_lmer <- lmer(sla_cwm ~ trt * site + (1|block:site), 
                  data = summarize_sla.comp_cwm) #nested rdnm 
+
+## plot
 plot(resid(sla_lmer) ~ fitted(sla_lmer))
 summary(sla_lmer)
+
+## anova
 Anova(sla_lmer)
+
+## emmeans
 emmeans(sla_lmer, ~site)
 emmeans(sla_lmer, ~trt)
 emmeans(sla_lmer, ~trt*site)
-pairs(emmeans(sla_lmer, ~trt, at = list(site ='temple')))
+
+# looking deeper at the p-value
+pairs(emmeans(sla_lmer, ~trt, at = list(site ='temple'))) ########################### LEMON
 cld(emmeans(sla_lmer, ~trt, at = list(site ='temple')))
+
 
 # check model fit Evan
 # Check model assumptions
