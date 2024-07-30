@@ -275,6 +275,7 @@ Anova(lmer_sla) ## site ***, treatment:site *
 
 ## emmeans
 emmeans(lmer_sla, ~site)
+emmeans(lmer_sla, ~treatment*site)
 
 
 ### CWM: SLA (with updated sevi block) ----------------------------------------- HELP (sevi block 3/3)
@@ -288,6 +289,9 @@ any(is.na(soft_spcomp$sla))
 summarize_cwm_sla_block.update <- soft_spcomp %>%
   group_by(site, plot, treatment, block_sevi.update) %>% 
   summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
+
+unique(subset(raw_data_species.comp, site == 'sevi')$plot)
+
 
 ## model (nested rdmn)
 # MRK: "isSingular", model too complex?? 
@@ -785,7 +789,9 @@ ggplot() +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black")) +
+  ylim(c(-10, 20)) +
+  xlim(c(-25, 25))
 
 
 
@@ -811,7 +817,7 @@ any(is.na(pca_soft.meta_clean))
 pca_result <- prcomp(pca_soft.meta_clean %>%
                        select(leaf_thickness, sla, c_total, n_total, 
                               ssd_dimensional, plant_height, 
-                              c_delta.13, n_delta.15, ldmc), 
+                              c_delta.13, n_delta.15, ldmc),
                      center = TRUE,
                      scale. = TRUE)
 
