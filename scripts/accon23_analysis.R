@@ -9,9 +9,6 @@
 # LEMON = last stopped
 # HELP = issue/ not sure
 
-### internet help
-# residual plots and heteroscedasticity (cone trends)
-# https://statsnotebook.io/blog/analysis/linearity_homoscedasticity/ 
 
 ### load libraries -------------------------------------------------------------
 
@@ -25,6 +22,15 @@ library(multcompView) # "cld" for emmeans
 library(multcomp) # "cld" for emmeans 
 library(corrr)
 library(vegan)
+
+## PCA
+library(BiodiversityR)
+library(ggvegan)
+# install.packages("remotes")
+# remotes::install_github("gavinsimpson/ggvegan")
+
+
+
 
 ### load data ------------------------------------------------------------------
 ## data
@@ -42,7 +48,7 @@ metadata_block.sevi.update <- read.csv("../data/00_meta/plot-descriptions-02-Aug
 ## soft traits - calculating soft plant trait information
 
 # traits: leaf thickness, SLA, leaf carbon content, leaf nitrogen content, 
-# SSD, plant height, δ13C, δ15N, LDMC
+# SSD, plant height, δ13C, δ15N, LDMC (phosphorous and potassium to come!)
 ################################################################################
 
 ### cleaning data --------------------------------------------------------------
@@ -71,7 +77,7 @@ df_spcomp_avg.cover <- left_join(raw_data_species.comp, metadata_plot_treatment)
 
 
 ## getting sp.comp cover averages
-# MRK: sp.comp average between plots, good?? should be?? #---------------------- HELP
+# MRK: sp.comp average between plots, good?? should be?? #---------------------- HELP sp.cover averages?
  df_grouped_spcomp_avg.cover <- df_spcomp_avg.cover %>%
    group_by(site_code, plot, taxon_code) %>%
    summarise(average.cover = mean(percent_cover, na.rm = TRUE))
@@ -702,22 +708,212 @@ qqnorm(residuals_lmer_n_delta.15)
 qqline(residuals_lmer_n_delta.15)
 
 
+
 ################################################################################
 ## soft traits - PCA
-################################################################################ LEMON
+# https://www.youtube.com/watch?v=Tjxgd9FLeYc&t=79s
+################################################################################ 
 
-install.packages("ggcorrplot")
-library(ggcorrplot)
+## not sure if this is right? -------------------------------------------------- HELP PCA
+## need to add in metadata? Site, treatment, species?
 
-install.packages("FactoMineR")
-library(FactoMineR)
+## subset data, traits of interest
+pca_soft.traits <- soft_spcomp[,c("leaf_thickness", "sla", "c_total", "n_total",
+                                  "ssd_dimensional", "plant_height", 
+                                  "c_delta.13", "n_delta.15", "ldmc")]
+
+## looking for what values have NA
+# write.csv(pca_soft.traits, "../data/03_rproducts/pca_soft.traits.csv")
+
+# removing NA values
+any(is.na(pca_soft.traits))
+pca_soft.traits_clean <- na.omit(pca_soft.traits)
+any(is.na(pca_soft.traits_clean))
+
+## running the analysis
+pca1 <- rda(pca_soft.traits_clean)
+
+## look at total inertia (variance) and that explained by each PC
+pca1
+summary(pca1)
+
+## determine how many axes to retain for interpretation (BiodiversityR, package)
+# MRK: focus on % > bs%, only PC1 has "1.00000"
+PCAsignificance(pca1) 
+
+## plot the data, really basic plot
+ordiplot(pca1)
+ordiplot(pca1, type = "t") # t = text
+
+
+### plot the PCA using the package ----------
+## using package 'ggvegan'
+autoplot(pca1, legend.position = "none") +
+  xlab("PC1 (92%)") +
+  ylab("PC2 (5%") +
+  geom_abline(intercept = 0, slope = 0, linetype = "dashed", size = 0.8) +
+  geom_vline(aes(xintercept=0), linetype = "dashed", size = 0.8) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
+
+
+### plot the PCA ggplot ----------
+
+
+pca_fort <- fortify(pca1, axes = 1:2)
+
+
+ggplot() +
+  geom_point(data = subset(pca_fort, score == 'sites'),
+             mapping = aes(x = PC1, y = PC2), 
+             colour = "darkgray", 
+             alpha = 0.5) +
+  geom_segment(data = subset(pca_fort, score == 'species'),
+               mapping = aes(x = 0, y = 0, xend = PC1, yend = PC2), 
+               arrow = arrow(length = unit(0.03, "npc"), type = "closed"),
+               colour = "darkgray", 
+               size = 0.8) +
+  geom_text(data = subset(pca_fort, score == 'species'), 
+            mapping = aes(label = label, x = PC1 * 1.1, y = PC2 * 1.1)) +
+  geom_abline(intercept = 0, slope = 0, linetype = "dashed", 
+              size = 0.8, colour = "gray") + 
+  geom_vline(xintercept = 0, linetype = "dashed", size = 0.8, colour = "gray") +
+  xlab("PC1 (92%)") + 
+  ylab("PC2 (5%)") + 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))
 
 
 
-## https://www.datacamp.com/tutorial/pca-analysis-r
+
+
+### PCA attempt for site, treatment, taxon code -------------------------------- HELP, PCA, with shaddy AI help..
+## trying to plot the traits, sites, species (taxon_code)
+
+
+## subset data, traits of interest
+pca_soft.meta <- soft_spcomp[,c("site", "treatment", "taxon_code", 
+                                "leaf_thickness", "sla", "c_total", "n_total",
+                                  "ssd_dimensional", "plant_height", 
+                                "c_delta.13", "n_delta.15", "ldmc")]
+
+## removing NA values
+any(is.na(pca_soft.meta))
+pca_soft.meta_clean <- na.omit(pca_soft.meta)
+any(is.na(pca_soft.meta_clean))
+
+
+## PCA on trait data ## -------------------------------------------------------- LEMON
+pca_result <- prcomp(pca_soft.meta_clean %>%
+                       select(leaf_thickness, sla, c_total, n_total, 
+                              ssd_dimensional, plant_height, 
+                              c_delta.13, n_delta.15, ldmc), 
+                     center = TRUE,
+                     scale. = TRUE)
+
+
+## looking at stuff
+pca_result
+summary(pca_result)
+
+## merging together
+pca_df <- as.data.frame(pca_result$x) %>%
+  bind_cols(pca_soft.meta_clean %>% select(site, treatment, taxon_code))
+
+
+## PLOTTING: dots for species, across sites and their PCA, (okay)
+ggplot(pca_df, aes (x = PC1, y = PC2)) +
+  geom_point(aes(color = site), size = 3, alpha = 0.7) +
+  labs(title = "PCA of Traits",
+       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
+       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
+  theme_minimal()
+
+
+## PLOTTING: arrows for species... not super informative? (not great?)
+ggplot(pca_df, aes(x = PC1, y = PC2)) +
+  geom_point(aes(color = site), size = 3, alpha = 0.7) +
+  geom_segment(data = pca_df %>%
+                 group_by(taxon_code) %>%
+                 summarize(PC1 = mean(PC1), PC2 = mean(PC2)), 
+               aes(x = 0, y = 0, xend = PC1, yend = PC2, color = taxon_code), 
+               arrow = arrow(length = unit(0.3, "inches")), size = 0.7) +
+  labs(title = "PCA of Traits with Species Arrows",
+       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
+       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
+  theme_minimal()
+
+
+## PLOTTING: dots for species, color for site, and with trait arrows
+pca_loadings <- as.data.frame(pca_result$rotation)  # PCA loadings (traits)
+
+# Assuming you have trait names in rownames(pca_loadings) and loading columns are named PC1, PC2
+pca_loadings$trait <- rownames(pca_loadings)
+pca_loadings$PC1 <- pca_loadings$PC1
+pca_loadings$PC2 <- pca_loadings$PC2
+
+
+# 
+# # Plot with arrows for traits and dots for taxon_code
+# ggplot(pca_df, aes(x = PC1, y = PC2)) +
+#   # Points for taxon_code, colored by site
+#   geom_point(aes(color = site), size = 3, alpha = 0.7) +
+#   
+#   # Arrows for traits
+#   geom_segment(data = pca_loadings, 
+#                aes(x = 0, y = 0, xend = PC1, yend = PC2, color = trait), 
+#                arrow = arrow(length = unit(0.3, "inches"), type = "closed"), 
+#                size = 0.7) +
+#   
+#   # Add labels for traits
+#   geom_text(data = pca_loadings, 
+#             aes(label = trait, x = PC1 * 1.1, y = PC2 * 1.1), 
+#             size = 3, hjust = 0.5, vjust = 0.5) +
+#   
+#   # Labels and theme
+#   labs(title = "PCA of Traits with Trait Arrows",
+#        x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
+#        y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
+#   theme_minimal()
 
 
 
+## trying with bigger arrows
+scaling_factor <- 10  # Adjust this factor as needed
+
+pca_loadings_scaled <- pca_loadings %>%
+  mutate(PC1 = PC1 * scaling_factor,
+         PC2 = PC2 * scaling_factor)
+
+# Plot with scaled trait arrows
+ggplot(pca_df, aes(x = PC1, y = PC2)) +
+  # Points for taxon_code, colored by site
+  geom_point(aes(color = site), size = 3, alpha = 0.7) +
+  
+  # Arrows for traits with scaling
+  geom_segment(data = pca_loadings_scaled, 
+               aes(x = 0, y = 0, xend = PC1, yend = PC2), 
+               arrow = arrow(length = unit(0.1, "inches"), type = "closed"), 
+               size = 0.5) +
+  
+  # Add labels for traits
+  geom_text(data = pca_loadings_scaled, 
+            aes(label = trait, x = PC1 * 1.1, y = PC2 * 1.1), 
+            size = 3, hjust = 0.5, vjust = 0.5) +
+  
+  # Add zero lines
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray") +
+  
+  # Labels and theme
+  labs(title = "PCA of Traits with Scaled Trait Arrows",
+       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
+       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
+  theme_minimal()
 
 
 ################################################################################
@@ -872,6 +1068,7 @@ Anova(mod_evenness.site.trt) ## sitefac ***
 
 ## emmeans 
 cld(emmeans(mod_evenness.site.trt, ~sitefac)) 
+
 
 ################################################################################
 ## species composition - diversity index
