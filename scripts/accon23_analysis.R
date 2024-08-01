@@ -12,6 +12,8 @@
 
 ### load libraries -------------------------------------------------------------
 
+
+
 library(tidyverse)
 library(dplyr)
 library(lme4)
@@ -30,6 +32,7 @@ library('corrr')
 library(ggcorrplot)
 #install.packages("FactoMineR")
 library("FactoMineR")
+library(FactoMineR)
 
 
 
@@ -946,7 +949,9 @@ pca_data.raw $loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 ## Scree Plot
 # visualize the importance of each principal component and can be used to 
 # determine the number of principal components to retain. 
-fviz_eig(pca_data.raw , addlabels = TRUE)
+fviz_eig(pca_data.raw , addlabels = TRUE) ## -----------------------------------LEMON
+
+
 
 ## Biplot of the Attributes
 # with the biplot, it is possible to visualize the similarities and 
@@ -983,6 +988,7 @@ fviz_pca_var(pca_data.raw , col.var = "cos2",
 
 
 ### PCA CW data with datacamp -------------------------------------------------- PCA 3 
+
 
 ## data, merging together cwm 
 cwm_all_traits <- cwm_cn.ratio_summarize %>%
@@ -1231,15 +1237,6 @@ Anova(mod_evenness.site.trt) ## sitefac ***
 
 ## emmeans 
 cld(emmeans(mod_evenness.site.trt, ~sitefac)) 
-
-
-################################################################################
-## species composition - diversity index
-################################################################################
-
-
-
-
 
 
 
