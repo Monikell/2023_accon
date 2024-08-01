@@ -13,7 +13,6 @@
 ### load libraries -------------------------------------------------------------
 
 
-
 library(tidyverse)
 library(dplyr)
 library(lme4)
@@ -42,10 +41,12 @@ library(FactoMineR)
 # soft data = field and lab data collected
 raw_data_soft <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
 raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
+raw_data_accon.rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
 
 ## metadata
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
+metadata_accon_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
 
 
 ################################################################################
@@ -949,7 +950,7 @@ pca_data.raw $loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 ## Scree Plot
 # visualize the importance of each principal component and can be used to 
 # determine the number of principal components to retain. 
-fviz_eig(pca_data.raw , addlabels = TRUE) ## -----------------------------------LEMON
+fviz_eig(pca_data.raw , addlabels = TRUE)
 
 
 
@@ -958,7 +959,7 @@ fviz_eig(pca_data.raw , addlabels = TRUE) ## -----------------------------------
 # dissimilarities between the samples, and further show the impact of each 
 # attributes on each of the principal components
 # Graph of the variables 
-fviz_pca_var(pca_data.raw , col.var = "black")
+fviz_pca_var(pca_data.raw , col.var = "black") # ------------------------------- pca trait data
 
 # what you get from the plot: 
 # 1) grouped variables = positively correlated with each other
@@ -1043,7 +1044,7 @@ pca_cwm$loadings[,1:4] # 1-4 = 90%
 fviz_eig(pca_cwm, addlabels = TRUE)
 
 ## Biplot of the attributes
-fviz_pca_var(pca_cwm, col.var = "black")
+fviz_pca_var(pca_cwm, col.var = "black") ## jus the pca ------------------------ pca cwm
 
 ## Contribute of each variable
 fviz_cos2(pca_cwm, choice = "var", axes = 1:2)
@@ -1055,39 +1056,38 @@ fviz_pca_var(pca_cwm, col.var = "cos2",
              repel = TRUE)
 
 
-
-
-
 ## attempting to plot more info
 
 # Create the PCA biplot with both variables and data points
-biplot <- fviz_pca_biplot(pca_cwm, 
-                          col.var = "cos2", 
-                          col.ind = "cos2",
-                          gradient.cols = c("lightblue", "blue", "black"), 
-                          repel = TRUE) +
-  ggtitle("PCA Biplot: Variables and Individuals") +
-  xlab("Principal Component 1") +
-  ylab("Principal Component 2")
+# biplot <- fviz_pca_biplot(pca_cwm, 
+#                           col.var = "cos2", 
+#                           col.ind = "cos2",
+#                           gradient.cols = c("lightblue", "blue", "black"), 
+#                           repel = TRUE) +
+#   ggtitle("PCA Biplot: Variables and Individuals") +
+#   xlab("Principal Component 1") +
+#   ylab("Principal Component 2")
+# 
+# 
+# biplot
 
 
-biplot
-
-
-biplot <- fviz_pca_biplot(pca_cwm, 
-                          geom.ind = "point",  # Use points for individuals
-                          col.ind = "cos2",    # Color individuals by their squared cosine (cos2) values
-                          col.var = "black",   # Color variables in black
-                          gradient.cols = c("lightblue", "blue", "black"), 
-                          repel = TRUE) +      # Avoid label overlap
-  ggtitle("PCA Biplot: Community Weighted Means") +
-  xlab("Principal Component 1 (40.5%)") +
-  ylab("Principal Component 2 (27.9%")
+# biplot <- fviz_pca_biplot(pca_cwm, 
+#                           geom.ind = "point",  # Use points for individuals
+#                           col.ind = "cos2",    # Color individuals by their squared cosine (cos2) values
+#                           col.var = "black",   # Color variables in black
+#                           gradient.cols = c("lightblue", "blue", "black"), 
+#                           repel = TRUE) +      # Avoid label overlap
+#   ggtitle("PCA Biplot: Community Weighted Means") +
+#   xlab("Principal Component 1 (40.5%)") +
+#   ylab("Principal Component 2 (27.9%")
 
 
 ################################################################################
 ## species composition - calculating diversity indexes
 ################################################################################
+
+
 
 ### cleaning up dataset --------------------------------------------------------
 
@@ -1201,6 +1201,11 @@ hist(log(spcomp_data_4lmer$evenness))
 
 ### model 01: p.comp diversity across sites ------------------------------------
 
+qqnorm(spcomp_data_4lmer$diversity_plot)
+qqnorm(log(spcomp_data_4lmer$diversity_plot))
+qqline(log(spcomp_data_4lmer$diversity_plot))
+
+
 ## model
 mod_div.site.trt <-lmer(log(diversity_plot) ~ sitefac * trtfac + 
                           (1 | plotfac) + (1 | block), 
@@ -1222,6 +1227,10 @@ cld(emmeans(mod_div.site.trt, ~sitefac))
 
 
 ### model 02:  sp.comp evenness across sites -----------------------------------
+
+qqnorm(spcomp_data_4lmer$evenness) 
+qqline(spcomp_data_4lmer$evenness)
+
 
 ## model 
 mod_evenness.site.trt <-lmer(log(evenness) ~ sitefac * trtfac + 
@@ -1245,7 +1254,151 @@ cld(emmeans(mod_evenness.site.trt, ~sitefac))
 ## data visualization
 ################################################################################
 
-### raw data -------------------------------------------------------------------
+
+
+
+
+
+
+
+### plot percent cover and counts acquisition strategy --------------------------
+
+## creating data frame with sp.cover
+df_accon <- left_join(metadata_accon_rank, raw_data_species.comp, 
+                      by = c("site","taxon_code"))
+
+df_accon_info <- left_join(df_accon, metadata_plots, 
+                      by = c("site", "plot"))
+
+df_accon_info$Treatment
+
+### attempting plots ----------
+
+plot_acquisiton.cover_all <- ggplot(df_accon_info, ## -------------------------- plot
+                                    aes(x = Treatment,  
+                                        y = percent_cover, 
+                                        fill = rank_sla)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  theme(strip.background = element_rect(color = "black", 
+                                    fill = "lightgrey", 
+                                    size = 1), # Box around facet labels
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    axis.title.x = element_text(size = 12, face = "bold"), # Style x-axis title
+    axis.title.y = element_text(size = 12, face = "bold"), # Style y-axis title
+    strip.text = element_text(size = 12, face = "bold") # Style facet labels
+  ) +
+  labs(
+    title = "Percent Cover, Acquisition Strategy Across all Sites",
+    x = "Treatment", # X-axis title
+    y = "Average Species Cover", # Y-axis title
+    fill = "Acquisition Strategy"  # Custom legend title
+  )
+
+ # ## saving image
+ #  png("../figures/plot_acquisiton.cover_all.png",
+ #       width = 8, height = 8, units = 'in', res = 1500)
+ #  plot_acquisiton.cover_all
+ #   dev.off()
+
+
+## percent cover by acquisition type by site ----------------------------------- plot
+plot_acquisiton.cover_site <- ggplot(df_accon_info, aes(x = Treatment, 
+                                                        y = percent_cover, 
+                                                        fill = rank_sla)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ site) +  # Facet by site
+  theme_minimal() +
+  theme(
+    strip.background = element_rect(color = "black", 
+                                    fill = "lightgrey", 
+                                    size = 1), # Box around facet labels
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    axis.title.x = element_text(size = 12, face = "bold"), # Style x-axis title
+    axis.title.y = element_text(size = 12, face = "bold"), # Style y-axis title
+    strip.text = element_text(size = 12, face = "bold") # Style facet labels
+  ) +
+  labs(
+    title = "Percent Cover, Acquisition Strategy by Treatment and Site",
+    x = "Treatment", # X-axis title
+    y = "Average Species Cover", # Y-axis title
+    fill = "Acquisition Strategy"  # Custom legend title
+  )
+
+# ## saving image
+#  png("../figures/plot_acquisiton.cover_site.png",
+#       width = 8, height = 8, units = 'in', res = 1500)
+#  plot_acquisiton.cover_site
+#   dev.off()
+
+
+### trying to get counts of "acquisitive" and "conservative"
+
+# Calculate mean and standard error
+df_accon_summary <- df_accon_info %>%
+  group_by(Treatment, rank_sla, site) %>%
+  summarize(
+    mean_cover = mean(percent_cover),
+    se_cover = sd(percent_cover) / sqrt(n()))
+
+
+
+## trying with the error bars ## need to check match.. ------------------------- LEMON
+plot_cover.strat_sites <- ggplot(df_accon_summary, 
+                         aes(x = Treatment, y = mean_cover, fill = rank_sla)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = mean_cover - se_cover, ymax = mean_cover + se_cover),
+                position = position_dodge(width = 0.9), width = 0.25) +
+  facet_wrap(~ site, scales = "free") +  # Facet by site
+  theme_minimal() +
+  theme(
+    strip.background = element_rect(color = "black", 
+                                    fill = "lightgrey", 
+                                    size = 1), # Box around facet labels
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    axis.title.x = element_text(size = 12, face = "bold"), # Style x-axis title
+    axis.title.y = element_text(size = 12, face = "bold"), # Style y-axis title
+    strip.text = element_text(size = 12, face = "bold") # Style facet labels
+  ) +
+  labs(
+    title = "Percent Cover, Acquisition Strategy by Treatment and Site",
+    x = "Treatment", # X-axis title
+    y = "Mean Percent Cover", # Y-axis title
+    fill = "Acquisition Strategy"  # Custom legend title
+  )
+
+
+## counting acq vs. con
+df_count <- df_accon_info %>%
+  group_by(Treatment, rank_sla, site) %>%
+  summarize(count = n(), .groups = 'drop')
+
+## Okay? ----------------------------------------------------------------------- plot
+# Plot with customized legend title and facet borders, looks alright
+plot_acquisiton.count <- ggplot(df_count, aes(x = Treatment, y = count, fill = rank_sla)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ site) +  # Facet by site
+  theme_minimal() +
+  theme(
+    strip.background = element_rect(color = "black", fill = "lightgrey", size = 1), # Box around facet labels
+    panel.border = element_rect(color = "black", fill = NA, size = 1), # Box around each facet
+    axis.title.x = element_text(size = 12, face = "bold"), # Style x-axis title
+    axis.title.y = element_text(size = 12, face = "bold"), # Style y-axis title
+    strip.text = element_text(size = 12, face = "bold") # Style facet labels
+  ) +
+  labs(
+    title = "Acquisition Strategy by Treatment and Site",
+    x = "Treatment", # X-axis title
+    y = "Count of Unique Species", # Y-axis title
+    fill = "Acquisition Strategy"  # Custom legend title
+  )
+## saved
+# png("../figures/plot_acquisiton.count.png",
+#      width = 8, height = 8, units = 'in', res = 1500)
+# plot_acquisiton.count
+#  dev.off()
+
+### raw trait data -------------------------------------------------------------
 
 plot_raw.leaf_thickness <- 
   ggplot(data_soft_full, aes (site, leaf_thickness, fill = treatment)) +
@@ -1261,7 +1414,7 @@ plot_raw.sla <-
   theme_minimal() # temple, outliers might be okay..
 
 
-## attempting with stats..SLA, looks amazing and has error bars!!
+## SLA error bars across all sites
 plot_raw.sla_errorbars <- ggplot() + 
     # Add error bars to the box plot for the specified subset of data
     stat_boxplot(
@@ -1280,8 +1433,7 @@ plot_raw.sla_errorbars <- ggplot() +
     theme_minimal()
 
 
-## works okay facet by site, and treatment as the x.. works good
-## likely looks better for other things/ sites
+## SLA, multiple sites
 ggplot() + 
   # Add error bars to the box plot for the specified subset of data
   stat_boxplot(data = data_soft.spcomp,
@@ -1294,11 +1446,12 @@ ggplot() +
     aes(x = treatment, y = sla, fill = treatment), 
     outlier.shape = NA) + 
   # Facet by site (one row per site)
-  facet_grid(rows = vars(site), scales = "free_y") +
+  facet_wrap(vars(site), scales = "free_y") +
   # Minimal theme
   theme_minimal()
 
 
+### plot, raw trait data -------------------------------------------------------
 
 plot_raw.n_concentraiton <- 
   ggplot(data_soft_full, aes (site, n_concentration, fill = treatment)) +
@@ -1339,6 +1492,13 @@ plot_raw.c_delta.13 <- ## plot created using the combined df_soft
 
 plot_raw.n_delta.15 <- ### LUBB HAS A SIGNIFICANT VALUE BETWEEN TREATMENT
   ggplot(data_soft_full, aes (site, n_delta.15, fill = treatment)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
+  theme_minimal()
+
+
+plot_cwm.n_delta.15 <- ####----------------------------------------------------- cwm delta.15.N
+  ggplot(cwm_all_traits, aes (site, cwm_n_delta.15, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
