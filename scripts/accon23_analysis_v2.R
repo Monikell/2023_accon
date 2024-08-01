@@ -35,6 +35,19 @@ library(FactoMineR)
 
 
 
+# install.packages("corrr")
+# library('corrr')
+# install.packages("ggcorrplot")
+# library(ggcorrplot)
+# install.packages("FactoMineR")
+# library("FactoMineR")
+# library("FactoMineR")
+# 
+# install.packages("factoextra")
+library(factoextra)
+
+
+
 
 ### load data ------------------------------------------------------------------
 ## data
@@ -48,6 +61,8 @@ metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
 metadata_accon_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
 
+
+unique(raw_data_species.comp$taxon_code)
 
 ################################################################################
 ## soft traits - calculating soft plant trait information
@@ -708,6 +723,7 @@ pairs(emmeans(lmer_ldmc, ~treatment, at = list(site = 'temple')))
 
 # visualize and interpret pairwise comparison (trt not sig. from each other)
 cld(emmeans(lmer_ldmc, ~treatment, at = list (site = 'temple')))
+cld(emmeans(lmer_ldmc, ~site))
 
 
 ## q-q plot
@@ -946,9 +962,13 @@ pca_data.raw $loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 # not sure.. like just overall prefrence? 
 
 ### Visualization of the principal components ----------
+## PCA
+
+
+library(dplyr)
 
 ## Scree Plot
-# visualize the importance of each principal component and can be used to 
+# visualize the importance of each principal component and can be used to      -- LEMON
 # determine the number of principal components to retain. 
 fviz_eig(pca_data.raw , addlabels = TRUE)
 
