@@ -24,10 +24,12 @@ library(corrr)
 library(vegan)
 
 ## PCA
-library(BiodiversityR)
-library(ggvegan)
-# install.packages("remotes")
-# remotes::install_github("gavinsimpson/ggvegan")
+#install.packages("corrr")
+library('corrr')
+#install.packages("ggcorrplot")
+library(ggcorrplot)
+#install.packages("FactoMineR")
+library("FactoMineR")
 
 
 
@@ -207,15 +209,15 @@ data_soft_calc$cn_ratio <-
 
 
 ### soft plant data calculated creating new data frame  ------------------------
-df_soft_full <- data_soft_calc
+data_soft_full <- data_soft_calc
 
 ## looking over data for qc/qa
-# write.csv(df_soft_full, "../data/03_rproducts/df_soft_full.csv")
+# write.csv(data_soft_full, "../data/03_rproducts/data_soft_full.csv")
 # MRK: looks good, except sample "sevi_39_boer_1_491", the CN isotope values
 # seemed to have an issue from the lab, removing data error. 
 
 # removing CN isotope issue sample
-df_soft_full <- df_soft_full[df_soft_full$id_full != "sevi_39_boer_1_491", ]
+data_soft_full <- data_soft_full[data_soft_full$id_full != "sevi_39_boer_1_491", ]
 
 
 ################################################################################
@@ -233,7 +235,7 @@ df_soft_full <- df_soft_full[df_soft_full$id_full != "sevi_39_boer_1_491", ]
 
 ## verifying photosynthesis pathways based on delta c 13 values
 # Bender 1971; Smith & Epstein 1971: C3 = 13C (-24‰ to -34‰), c4 = (-6‰ to -19‰)
-df_soft_full <- df_soft_full %>%
+data_soft_full <- data_soft_full %>%
   mutate(photo_pathway_delta.c.13 = case_when(
     c_delta.13 >= -35 & c_delta.13 <= -23 ~ "c3",
     c_delta.13 >= -19 & c_delta.13 <= -6 ~ "c4"
@@ -243,46 +245,46 @@ df_soft_full <- df_soft_full %>%
 
 
 ## mergining soft and species comp. average cover
-df_soft_spcomp <- left_join(df_soft_full, df_grouped_spcomp_avg.cover, 
+data_soft.spcomp <- left_join(data_soft_full, df_grouped_spcomp_avg.cover, 
                    by = c("site_code", "plot", "taxon_code"))
 
 ## mergining species list information into dataset 
-df_soft_spcomp <- left_join(df_soft_spcomp, metadata_species.list, 
+data_soft.spcomp <- left_join(data_soft.spcomp, metadata_species.list, 
                          by = c("site_code", "taxon_code"))
 
 ## removing site.y, and changing site.x to just site, for simplicity
 # remove column site.y
-df_soft_spcomp$site.y <- NULL
+data_soft.spcomp$site.y <- NULL
 
 # update name 
-names(df_soft_spcomp)[names(df_soft_spcomp) == "site.x"] <- "site"
+names(data_soft.spcomp)[names(data_soft.spcomp) == "site.x"] <- "site"
 
 
 ## sp.comp % cover update NA values from "NA" to "0", top 5 species data
 # collected from all plots even if not observed in 1x1s
-df_soft_spcomp$average.cover[is.na(df_soft_spcomp$average.cover)] <- 0
+data_soft.spcomp$average.cover[is.na(data_soft.spcomp$average.cover)] <- 0
 
 
 ## qa/qc real quick
-# write.csv(df_soft_spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
+# write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
 # MRK: looks good/ okay! 
 
 
 ### CWM: SLA -------------------------------------------------------------------
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$sla))
+any(is.na(data_soft.spcomp$sla))
 
 ## looking over raw data
-hist(df_soft_spcomp$sla)
-hist(log(df_soft_spcomp$sla))
+hist(data_soft.spcomp$sla)
+hist(log(data_soft.spcomp$sla))
 
-qqnorm(df_soft_spcomp$sla) ; qqline(df_soft_spcomp$sla, col = "red")
-qqnorm(log(df_soft_spcomp$sla)) ; qqline(log(df_soft_spcomp$sla))
+qqnorm(data_soft.spcomp$sla) ; qqline(data_soft.spcomp$sla, col = "red")
+qqnorm(log(data_soft.spcomp$sla)) ; qqline(log(data_soft.spcomp$sla))
 
 
 ## cwm calculation
-summarize_cwm_sla <- df_soft_spcomp %>%
+cwm_sla_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
 
@@ -291,11 +293,11 @@ summarize_cwm_sla <- df_soft_spcomp %>%
 # overcomplicated random effects, potentailyl remove block?
 lmer_sla <- 
   lmer(cwm_sla ~ treatment * site + (1 | block:site), 
-       data = summarize_cwm_sla)
+       data = cwm_sla_summarize)
 
 # # Simplified model with random effect for site only
 # lmer_sla_simplified <- lmer(cwm_sla ~ treatment * site + (1 | site), 
-#                             data = summarize_cwm_sla)
+#                             data = cwm_sla_summarize)
 
 
 ## plot ________________________________________________________________________ HELP, cone(ish)
@@ -324,13 +326,13 @@ cld(emmeans(lmer_sla, ~treatment, at = list (site = 'sevi')))
 
 ## visualizing
 # raw data
-ggplot(df_soft_spcomp, aes (site, sla, fill = treatment)) +
+ggplot(data_soft.spcomp, aes (site, sla, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1)
 
 # cwm data
 # MRK: arch and temple (wet sites) the SLA is significant
-ggplot(summarize_cwm_sla, aes (site, cwm_sla, fill = treatment)) +
+ggplot(cwm_sla_summarize, aes (site, cwm_sla, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1)
 
@@ -346,19 +348,19 @@ qqline(residuals_lmer_sla)
 ### CWM: Leaf thickness --------------------------------------------------------
 
 ## to log or not log, looking at data (log)
-hist(df_soft_full$leaf_thickness)
-hist(log(df_soft_full$leaf_thickness))
-qqnorm(df_soft_full$leaf_thickness)
-qqline(df_soft_full$leaf_thickness)
-qqnorm(log(df_soft_full$leaf_thickness))
-qqline(log(df_soft_full$leaf_thickness))
+hist(data_soft_full$leaf_thickness)
+hist(log(data_soft_full$leaf_thickness))
+qqnorm(data_soft_full$leaf_thickness)
+qqline(data_soft_full$leaf_thickness)
+qqnorm(log(data_soft_full$leaf_thickness))
+qqline(log(data_soft_full$leaf_thickness))
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$leaf_thickness))
-unique(df_soft_spcomp$leaf_thickness)
+any(is.na(data_soft.spcomp$leaf_thickness))
+unique(data_soft.spcomp$leaf_thickness)
 
 ## cwm calculation
-summarize_leaf.thickness <- df_soft_spcomp %>%
+cwm_leaf.thickness_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_leaf.thickness = 
               log(weighted.mean(leaf_thickness, average.cover)))
@@ -366,14 +368,14 @@ summarize_leaf.thickness <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_leaf.thickness <- 
   lmer(cwm_leaf.thickness ~ treatment * site + (1 | block:site), 
-       data = summarize_leaf.thickness)
+       data = cwm_leaf.thickness_summarize)
 
 ## look to see if a more simple model, get rid of 'singular' issue would be 
 ## resolved and make a better model, it doesn't look like it. 
 # ## model (nested rdmn)
 # lmer_leaf.thickness_site <- 
 #   lmer(cwm_leaf.thickness ~ treatment * site + (1 | site), 
-#        data = summarize_leaf.thickness)
+#        data = cwm_leaf.thickness_summarize)
 # plot(lmer_leaf.thickness_site, which = 2)
 # 
 # 
@@ -402,12 +404,12 @@ cld(emmeans(lmer_leaf.thickness, ~treatment, at = list (site = 'temple')))
 
 ## visualizing
 # raw data
-ggplot(df_soft_spcomp, aes (site, leaf_thickness, fill = treatment)) +
+ggplot(data_soft.spcomp, aes (site, leaf_thickness, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1)
 
 # cwm data
-ggplot(summarize_leaf.thickness, aes (site, cwm_leaf.thickness, fill = treatment)) +
+ggplot(cwm_leaf.thickness_summarize, aes (site, cwm_leaf.thickness, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1)
 
@@ -422,19 +424,19 @@ qqline(residuals_lmer_leaf.thickness)
 ### CWM: C:N ratio -------------------------------------------------------------
 
 ## histo & qq
-hist(df_soft_full$cn_ratio)
-hist(log(df_soft_full$cn_ratio))
-qqnorm(df_soft_full$cn_ratio)
-qqline(df_soft_full$cn_ratio)
-qqnorm(log(df_soft_full$cn_ratio))
-qqline(log(df_soft_full$cn_ratio))
+hist(data_soft_full$cn_ratio)
+hist(log(data_soft_full$cn_ratio))
+qqnorm(data_soft_full$cn_ratio)
+qqline(data_soft_full$cn_ratio)
+qqnorm(log(data_soft_full$cn_ratio))
+qqline(log(data_soft_full$cn_ratio))
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$cn_ratio))
-unique(df_soft_spcomp$cn_ratio)
+any(is.na(data_soft.spcomp$cn_ratio))
+unique(data_soft.spcomp$cn_ratio)
 
 ## cwm calculation
-summarize_cn_ratio <- df_soft_spcomp %>%
+cwm_cn.ratio_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_cn_ratio = weighted.mean(cn_ratio, average.cover,
                                                   na.rm = TRUE))
@@ -442,7 +444,7 @@ summarize_cn_ratio <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_cn.ratio <- 
   lmer(cwm_cn_ratio ~ treatment * site + (1 | block:site), ## no singular error
-       data = summarize_cn_ratio)
+       data = cwm_cn.ratio_summarize)
 
 ## plot
 plot(lmer_cn.ratio, which = 2)
@@ -475,7 +477,7 @@ cld(emmeans(lmer_cn.ratio, ~treatment, at = list (site = 'arch'))) # 2 groups
 
 ## just looking at the data... ugh
 # Create a plot for the main effect of treatment
-ggplot(summarize_cn_ratio, aes(x = treatment, y = cwm_cn_ratio, fill = treatment)) +
+ggplot(cwm_cn.ratio_summarize, aes(x = treatment, y = cwm_cn_ratio, fill = treatment)) +
   geom_boxplot() +
   theme_minimal() +
   labs(title = "Effect of Treatment on C:N Ratio",
@@ -483,7 +485,7 @@ ggplot(summarize_cn_ratio, aes(x = treatment, y = cwm_cn_ratio, fill = treatment
        y = "Community Weighted Mean C:N Ratio")
 
 # Create a plot for the main effect of site
-ggplot(summarize_cn_ratio, aes(x = site, y = cwm_cn_ratio, fill = site)) +
+ggplot(cwm_cn.ratio_summarize, aes(x = site, y = cwm_cn_ratio, fill = site)) +
   geom_boxplot() +
   theme_minimal() +
   labs(title = "Effect of Site on C:N Ratio",
@@ -501,19 +503,19 @@ qqline(residuals_lmer_cn.ratio)
 ### CWM: nitrogen concentration (leaf) -----------------------------------------
 
 ## leaf nitrogen total
-hist(df_soft_full$n_concentration)
-hist(log(df_soft_full$n_concentration))
-qqnorm(df_soft_full$n_concentration)
-qqline(df_soft_full$n_concentration)
-qqnorm(log(df_soft_full$n_concentration))
-qqline(log(df_soft_full$n_concentration)) # ------------------------------------ HELP, kind of s shaped...
+hist(data_soft_full$n_concentration)
+hist(log(data_soft_full$n_concentration))
+qqnorm(data_soft_full$n_concentration)
+qqline(data_soft_full$n_concentration)
+qqnorm(log(data_soft_full$n_concentration))
+qqline(log(data_soft_full$n_concentration)) # ------------------------------------ HELP, kind of s shaped...
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$n_concentration))
-unique(df_soft_spcomp$n_concentration)
+any(is.na(data_soft.spcomp$n_concentration))
+unique(data_soft.spcomp$n_concentration)
 
 ## cwm calculation
-summarize_n.concentration <- df_soft_spcomp %>%
+cwm_n.concentration_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_n.concentration = log(weighted.mean(n_concentration, 
                                                     average.cover, 
@@ -522,7 +524,7 @@ summarize_n.concentration <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_n.concentration <- 
   lmer(cwm_n.concentration ~ treatment * site + 
-         (1 | block:site), data = summarize_n.concentration)
+         (1 | block:site), data = cwm_n.concentration_summarize)
 
 ## plot
 plot(lmer_n.concentration, which = 2) # ---------------------------------------- HELP, kind of cone shaped
@@ -558,26 +560,26 @@ qqline(residuals_lmer_n.concentration)
 ### CWM: SSD  ------------------------------------------------------------------
 
 ## histo
-hist(df_soft_full$ssd_dimensional)
-hist(log(df_soft_full$ssd_dimensional)) # much better
+hist(data_soft_full$ssd_dimensional)
+hist(log(data_soft_full$ssd_dimensional)) # much better
 
-qqnorm(df_soft_full$ssd_dimensional) ; qqline(df_soft_full$ssd_dimensional)
-qqnorm(log(df_soft_full$ssd_dimensional))
-qqline(log(df_soft_full$ssd_dimensional)) # much better
+qqnorm(data_soft_full$ssd_dimensional) ; qqline(data_soft_full$ssd_dimensional)
+qqnorm(log(data_soft_full$ssd_dimensional))
+qqline(log(data_soft_full$ssd_dimensional)) # much better
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$ssd_dimensional))
-unique(df_soft_spcomp$ssd_dimensional)
+any(is.na(data_soft.spcomp$ssd_dimensional))
+unique(data_soft.spcomp$ssd_dimensional)
 
 ## cwm calculation
-summarize_ssd <- df_soft_spcomp %>%
+cwm_ssd_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_ssd = log(weighted.mean(ssd_dimensional, 
                                     average.cover, na.rm = TRUE)))
 
 ## model (nested rdmn)
 lmer_ssd <- lmer(cwm_ssd ~ treatment * site + (1 | block:site), 
-                 data = summarize_ssd)
+                 data = cwm_ssd_summarize)
 
 ## plot
 plot(lmer_ssd, which = 2) #----------------------------------------------------- HELP, cone ish..
@@ -611,26 +613,26 @@ qqnorm(residuals_lmer_ssd); qqline(residuals_lmer_ssd) #------------------------
 ### CWM: plant height ----------------------------------------------------------
 
 ## histo
-hist(df_soft_full$plant_height)
-hist(log(df_soft_full$plant_height))
-qqnorm(df_soft_spcomp$plant_height) ; qqline(df_soft_spcomp$plant_height)
-qqnorm(log(df_soft_spcomp$plant_height))
-qqline(log(df_soft_spcomp$plant_height))
+hist(data_soft_full$plant_height)
+hist(log(data_soft_full$plant_height))
+qqnorm(data_soft.spcomp$plant_height) ; qqline(data_soft.spcomp$plant_height)
+qqnorm(log(data_soft.spcomp$plant_height))
+qqline(log(data_soft.spcomp$plant_height))
 
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$plant_height))
-unique(df_soft_spcomp$plant_height)
+any(is.na(data_soft.spcomp$plant_height))
+unique(data_soft.spcomp$plant_height)
 
 ## cwm calculation
-summarize_plant.height <- df_soft_spcomp %>%
+cwm_plant.height_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_plant.height = log(weighted.mean(plant_height, average.cover)))
 
 ## model (nested rdmn)
 lmer_plant.height <- 
   lmer(cwm_plant.height ~ treatment * site + (1 | block:site), 
-       data = summarize_plant.height)
+       data = cwm_plant.height_summarize)
 
 ## plot
 plot(lmer_plant.height, which = 2)
@@ -661,21 +663,21 @@ qqnorm(residuals_lmer_plant.height) ; qqline(residuals_lmer_plant.height)
 ### CWM: LDMC ------------------------------------------------------------------
 
 ## leaf dry-matter content
-hist(df_soft_full$ldmc)
-hist(log(df_soft_full$ldmc))
-qqnorm(df_soft_spcomp$ldmc) ; qqline(df_soft_full$ldmc)
-qqnorm(log(df_soft_spcomp$ldmc)) ; qqline(log(df_soft_spcomp$ldmc))
+hist(data_soft_full$ldmc)
+hist(log(data_soft_full$ldmc))
+qqnorm(data_soft.spcomp$ldmc) ; qqline(data_soft_full$ldmc)
+qqnorm(log(data_soft.spcomp$ldmc)) ; qqline(log(data_soft.spcomp$ldmc))
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$ldmc))
-unique(df_soft_spcomp$ldmc)
+any(is.na(data_soft.spcomp$ldmc))
+unique(data_soft.spcomp$ldmc)
 
 ## log needed
-hist(df_soft_spcomp$ldmc)
-hist(log(df_soft_spcomp$ldmc))
+hist(data_soft.spcomp$ldmc)
+hist(log(data_soft.spcomp$ldmc))
 
 ## cwm calculation
-summarize_ldmc <- df_soft_spcomp %>%
+cwm_ldmc_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_ldmc = log(weighted.mean(ldmc, average.cover,
                                                  na.rm = TRUE)))
@@ -683,7 +685,7 @@ summarize_ldmc <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_ldmc <- 
   lmer(cwm_ldmc ~ treatment * site + (1 | block:site), 
-       data = summarize_ldmc)
+       data = cwm_ldmc_summarize)
 
 ## plot
 plot(lmer_ldmc, which = 2)
@@ -712,30 +714,19 @@ qqnorm(residuals_lmer_ldmc) ; qqline(residuals_lmer_ldmc)
 
 ## CWM: δ13C -------------------------------------------------------------------
 
-## histo & qq, = bimodal
-hist(df_soft_spcomp$c_delta.13)
-qqnorm(df_soft_spcomp$c_delta.13) ; qqline(df_soft_spcomp$c_delta.13) #--------- HELP, bimodial 
-# MRK: data is bimodal, split between c3 and c4 plants.. what to do about it?? 
-
-
-## subsetting data by photo pathway, as the values can vary based on c3 vs. c4
-df_data_c3 <- subset(df_soft_spcomp, photo_pathway == "c3")
-df_data_c4 <- subset(df_soft_spcomp, photo_pathway == "c4")
-
-hist(df_data_c3$c_delta.13)
-hist(df_data_c4$c_delta.13)
-
-qqnorm(df_data_c3$c_delta.13) ; qqline(df_data_c3$c_delta.13)
-qqnorm(df_data_c4$c_delta.13) ; qqline(df_data_c4$c_delta.13)
-
+### δ13C ---------- (data all together)
+## data is bi-modal, split between c3 vs. c4 #----------------------------------HELP, bimodial 1/2
+ 
+## looking at the data
+hist(data_soft.spcomp$c_delta.13)
+qqnorm(data_soft.spcomp$c_delta.13) ; qqline(data_soft.spcomp$c_delta.13) 
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$c_delta.13))
-unique(df_soft_spcomp$c_delta.13) # negative values no log
-
+any(is.na(data_soft.spcomp$c_delta.13))
+unique(data_soft.spcomp$c_delta.13) # negative values no log
 
 ## cwm calculation ----------
-summarize_c_delta.13 <- df_soft_spcomp %>%
+cwm_c.delta.13_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_c_delta.13 = weighted.mean(c_delta.13, average.cover, 
                                            na.rm = TRUE))
@@ -743,38 +734,20 @@ summarize_c_delta.13 <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_c_delta.13 <- 
   lmer(cwm_c_delta.13 ~ treatment * site + (1 | block:site), 
-       data = summarize_c_delta.13)
-
-
-## cwm calculation - photo. pathway included -----------
-summarize_c_delta.13_photo <- df_soft_spcomp %>%
-  group_by(site, plot, treatment, block, photo_pathway) %>% 
-  summarise(cwm_c_delta.13 = weighted.mean(c_delta.13, average.cover, 
-                                           na.rm = TRUE))
-
-## model (nested rdmn) - photo. pathway included
-lmer_c_delta.13_photo <- 
-  lmer(cwm_c_delta.13 ~ treatment * site * photo_pathway + (1 | block:site), 
-       data = summarize_c_delta.13_photo)
-
+       data = cwm_c.delta.13_summarize)
 
 ## plot
 plot(lmer_c_delta.13, which = 2)
-plot(lmer_c_delta.13_photo, which = 2)
 
 ## anova
 Anova(lmer_c_delta.13) # site *
-Anova(lmer_c_delta.13_photo) # site, photo_pathway *** & site:photo_path
 
 ## emmeans
 emmeans(lmer_c_delta.13, ~site)
 emmeans(lmer_c_delta.13, ~treatment)
 emmeans(lmer_c_delta.13, ~treatment*site)
 
-emmeans(lmer_c_delta.13_photo, ~site)
-
 # looking deeper, p-value
-# temple close with a p of 0.0894
 pairs(emmeans(lmer_c_delta.13, ~treatment, at = list(site = 'sevi')))
 pairs(emmeans(lmer_c_delta.13, ~treatment, at = list(site = 'temple')))
 pairs(emmeans(lmer_c_delta.13, ~treatment, at = list(site = 'arch')))
@@ -790,18 +763,53 @@ qqnorm(residuals_lmer_c_delta.13)
 qqline(residuals_lmer_c_delta.13)
 
 
+### δ13C (splitting c3 vs. c4 plants) ------------------------------------------HELP bimodal 2/2
+## subsetting data by photo pathway, as the values can vary based on c3 vs. c4
+data_c3.only <- subset(data_soft.spcomp, photo_pathway == "c3")
+data_c4.only <- subset(data_soft.spcomp, photo_pathway == "c4")
+
+hist(data_c3.only$c_delta.13)
+hist(data_c4.only$c_delta.13)
+
+qqnorm(data_c3.only$c_delta.13) ; qqline(data_c3.only$c_delta.13)
+qqnorm(data_c4.only$c_delta.13) ; qqline(data_c4.only$c_delta.13)
+
+
+## cwm calculation - photo. pathway included -----------
+cwm_c.delta.13_summarize_photo <- data_soft.spcomp %>%
+  group_by(site, plot, treatment, block, photo_pathway) %>% 
+  summarise(cwm_c_delta.13 = weighted.mean(c_delta.13, average.cover, 
+                                           na.rm = TRUE))
+
+## model (nested rdmn) - photo. pathway included
+lmer_c_delta.13_photo <- 
+  lmer(cwm_c_delta.13 ~ treatment * site * photo_pathway + (1 | block:site), 
+       data = cwm_c.delta.13_summarize_photo)
+
+# plot
+plot(lmer_c_delta.13_photo, which = 2)
+
+# anova
+Anova(lmer_c_delta.13_photo) # site, photo_pathway *** & site:photo_path
+
+# emmeans
+emmeans(lmer_c_delta.13_photo, ~site)
+
+
+
+
 ## CWM: δ15N -------------------------------------------------------------------
 
 ## histo
-hist(df_soft_spcomp$n_delta.15)
-qqnorm(df_soft_spcomp$n_delta.15) ; qqline(df_soft_spcomp$n_delta.15)
+hist(data_soft.spcomp$n_delta.15)
+qqnorm(data_soft.spcomp$n_delta.15) ; qqline(data_soft.spcomp$n_delta.15)
 
 ## looking for NA values
-any(is.na(df_soft_spcomp$n_delta.15))
-unique(df_soft_spcomp$n_delta.15) # negative values no log
+any(is.na(data_soft.spcomp$n_delta.15))
+unique(data_soft.spcomp$n_delta.15) # negative values no log
 
 ## cwm calculation
-summarize_n_delta.15 <- df_soft_spcomp %>%
+cwm_n.delta.15_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_n_delta.15 = weighted.mean(n_delta.15, average.cover, 
                                            na.rm = TRUE))
@@ -809,7 +817,7 @@ summarize_n_delta.15 <- df_soft_spcomp %>%
 ## model (nested rdmn)
 lmer_n_delta.15 <- 
   lmer(cwm_n_delta.15 ~ treatment * site + (1 | block:site), 
-       data = summarize_n_delta.15)
+       data = cwm_n.delta.15_summarize)
 
 ## plot
 plot(lmer_n_delta.15, which = 2)
@@ -844,75 +852,79 @@ qqline(residuals_lmer_n_delta.15)
 ## soft traits - PCA
 # https://www.youtube.com/watch?v=Tjxgd9FLeYc&t=79s
 ################################################################################ 
+# ## not sure if this is right? -------------------------------------------------- PCA 1 video
+# ## better option below (i think)
+# 
+# ## subset data, traits of interest
+# pca_soft.traits <- data_soft.spcomp[,c("leaf_thickness", "sla", "n_concentration", 
+#                               "cn_ratio", "ssd_dimensional", "plant_height", 
+#                               "c_delta.13", "n_delta.15", "ldmc")]
+# 
+# ## qa/qc
+# # write.csv(pca_soft.traits, "../data/03_rproducts/pca_soft.traits.csv")
+# 
+# # removing NA values
+# any(is.na(pca_soft.traits))
+# pca_soft_raw_clean <- na.omit(pca_soft.traits)
+# any(is.na(pca_soft_raw_clean))
+# 
+# ## running the analysis
+# pca1 <- rda(pca_soft_raw_clean)
+# 
+# ## look at total inertia (variance) and that explained by each PC
+# pca1
+# summary(pca1)
+# 
+# ## determine how many axes to retain for interpretation (BiodiversityR, package)
+# # MRK: focus on % > bs%, only PC1 has "1.00000"
+# PCAsignificance(pca1)
+# 
+# ## plot the data, really basic plot
+# ordiplot(pca1)
+# ordiplot(pca1, type = "t") # t = text
+# 
+# 
+# ### plot the PCA using the package ----------
+# ## using package 'ggvegan'
+# autoplot(pca1, legend.position = "none") +
+#   xlab("PC1 (92%)") +
+#   ylab("PC2 (5%") +
+#   geom_abline(intercept = 0, slope = 0, linetype = "dashed", size = 0.8) +
+#   geom_vline(aes(xintercept=0), linetype = "dashed", size = 0.8) +
+#   theme(panel.grid.major = element_blank(),
+#         panel.grid.minor = element_blank(),
+#         panel.background = element_blank(),
+#         axis.line = element_line(colour = "black"))
 
-## not sure if this is right? -------------------------------------------------- PCA 1 video
-## need to add in metadata? Site, treatment, species?
+
+### PCA RAW with datacamp ---------------------------------------------------------- PCA 2 attempt (raw data)
+# https://www.datacamp.com/tutorial/pca-analysis-r
+# https://www.youtube.com/watch?v=5vgP05YpKdE 
+
 
 ## subset data, traits of interest
-pca_soft.traits <- df_soft_spcomp[,c("leaf_thickness", "sla", "n_concentration", 
-                              "cn_ratio", "ssd_dimensional", "plant_height", 
-                              "c_delta.13", "n_delta.15", "ldmc")]
-
-## qa/qc
-# write.csv(pca_soft.traits, "../data/03_rproducts/pca_soft.traits.csv")
-
-# removing NA values
-any(is.na(pca_soft.traits))
-pca_soft.traits_clean <- na.omit(pca_soft.traits)
-any(is.na(pca_soft.traits_clean))
-
-## running the analysis
-pca1 <- rda(pca_soft.traits_clean)
-
-## look at total inertia (variance) and that explained by each PC
-pca1
-summary(pca1)
-
-## determine how many axes to retain for interpretation (BiodiversityR, package)
-# MRK: focus on % > bs%, only PC1 has "1.00000"
-PCAsignificance(pca1)
-
-## plot the data, really basic plot
-ordiplot(pca1)
-ordiplot(pca1, type = "t") # t = text
-
-
-### plot the PCA using the package ----------
-## using package 'ggvegan'
-autoplot(pca1, legend.position = "none") +
-  xlab("PC1 (92%)") +
-  ylab("PC2 (5%") +
-  geom_abline(intercept = 0, slope = 0, linetype = "dashed", size = 0.8) +
-  geom_vline(aes(xintercept=0), linetype = "dashed", size = 0.8) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black"))
-
-
-### PCA with datacamp ---------------------------------------------------------- PCA 2 attempt (raw data)
-# https://www.datacamp.com/tutorial/pca-analysis-r
-
-install.packages("corrr")
-library('corrr')
-
-install.packages("ggcorrplot")
-library(ggcorrplot)
-
-install.packages("FactoMineR")
-library("FactoMineR")
-
-## data cleaning/ checks
-# check for na values in the columns (also only numerical varaibles)
-colSums(is.na(pca_soft.traits_clean)) 
+pca_soft_raw <- data_soft.spcomp[,c("leaf_thickness", "sla", "n_concentration", 
+                               "cn_ratio", "ssd_dimensional", "plant_height", 
+                               "c_delta.13", "n_delta.15", "ldmc")]
+ 
+## saving/ looking over data
+# write.csv(pca_soft.traits, "../data/03_rproducts/pca_soft_raw.csv")
+ 
+# cleaning data for PCA, specifically removing NA values
+any(is.na(pca_soft_raw))
+colSums(is.na(pca_soft_raw))
+colSums(is.na(pca_soft_raw))
+pca_soft_raw_clean <- na.omit(pca_soft_raw) # pca to be used for raw data!
+any(is.na(pca_soft_raw_clean))
+colSums(is.na(pca_soft_raw_clean))
 
 ## Normalize the data (is this an issue for later? not sure)
-pca_soft.traits_clean_normalized <- scale(pca_soft.traits_clean)
-head(pca_soft.traits_clean_normalized)
+pca_soft_raw_clean_normalized <- scale(pca_soft_raw_clean)
+head(pca_soft_raw_clean_normalized)
 
 ## applying pca
-pca2 <- princomp(pca_soft.traits_clean_normalized)
-summary(pca2)
+pca_data.raw <- princomp(pca_soft_raw_clean_normalized)
+summary(pca_data.raw )
 # summary explained, 9 principal components have been generated (Comp.1 to 9)
 # matches number of variables put in. Each component explains a percentage of
 # the total variance in the data set. In the "Cumulative Proportion" area, the 
@@ -922,7 +934,7 @@ summary(pca2)
 # each principal component. 
 
 ## The Loading Matrix
-pca2$loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
+pca_data.raw $loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 
 # The Loading Matrix shows that the first principal component has high positive
 # values leaf_thickness, sla, n_concentration, n_delta.15 others are negative. 
@@ -931,175 +943,140 @@ pca2$loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 
 ### Visualization of the principal components ----------
 
-## scree plot
+## Scree Plot
 # visualize the importance of each principal component and can be used to 
 # determine the number of principal components to retain. 
-fviz_eig(data.pca, addlabels = TRUE) ### LEMON
+fviz_eig(pca_data.raw , addlabels = TRUE)
+
+## Biplot of the Attributes
+# with the biplot, it is possible to visualize the similarities and 
+# dissimilarities between the samples, and further show the impact of each 
+# attributes on each of the principal components
+# Graph of the variables 
+fviz_pca_var(pca_data.raw , col.var = "black")
+
+# what you get from the plot: 
+# 1) grouped variables = positively correlated with each other
+# 2) higher the distance between the variable & the origin = the better 
+#    represented that variable is. Example, leaf thickness better rep. than sla
+# 3) variables negatively correlated are displayed opp. sides of the origin
+
+## Contribution of each variable
+# 3rd visual determine how much each variable is represented in a given 
+# component (quality called Cos2) and corresponds to the square cosine. 
+# low value = variable is not perfectly represented by that component. 
+# high value = good representation of the variable on that component
+fviz_cos2(pca_data.raw , choice = "var", axes = 1:2 )
+# code above computed the square cosine value for each variable w/ respect to 
+# the first two principal components. n_concentration, cn_ratio, plant_height
+# n_delta15, leaf thickness contribute the most to PC1 and PC2..
+
+## Biplot combined with cos2
+# last 2 visualization approaches: biplot & attributes importance can be combined
+# to create a single biplot, where attributes w/ similar cos2 scores will have
+# similar colors. 
+fviz_pca_var(pca_data.raw , col.var = "cos2",
+             gradient.cols = c("black", "orange", "green"),
+             repel = TRUE)
+# high co2 attributes = green (n_con, cn_ratio.. ), mid orange, low black
 
 
 
+### PCA CW data with datacamp -------------------------------------------------- PCA 3 
 
-
-
-
-
-### plot the PCA ggplot -------------------------------------------------------- PCA 3 ChatGPT (kinda bad)
-
-
-pca_fort <- fortify(pca1, axes = 1:2)
-
-
-ggplot() +
-  geom_point(data = subset(pca_fort, score == 'sites'),
-             mapping = aes(x = PC1, y = PC2), 
-             colour = "darkgray", 
-             alpha = 0.5) +
-  geom_segment(data = subset(pca_fort, score == 'species'),
-               mapping = aes(x = 0, y = 0, xend = PC1, yend = PC2), 
-               arrow = arrow(length = unit(0.03, "npc"), type = "closed"),
-               colour = "darkgray", 
-               size = 0.8) +
-  geom_text(data = subset(pca_fort, score == 'species'), 
-            mapping = aes(label = label, x = PC1 * 1.1, y = PC2 * 1.1)) +
-  geom_abline(intercept = 0, slope = 0, linetype = "dashed", 
-              size = 0.8, colour = "gray") + 
-  geom_vline(xintercept = 0, linetype = "dashed", size = 0.8, colour = "gray") +
-  xlab("PC1 (92%)") + 
-  ylab("PC2 (5%)") + 
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black")) +
-  ylim(c(-10, 20)) +
-  xlim(c(-25, 25))
-
-
-
-
-
-### PCA attempt for site, treatment, taxon code -------------------------------- HELP, PCA, with shaddy AI help..
-## trying to plot the traits, sites, species (taxon_code)
+## data, merging together cwm 
+cwm_all_traits <- cwm_cn.ratio_summarize %>%
+  full_join(cwm_ldmc_summarize) %>%
+  full_join(cwm_leaf.thickness_summarize) %>%
+  full_join(cwm_n.concentration_summarize) %>%
+  full_join(cwm_n.delta.15_summarize) %>%
+  full_join(cwm_plant.height_summarize) %>%
+  full_join(cwm_sla_summarize) %>%
+  full_join(cwm_ssd_summarize) %>%
+  full_join(cwm_c.delta.13_summarize)
 
 
 ## subset data, traits of interest
-pca_soft.meta <- df_soft_spcomp[,c("site", "treatment", "taxon_code", 
-                                "leaf_thickness", "sla", "c_total", "n_total",
-                                  "ssd_dimensional", "plant_height", 
-                                "c_delta.13", "n_delta.15", "ldmc")]
+pca_cwm_traits <- cwm_all_traits[,c("cwm_cn_ratio", "cwm_ldmc", 
+                                  "cwm_leaf.thickness", "cwm_n.concentration",
+                                  "cwm_n_delta.15", "cwm_plant.height", 
+                                  "cwm_sla", "cwm_ssd", "cwm_c_delta.13")]
 
-## removing NA values
-any(is.na(pca_soft.meta))
-pca_soft.meta_clean <- na.omit(pca_soft.meta)
-any(is.na(pca_soft.meta_clean))
-
-
-## PCA on trait data ## -------------------------------------------------------- LEMON
-pca_result <- prcomp(pca_soft.meta_clean %>%
-                       select(leaf_thickness, sla, c_total, n_total, 
-                              ssd_dimensional, plant_height, 
-                              c_delta.13, n_delta.15, ldmc),
-                     center = TRUE,
-                     scale. = TRUE)
-
-
-## looking at stuff
-pca_result
-summary(pca_result)
-
-## merging together
-pca_df <- as.data.frame(pca_result$x) %>%
-  bind_cols(pca_soft.meta_clean %>% select(site, treatment, taxon_code))
-
-
-## PLOTTING: dots for species, across sites and their PCA, (okay)
-ggplot(pca_df, aes (x = PC1, y = PC2)) +
-  geom_point(aes(color = site), size = 3, alpha = 0.7) +
-  labs(title = "PCA of Traits",
-       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
-       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
-  theme_minimal()
-
-
-## PLOTTING: arrows for species... not super informative? (not great?)
-ggplot(pca_df, aes(x = PC1, y = PC2)) +
-  geom_point(aes(color = site), size = 3, alpha = 0.7) +
-  geom_segment(data = pca_df %>%
-                 group_by(taxon_code) %>%
-                 summarize(PC1 = mean(PC1), PC2 = mean(PC2)), 
-               aes(x = 0, y = 0, xend = PC1, yend = PC2, color = taxon_code), 
-               arrow = arrow(length = unit(0.3, "inches")), size = 0.7) +
-  labs(title = "PCA of Traits with Species Arrows",
-       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
-       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
-  theme_minimal()
-
-
-## PLOTTING: dots for species, color for site, and with trait arrows
-pca_loadings <- as.data.frame(pca_result$rotation)  # PCA loadings (traits)
-
-# Assuming you have trait names in rownames(pca_loadings) and loading columns are named PC1, PC2
-pca_loadings$trait <- rownames(pca_loadings)
-pca_loadings$PC1 <- pca_loadings$PC1
-pca_loadings$PC2 <- pca_loadings$PC2
-
-
-# 
-# # Plot with arrows for traits and dots for taxon_code
-# ggplot(pca_df, aes(x = PC1, y = PC2)) +
-#   # Points for taxon_code, colored by site
-#   geom_point(aes(color = site), size = 3, alpha = 0.7) +
-#   
-#   # Arrows for traits
-#   geom_segment(data = pca_loadings, 
-#                aes(x = 0, y = 0, xend = PC1, yend = PC2, color = trait), 
-#                arrow = arrow(length = unit(0.3, "inches"), type = "closed"), 
-#                size = 0.7) +
-#   
-#   # Add labels for traits
-#   geom_text(data = pca_loadings, 
-#             aes(label = trait, x = PC1 * 1.1, y = PC2 * 1.1), 
-#             size = 3, hjust = 0.5, vjust = 0.5) +
-#   
-#   # Labels and theme
-#   labs(title = "PCA of Traits with Trait Arrows",
-#        x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
-#        y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
-#   theme_minimal()
+## updating column names for label
+pca_cwm_traits <- pca_cwm_traits %>%
+  rename(
+    CN_ratio = cwm_cn_ratio,
+    ldmc = cwm_ldmc,
+    leaf_thickness = cwm_leaf.thickness,
+    N_concentration = cwm_n.concentration, 
+    N.delta_15 = cwm_n_delta.15, 
+    plant_height = cwm_plant.height,
+    sla = cwm_sla, 
+    ssd = cwm_ssd,
+    C.delta_13 = cwm_c_delta.13
+  )
 
 
 
-## trying with bigger arrows
-scaling_factor <- 10  # Adjust this factor as needed
+## checking for NA values
+colSums(is.na(pca_cwm_traits))
+any(is.na(pca_cwm_traits))
 
-pca_loadings_scaled <- pca_loadings %>%
-  mutate(PC1 = PC1 * scaling_factor,
-         PC2 = PC2 * scaling_factor)
+## normalizing the data
+pca_cwm.traits_normalized <- scale(pca_cwm_traits)
+head(pca_cwm.traits_normalized)
 
-# Plot with scaled trait arrows
-ggplot(pca_df, aes(x = PC1, y = PC2)) +
-  # Points for taxon_code, colored by site
-  geom_point(aes(color = site), size = 3, alpha = 0.7) +
-  
-  # Arrows for traits with scaling
-  geom_segment(data = pca_loadings_scaled, 
-               aes(x = 0, y = 0, xend = PC1, yend = PC2), 
-               arrow = arrow(length = unit(0.1, "inches"), type = "closed"), 
-               size = 0.5) +
-  
-  # Add labels for traits
-  geom_text(data = pca_loadings_scaled, 
-            aes(label = trait, x = PC1 * 1.1, y = PC2 * 1.1), 
-            size = 3, hjust = 0.5, vjust = 0.5) +
-  
-  # Add zero lines
-  geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "gray") +
-  
-  # Labels and theme
-  labs(title = "PCA of Traits with Scaled Trait Arrows",
-       x = paste("PC1 (", round(summary(pca_result)$importance[2,1]*100, 1), "%)", sep = ""),
-       y = paste("PC2 (", round(summary(pca_result)$importance[2,2]*100, 1), "%)", sep = "")) +
-  theme_minimal()
+## applying PCA 
+pca_cwm <- princomp(pca_cwm.traits_normalized)
+summary(pca_cwm) # comp.1 (40%), comp.2 (27%), comp.3 (15%) = 83%
+
+## loading matrix
+pca_cwm$loadings[,1:4] # 1-4 = 90%
+
+## Scree Plot (visual of the loading matrix)
+fviz_eig(pca_cwm, addlabels = TRUE)
+
+## Biplot of the attributes
+fviz_pca_var(pca_cwm, col.var = "black")
+
+## Contribute of each variable
+fviz_cos2(pca_cwm, choice = "var", axes = 1:2)
+
+## Biplot combined with cos2
+
+fviz_pca_var(pca_cwm, col.var = "cos2",
+             gradient.cols = c("lightblue", "blue", "black"), 
+             repel = TRUE)
+
+
+
+
+
+## attempting to plot more info
+
+# Create the PCA biplot with both variables and data points
+biplot <- fviz_pca_biplot(pca_cwm, 
+                          col.var = "cos2", 
+                          col.ind = "cos2",
+                          gradient.cols = c("lightblue", "blue", "black"), 
+                          repel = TRUE) +
+  ggtitle("PCA Biplot: Variables and Individuals") +
+  xlab("Principal Component 1") +
+  ylab("Principal Component 2")
+
+
+biplot
+
+
+biplot <- fviz_pca_biplot(pca_cwm, 
+                          geom.ind = "point",  # Use points for individuals
+                          col.ind = "cos2",    # Color individuals by their squared cosine (cos2) values
+                          col.var = "black",   # Color variables in black
+                          gradient.cols = c("lightblue", "blue", "black"), 
+                          repel = TRUE) +      # Avoid label overlap
+  ggtitle("PCA Biplot: Community Weighted Means") +
+  xlab("Principal Component 1 (40.5%)") +
+  ylab("Principal Component 2 (27.9%")
 
 
 ################################################################################
@@ -1274,14 +1251,14 @@ cld(emmeans(mod_evenness.site.trt, ~sitefac))
 ### raw data -------------------------------------------------------------------
 
 plot_raw.leaf_thickness <- 
-  ggplot(df_soft_full, aes (site, leaf_thickness, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, leaf_thickness, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) +
   theme_minimal()
 
 
 plot_raw.sla <- 
-  ggplot(df_soft_full, aes (site, sla, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, sla, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal() # temple, outliers might be okay..
@@ -1291,7 +1268,7 @@ plot_raw.sla <-
 plot_raw.sla_errorbars <- ggplot() + 
     # Add error bars to the box plot for the specified subset of data
     stat_boxplot(
-      data = df_soft_spcomp,
+      data = data_soft.spcomp,
       aes(x = site, y = sla), 
       size = 0.75, 
       geom = "errorbar", 
@@ -1299,7 +1276,7 @@ plot_raw.sla_errorbars <- ggplot() +
     ) +
     # Add the box plot itself for the same subset of data
     geom_boxplot(
-      data = df_soft_spcomp,
+      data = data_soft.spcomp,
       aes(x = site, y = sla), 
       outlier.shape = NA
     ) + 
@@ -1310,13 +1287,13 @@ plot_raw.sla_errorbars <- ggplot() +
 ## likely looks better for other things/ sites
 ggplot() + 
   # Add error bars to the box plot for the specified subset of data
-  stat_boxplot(data = df_soft_spcomp,
+  stat_boxplot(data = data_soft.spcomp,
     aes(x = treatment, y = sla), 
     size = 0.75, 
     geom = "errorbar", 
     width = 0.2 ) +
   # Add the box plot itself for the same subset of data
-  geom_boxplot(data = df_soft_spcomp,
+  geom_boxplot(data = data_soft.spcomp,
     aes(x = treatment, y = sla, fill = treatment), 
     outlier.shape = NA) + 
   # Facet by site (one row per site)
@@ -1327,28 +1304,28 @@ ggplot() +
 
 
 plot_raw.n_concentraiton <- 
-  ggplot(df_soft_full, aes (site, n_concentration, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, n_concentration, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
 
 
 plot_raw.cn_ratio <- 
-  ggplot(df_soft_full, aes (site, cn_ratio, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, cn_ratio, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
 
 
 plot_raw.ssd <- 
-  ggplot(df_soft_full, aes (site, ssd_dimensional, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, ssd_dimensional, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
 
 
 plot_raw.plant_height <- 
-  ggplot(df_soft_full, aes (site, plant_height, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, plant_height, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   ylim (0, 125) + # lubb prgl2 = outliers (trees vs. saps)
@@ -1356,7 +1333,7 @@ plot_raw.plant_height <-
 
 
 plot_raw.c_delta.13 <- ## plot created using the combined df_soft
-  ggplot(df_soft_spcomp, aes (site, c_delta.13, fill = treatment)) +
+  ggplot(data_soft.spcomp, aes (site, c_delta.13, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   facet_grid(rows = vars (photo_pathway), scales = "free_y") +
@@ -1364,14 +1341,14 @@ plot_raw.c_delta.13 <- ## plot created using the combined df_soft
 
 
 plot_raw.n_delta.15 <- ### LUBB HAS A SIGNIFICANT VALUE BETWEEN TREATMENT
-  ggplot(df_soft_full, aes (site, n_delta.15, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, n_delta.15, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
 
 
 plot_raw.ldmc <-
-  ggplot(df_soft_full, aes (site, ldmc, fill = treatment)) +
+  ggplot(data_soft_full, aes (site, ldmc, fill = treatment)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, height = 0, size = 2, color = "blue", alpha = 0.1) + 
   theme_minimal()
