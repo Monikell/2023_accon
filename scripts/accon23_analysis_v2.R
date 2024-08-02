@@ -30,19 +30,7 @@ library('corrr')
 #install.packages("ggcorrplot")
 library(ggcorrplot)
 #install.packages("FactoMineR")
-library("FactoMineR")
 library(FactoMineR)
-
-
-
-# install.packages("corrr")
-# library('corrr')
-# install.packages("ggcorrplot")
-# library(ggcorrplot)
-# install.packages("FactoMineR")
-# library("FactoMineR")
-# library("FactoMineR")
-# 
 # install.packages("factoextra")
 library(factoextra)
 
@@ -870,54 +858,9 @@ qqline(residuals_lmer_n_delta.15)
 
 ################################################################################
 ## soft traits - PCA
-# https://www.youtube.com/watch?v=Tjxgd9FLeYc&t=79s
 ################################################################################ 
-# ## not sure if this is right? -------------------------------------------------- PCA 1 video
-# ## better option below (i think)
-# 
-# ## subset data, traits of interest
-# pca_soft.traits <- data_soft.spcomp[,c("leaf_thickness", "sla", "n_concentration", 
-#                               "cn_ratio", "ssd_dimensional", "plant_height", 
-#                               "c_delta.13", "n_delta.15", "ldmc")]
-# 
-# ## qa/qc
-# # write.csv(pca_soft.traits, "../data/03_rproducts/pca_soft.traits.csv")
-# 
-# # removing NA values
-# any(is.na(pca_soft.traits))
-# pca_soft_raw_clean <- na.omit(pca_soft.traits)
-# any(is.na(pca_soft_raw_clean))
-# 
-# ## running the analysis
-# pca1 <- rda(pca_soft_raw_clean)
-# 
-# ## look at total inertia (variance) and that explained by each PC
-# pca1
-# summary(pca1)
-# 
-# ## determine how many axes to retain for interpretation (BiodiversityR, package)
-# # MRK: focus on % > bs%, only PC1 has "1.00000"
-# PCAsignificance(pca1)
-# 
-# ## plot the data, really basic plot
-# ordiplot(pca1)
-# ordiplot(pca1, type = "t") # t = text
-# 
-# 
-# ### plot the PCA using the package ----------
-# ## using package 'ggvegan'
-# autoplot(pca1, legend.position = "none") +
-#   xlab("PC1 (92%)") +
-#   ylab("PC2 (5%") +
-#   geom_abline(intercept = 0, slope = 0, linetype = "dashed", size = 0.8) +
-#   geom_vline(aes(xintercept=0), linetype = "dashed", size = 0.8) +
-#   theme(panel.grid.major = element_blank(),
-#         panel.grid.minor = element_blank(),
-#         panel.background = element_blank(),
-#         axis.line = element_line(colour = "black"))
 
-
-### PCA RAW with datacamp ---------------------------------------------------------- PCA 2 attempt (raw data)
+### PCA1 RAW traits with datacamp ----------------------------------------------
 # https://www.datacamp.com/tutorial/pca-analysis-r
 # https://www.youtube.com/watch?v=5vgP05YpKdE 
 
@@ -965,10 +908,9 @@ pca_data.raw $loadings[,1:6] # Comp.1 - Comp.6 (cumulative 87%)
 ## PCA
 
 
-library(dplyr)
 
 ## Scree Plot
-# visualize the importance of each principal component and can be used to      -- LEMON
+# visualize the importance of each principal component and can be used to      
 # determine the number of principal components to retain. 
 fviz_eig(pca_data.raw , addlabels = TRUE)
 
@@ -979,7 +921,15 @@ fviz_eig(pca_data.raw , addlabels = TRUE)
 # dissimilarities between the samples, and further show the impact of each 
 # attributes on each of the principal components
 # Graph of the variables 
-fviz_pca_var(pca_data.raw , col.var = "black") # ------------------------------- pca trait data
+figure_pca_traits <- fviz_pca_var(pca_data.raw , col.var = "black") # ------------------------------- pca trait data
+
+# saving pca
+# png("../figures/figure_pca_traits.png",
+#      width = 8, height = 8, units = 'in', res = 1500)
+#  figure_pca_traits
+#  dev.off()
+
+
 
 # what you get from the plot: 
 # 1) grouped variables = positively correlated with each other
@@ -1008,99 +958,74 @@ fviz_pca_var(pca_data.raw , col.var = "cos2",
 
 
 
-### PCA CW data with datacamp -------------------------------------------------- PCA 3 
+### PCA2 CW data  --------------------------------------------------------------
+# Nick said to use the raw trait data, and not the cwm
 
-
-## data, merging together cwm 
-cwm_all_traits <- cwm_cn.ratio_summarize %>%
-  full_join(cwm_ldmc_summarize) %>%
-  full_join(cwm_leaf.thickness_summarize) %>%
-  full_join(cwm_n.concentration_summarize) %>%
-  full_join(cwm_n.delta.15_summarize) %>%
-  full_join(cwm_plant.height_summarize) %>%
-  full_join(cwm_sla_summarize) %>%
-  full_join(cwm_ssd_summarize) %>%
-  full_join(cwm_c.delta.13_summarize)
-
-
-## subset data, traits of interest
-pca_cwm_traits <- cwm_all_traits[,c("cwm_cn_ratio", "cwm_ldmc", 
-                                  "cwm_leaf.thickness", "cwm_n.concentration",
-                                  "cwm_n_delta.15", "cwm_plant.height", 
-                                  "cwm_sla", "cwm_ssd", "cwm_c_delta.13")]
-
-## updating column names for label
-pca_cwm_traits <- pca_cwm_traits %>%
-  rename(
-    CN_ratio = cwm_cn_ratio,
-    ldmc = cwm_ldmc,
-    leaf_thickness = cwm_leaf.thickness,
-    N_concentration = cwm_n.concentration, 
-    N.delta_15 = cwm_n_delta.15, 
-    plant_height = cwm_plant.height,
-    sla = cwm_sla, 
-    ssd = cwm_ssd,
-    C.delta_13 = cwm_c_delta.13
-  )
-
-
-
-## checking for NA values
-colSums(is.na(pca_cwm_traits))
-any(is.na(pca_cwm_traits))
-
-## normalizing the data
-pca_cwm.traits_normalized <- scale(pca_cwm_traits)
-head(pca_cwm.traits_normalized)
-
-## applying PCA 
-pca_cwm <- princomp(pca_cwm.traits_normalized)
-summary(pca_cwm) # comp.1 (40%), comp.2 (27%), comp.3 (15%) = 83%
-
-## loading matrix
-pca_cwm$loadings[,1:4] # 1-4 = 90%
-
-## Scree Plot (visual of the loading matrix)
-fviz_eig(pca_cwm, addlabels = TRUE)
-
-## Biplot of the attributes
-fviz_pca_var(pca_cwm, col.var = "black") ## jus the pca ------------------------ pca cwm
-
-## Contribute of each variable
-fviz_cos2(pca_cwm, choice = "var", axes = 1:2)
-
-## Biplot combined with cos2
-
-fviz_pca_var(pca_cwm, col.var = "cos2",
-             gradient.cols = c("lightblue", "blue", "black"), 
-             repel = TRUE)
-
-
-## attempting to plot more info
-
-# Create the PCA biplot with both variables and data points
-# biplot <- fviz_pca_biplot(pca_cwm, 
-#                           col.var = "cos2", 
-#                           col.ind = "cos2",
-#                           gradient.cols = c("lightblue", "blue", "black"), 
-#                           repel = TRUE) +
-#   ggtitle("PCA Biplot: Variables and Individuals") +
-#   xlab("Principal Component 1") +
-#   ylab("Principal Component 2")
+# ## data, merging together cwm 
+# cwm_all_traits <- cwm_cn.ratio_summarize %>%
+#   full_join(cwm_ldmc_summarize) %>%
+#   full_join(cwm_leaf.thickness_summarize) %>%
+#   full_join(cwm_n.concentration_summarize) %>%
+#   full_join(cwm_n.delta.15_summarize) %>%
+#   full_join(cwm_plant.height_summarize) %>%
+#   full_join(cwm_sla_summarize) %>%
+#   full_join(cwm_ssd_summarize) %>%
+#   full_join(cwm_c.delta.13_summarize)
 # 
 # 
-# biplot
+# ## subset data, traits of interest
+# pca_cwm_traits <- cwm_all_traits[,c("cwm_cn_ratio", "cwm_ldmc", 
+#                                   "cwm_leaf.thickness", "cwm_n.concentration",
+#                                   "cwm_n_delta.15", "cwm_plant.height", 
+#                                   "cwm_sla", "cwm_ssd", "cwm_c_delta.13")]
+# 
+# ## updating column names for label
+# pca_cwm_traits <- pca_cwm_traits %>%
+#   rename(
+#     CN_ratio = cwm_cn_ratio,
+#     ldmc = cwm_ldmc,
+#     leaf_thickness = cwm_leaf.thickness,
+#     N_concentration = cwm_n.concentration, 
+#     N.delta_15 = cwm_n_delta.15, 
+#     plant_height = cwm_plant.height,
+#     sla = cwm_sla, 
+#     ssd = cwm_ssd,
+#     C.delta_13 = cwm_c_delta.13
+#   )
+# 
+# 
+# 
+# ## checking for NA values
+# colSums(is.na(pca_cwm_traits))
+# any(is.na(pca_cwm_traits))
+# 
+# ## normalizing the data
+# pca_cwm.traits_normalized <- scale(pca_cwm_traits)
+# head(pca_cwm.traits_normalized)
+# 
+# ## applying PCA 
+# pca_cwm <- princomp(pca_cwm.traits_normalized)
+# summary(pca_cwm) # comp.1 (40%), comp.2 (27%), comp.3 (15%) = 83%
+# 
+# ## loading matrix
+# pca_cwm$loadings[,1:4] # 1-4 = 90%
+# 
+# ## Scree Plot (visual of the loading matrix)
+# fviz_eig(pca_cwm, addlabels = TRUE)
+# 
+# ## Biplot of the attributes
+# fviz_pca_var(pca_cwm, col.var = "black") ## jus the pca ---------------------- pca cwm
+# 
+# ## Contribute of each variable
+# fviz_cos2(pca_cwm, choice = "var", axes = 1:2)
+# 
+# ## Biplot combined with cos2
+# 
+# fviz_pca_var(pca_cwm, col.var = "cos2",
+#              gradient.cols = c("lightblue", "blue", "black"), 
+#              repel = TRUE)
 
 
-# biplot <- fviz_pca_biplot(pca_cwm, 
-#                           geom.ind = "point",  # Use points for individuals
-#                           col.ind = "cos2",    # Color individuals by their squared cosine (cos2) values
-#                           col.var = "black",   # Color variables in black
-#                           gradient.cols = c("lightblue", "blue", "black"), 
-#                           repel = TRUE) +      # Avoid label overlap
-#   ggtitle("PCA Biplot: Community Weighted Means") +
-#   xlab("Principal Component 1 (40.5%)") +
-#   ylab("Principal Component 2 (27.9%")
 
 
 ################################################################################
