@@ -41,14 +41,16 @@ library(factoextra)
 ## data
 # soft data = field and lab data collected
 raw_data_soft <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
-raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
+raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023_subtype.csv")
 raw_data_accon.rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
+
 
 ## metadata
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
 metadata_accon_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
-
+metadata_sla_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
+metadata_sp.sub_types <- read.csv("../data/00_meta/species_subtypes.csv")
 
 unique(raw_data_species.comp$taxon_code)
 
@@ -273,9 +275,32 @@ data_soft.spcomp$average.cover[is.na(data_soft.spcomp$average.cover)] <- 0
 
 
 ## qa/qc real quick
-# write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
-# MRK: looks good/ okay! 
+write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
 
+
+### acqusition strategies SLA -------------------------------------------------- LEMON
+## adding rank based on SLA values 
+
+# convert sla cm^2/g to m^2/kg 
+data_soft.spcomp$sla_m2.kg <- data_soft.spcomp$sla / 10
+
+# calculating sla averages for each species
+avg_sla <- data_soft.spcomp %>%
+  group_by(taxon_code) %>%
+  summarise(avg_sla = mean(sla_m2.kg))
+
+# merging the avg_sla back into the dataset
+data_soft.spcomp$sla_m2.kg_avg <- left_join(data_soft.spcomp,
+                                            avg_sla)
+
+# merging the metadata sla range to the data
+data_soft.spcomp$sla_m2.kg_mid.rank <- left_join(data_soft.spcomp, 
+                                                 metadata_sla_rank, by = )
+
+View(data_soft.spcomp)
+
+
+write.csv(data_soft.spcomp, "../data/03_rproducts/spcomp.csv")
 
 ### CWM: SLA -------------------------------------------------------------------
 
@@ -1117,6 +1142,9 @@ spcomp_evenness_treatment$evenness <-
   spcomp_evenness_treatment$richness_treatment
 
 
+## saving
+write.csv(spcomp_evenness_plots, "../data/03_rproducts/spcomp_evenness_plots.csv")
+
 ################################################################################
 ## species composition - models
 ################################################################################
@@ -1159,16 +1187,25 @@ mod_div.site.trt <-lmer(log(diversity_plot) ~ sitefac * trtfac +
 
 ## Q-Q plot for the residuals
 plot(resid(mod_div.site.trt) ~fitted(mod_div.site.trt))
-plot(mod_div.site.trt, which = 2) # plot residual too, but with a line
-# MRK: looks like some heteroscedasticity? -------------------------------------- HELP
+plot(mod_div.site.trt, which = 2) # plot residual too, but with a line --------- CONE
 
 
 ## anova
 # MRK: site most influence
 Anova(mod_div.site.trt) ## sitefac *** 
 
-## post-hoc pairwise comparisons of the estimated marginal means (emmeans)
+## post-hoc pairwise comparisons of the estimated marginal means (emmeans) ### LEMON
 cld(emmeans(mod_div.site.trt, ~sitefac))
+
+## emmeans
+emmeans(mod_div.site.trt, ~sitefac)
+emmeans(mod_div.site.trt, ~trtfac)
+
+
+
+cld(emmeans(lmer_n_delta.15, ~treatment, at = list (site = 'lubb'))) 
+
+
 
 
 ### model 02:  sp.comp evenness across sites -----------------------------------
