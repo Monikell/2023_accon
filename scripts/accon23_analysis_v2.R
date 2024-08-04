@@ -42,17 +42,13 @@ library(factoextra)
 # soft data = field and lab data collected
 raw_data_soft <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
 raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023_subtype.csv")
-raw_data_accon.rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
-
 
 ## metadata
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
-metadata_accon_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
-metadata_sla_rank <- read.csv("../data/00_meta/rank_acqcon_sla.csv")
+metadata_sla_high.low <- read.csv("../data/00_meta/sla_high.low.csv")
 metadata_sp.sub_types <- read.csv("../data/00_meta/species_subtypes.csv")
 
-unique(raw_data_species.comp$taxon_code)
 
 ################################################################################
 ## soft traits - calculating soft plant trait information
@@ -275,11 +271,12 @@ data_soft.spcomp$average.cover[is.na(data_soft.spcomp$average.cover)] <- 0
 
 
 ## qa/qc real quick
-write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
+#write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
 
 
-### acqusition strategies SLA -------------------------------------------------- LEMON
+### acquisition strategies SLA -------------------------------------------------- LEMON
 ## adding rank based on SLA values 
+
 
 # convert sla cm^2/g to m^2/kg 
 data_soft.spcomp$sla_m2.kg <- data_soft.spcomp$sla / 10
@@ -289,18 +286,42 @@ avg_sla <- data_soft.spcomp %>%
   group_by(taxon_code) %>%
   summarise(avg_sla = mean(sla_m2.kg))
 
+
+# calculating sla average for each species by site ### NEW 
+avg_sla_site <- data_soft.spcomp %>%
+  group_by(site, taxon_code) %>%
+  summarise(avg_sla_site = mean(sla_m2.kg))
+
+# mergining sla averages with each other
+avg_sla_togehter <- full_join(avg_sla, avg_sla_site)
+View(avg_sla_togehter)
+
+
+
 # merging the avg_sla back into the dataset
-data_soft.spcomp$sla_m2.kg_avg <- left_join(data_soft.spcomp,
-                                            avg_sla)
+data_soft.spcomp <- left_join(data_soft.spcomp, avg_sla, 
+                                            by = "taxon_code")
+
+
+# adding in sub_types into the main data 
+data_soft.spcomp <- left_join(data_soft.spcomp, metadata_sp.sub_types, 
+                              by = "taxon_code")
+
 
 # merging the metadata sla range to the data
-data_soft.spcomp$sla_m2.kg_mid.rank <- left_join(data_soft.spcomp, 
-                                                 metadata_sla_rank, by = )
+data_soft.spcomp <- left_join(data_soft.spcomp, metadata_sla_high.low, 
+                              by = "growth_habit_sub")
 
-View(data_soft.spcomp)
+# ranking species based on where their average SLA falls above or below the mid range
+data_soft.spcomp$acquisition_strat <- ifelse(data_soft.spcomp$avg_sla
+                                             < data_soft.spcomp$mid_sla_range,
+                                             "conservative", "acquisitive")
 
 
-write.csv(data_soft.spcomp, "../data/03_rproducts/spcomp.csv")
+
+## seems to have worked!! Yay!!!
+# write.csv(data_soft.spcomp, "../data/03_rproducts/spcomp_traits_sla.strat_rank.csv")
+
 
 ### CWM: SLA -------------------------------------------------------------------
 
