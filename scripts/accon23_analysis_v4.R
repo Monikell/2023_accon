@@ -43,6 +43,12 @@ spcomp_raw <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
 
+## r code for figures and things
+# color pallet for figures
+colors <- c("Control" = "#E0FFFF", "NPK" = "#7A8B8B")
+
+
+
 ################################################################################
 ## cleaning data
 ################################################################################
@@ -241,13 +247,194 @@ soft_full <- soft_calculations
 # MRK: looks good, except sample "sevi_39_boer_1_491", the CN isotope values
 # seemed to have an issue from the lab, removing data error. 
 
-# removing CN isotope issue sample
+# removing CN isotope issue sample, extremely high (and likely bad/wrong) value
 soft_full <- 
   soft_full[soft_full$id_full != "sevi_39_boer_1_491", ]
 
+
+### merging values for community weighted means (cwm) --------------------------
+
+soft_spcomp_full <- left_join(soft_full, metadata_species.list, 
+                              by = c("site", "taxon_code"))
+
+# creating a new column for merging that is just "site".
+spcomp_avg.cover$site <- gsub("\\.us","",spcomp_avg.cover$site_code)
+
+# merging the soft full, with all the sp. info with the average cover info.
+soft_spcomp_full <- left_join(soft_spcomp_full, spcomp_avg.cover, 
+                              by = c("site", "plot", "taxon_code"))
+
 ################################################################################
-## soft traits - models
+## soft traits - models (raw and cwm)
 ################################################################################
 
 ## stopped here!! Create modesl for both the raw and cwm, and create figures
 ## and plots, follow tempalte like that was used at ESA. 
+
+### SLA ------------------------------------------------------------------------
+
+## SLA raw ----------
+
+# visualize data
+hist(soft_spcomp_full$sla_m2.kg)
+hist(log(soft_spcomp_full$sla_m2.kg))
+qqnorm(log(soft_spcomp_full$sla_m2.kg))
+qqline(log(soft_spcomp_full$sla_m2.kg))
+# log needed
+
+# model
+sla_lmer_raw <- lmer(log(sla_m2.kg) ~ treatment * site + (1|plot) + (1|block),
+                     data = (soft_spcomp_full))
+
+# residual plots
+plot(resid(sla_lmer_raw) ~fitted(sla_lmer_raw))
+plot(sla_lmer_raw, which = 2)
+
+# anova
+Anova(sla_lmer_raw) # site ***
+
+# emmeans 
+emmeans(sla_lmer_raw, ~site)
+cld(emmeans(sla_lmer_raw, ~treatment))
+
+
+
+# plotting
+fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+                                            fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+
+png('../figures/fig_sla_raw.png',
+    width = 12, height = 8, units = 'in', res = 1500)
+fig_sla_raw
+dev.off()
+
+
+fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+                                            fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla raw sites combined") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+
+png('../figures/fig_sla_raw.sites.png',
+    width = 12, height = 8, units = 'in', res = 1500)
+fig_sla_raw.sites
+dev.off()
+
+## SLA cwm ----------
+
+# cwm calculation
+sla_cwm <- data_soft.spcomp %>%
+  group_by(site, plot, treatment, block) %>% 
+  summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
+
+
+
+# visualize data
+hist(soft_spcomp_full$sla_m2.kg)
+hist(log(soft_spcomp_full$sla_m2.kg))
+qqnorm(log(soft_spcomp_full$sla_m2.kg))
+qqline(log(soft_spcomp_full$sla_m2.kg))
+# log needed
+
+# model
+sla_lmer_raw <- lmer(log(sla_m2.kg) ~ treatment * site + (1|plot) + (1|block),
+                     data = (soft_spcomp_full))
+
+# residual plots
+plot(resid(sla_lmer_raw) ~fitted(sla_lmer_raw))
+plot(sla_lmer_raw, which = 2)
+
+# anova
+Anova(sla_lmer_raw) # site ***
+
+# emmeans 
+emmeans(sla_lmer_raw, ~site)
+cld(emmeans(sla_lmer_raw, ~treatment))
+
+
+
+# plotting
+fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+                                            fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+
+png('../figures/fig_sla_raw.png',
+    width = 12, height = 8, units = 'in', res = 1500)
+fig_sla_raw
+dev.off()
+
+
+fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+                                                  fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla raw sites combined") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+
+png('../figures/fig_sla_raw.sites.png',
+    width = 12, height = 8, units = 'in', res = 1500)
+fig_sla_raw.sites
+dev.off()
+
+
+
+
+
