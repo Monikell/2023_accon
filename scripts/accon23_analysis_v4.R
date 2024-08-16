@@ -1,0 +1,253 @@
+################################################################################
+## Author: Monika Kelley
+## Date: 2024/05/16 to _______
+## Purpose: Summer 2023, Acquisitive vs. Conservative Grasslands Communities
+## Project code/ name: ACCON (AC-quisitive CON-servative)
+################################################################################
+
+### ctrl f notes 
+# LEMON = last stopped
+# HELP = issue/ not sure
+
+setwd("C:/Users/monik/Documents/git/2023_accon/scripts")
+
+### load libraries -------------------------------------------------------------
+library(tidyverse)
+library(dplyr)
+library(lme4)
+library(ggplot2)
+library(car) # "Anova"
+library(emmeans)
+library(multcompView) # "cld" for emmeans
+library(multcomp) # "cld" for emmeans 
+library(corrr)
+library(vegan)
+
+## PCA
+#install.packages("corrr")
+library('corrr')
+#install.packages("ggcorrplot")
+library(ggcorrplot)
+#install.packages("FactoMineR")
+library(FactoMineR)
+# install.packages("factoextra")
+library(factoextra)
+
+### load data ------------------------------------------------------------------
+## data
+# soft data = field and lab data collected
+soft_raw <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
+spcomp_raw <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
+
+## metadata
+metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
+metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
+
+################################################################################
+## cleaning data
+################################################################################
+
+### soft data ------------------------------------------------------------------
+
+## renaming data set to be modified
+soft_calculations <- soft_raw
+
+## lowering col names to make merging later easier
+names(soft_calculations) <- tolower(colnames(soft_calculations))
+
+# creating shorter version of plot metadata
+metadata_plot_treatment <- 
+  metadata_plots[,c("site_code","Treatment","plot","block")]
+
+# easier to merge col. names
+names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
+
+## adding in plot information
+soft_calculations <- left_join(soft_calculations, metadata_plot_treatment)
+
+
+### species comp ---------------------------------------------------------------
+## merging plot information with species comp information
+spcomp_avg.cover <- 
+  left_join(spcomp_raw, metadata_plot_treatment)
+
+## removing the "non-plant" cover percentages
+unique(spcomp_avg.cover$type_of_cover) 
+spcomp_avg.cover <- subset(spcomp_avg.cover, type_of_cover == "plant")
+
+## species comp. averages by site, plot, and per species (taxon_code)
+# also condenses Temple plots into one subplot average.
+spcomp_avg.cover <- spcomp_avg.cover %>%
+  group_by(site_code, plot, taxon_code) %>%
+  summarise(average.cover = mean(percent_cover, na.rm = TRUE))
+
+## adding sp. comp data to the soft data. might be better to add 
+## to average values per taxon code.. later? 
+# soft_calculations <- left_join(soft_calculations, spcomp_avg.cover)
+
+################################################################################
+## soft traits - calculating soft plant traits
+
+# traits: leaf thickness, SLA, carbon concentration, nitrogen concentration, 
+# C:N ratio, SSD, plant height, δ13C, δ15N, LDMC 
+# Coming: phosphorous and potassium
+################################################################################
+
+
+### specific leaf area (SLA) ---------------------------------------------------
+## calculating SLA: area/oven-dry mass
+soft_calculations$sla_cm2.g <- 
+  soft_calculations$leaf_area / soft_calculations$leaf_dry_g
+
+## convert sla cm^2/g to m^2/kg 
+soft_calculations$sla_m2.kg <- soft_calculations$sla_cm2.g / 10
+
+
+### leaf dry-matter content (LDMC) ---------------------------------------------
+# expressed in units of mg g^-1, measured in grams conversion needed first. 
+
+## dry weight g to mg 
+soft_calculations$leaf_dry_mg <- soft_calculations$leaf_dry_g * 1000
+
+## calculating LDMC: oven-dry mass / water-saturated fresh mass: units mg.g^-1 
+soft_calculations$ldmc <- 
+  soft_calculations$leaf_dry_mg / soft_calculations$leaf_wet_g
+
+
+### stem-specific density (SSD) ------------------------------------------------
+## calculating SSD: oven-dry mass / volume of fresh stem
+
+## notes ----------
+# 2 methods for calculating stem volume: 1) dimensional, 2) water-displacement
+# 01) dimensional method: V = (0.5D)^2 X pi X L
+# 01) notes) D = diameter (ddh average), L = length of section of stem
+# 02) water-displacement: physically calculated in the lab
+
+
+## 01) dimensional method calculations ----------
+
+## step 1: addressing hollow stems ----------
+
+## step 1.a: renaming columns for clarity
+# imagej specifically called out as no "set_scale" was used as we were only 
+# looking for a percentage of hollow out of total stem cross-sectional area
+soft_calculations <- soft_calculations %>%
+  rename(
+    stem_hollow.or.solid = stem_hollow, # clarifying if stem solid or hollow
+    stem_imagej_area.whole = stem_area_whole,
+    stem_imagej_area.hollow = stem_area_hollow,
+    ddh_average_mm = ddh_average
+  )
+
+
+## step 1.b: calculating average % of hollow stem for each species by site
+df_stem_hollow.average <- soft_calculations %>%
+  group_by(site, taxon_code) %>%
+  summarise(stem_hollow.percent.average = mean(stem_area_percent_hollow, 
+                                               na.rm = TRUE))
+
+## step 1.c: merge the calculated averages back into the original data set
+soft_calculations <- soft_calculations %>%
+  left_join(df_stem_hollow.average, by = c("site", "taxon_code"))
+
+## step 1.d: estimating hollow diameter
+# calculate the solid and hollow area of the stem using the ddh average
+soft_calculations$stem_total.area <- 
+  pi * (soft_calculations$ddh_average_mm / 2)^2
+
+# calculate the hollow area based on the calculated percentage
+soft_calculations$stem_hollow.area <- 
+  (soft_calculations$stem_hollow.percent.average / 100) * 
+  soft_calculations$stem_total.area
+
+# calculate the estimated diameter of the hollow area
+# purpose: used to check math against field ddh values (reasonable numbers)
+soft_calculations$stem_hollow.diameter_estimate <- 
+  2 * sqrt(soft_calculations$stem_hollow.area / pi)
+
+
+## step 2: finalizing stem area ----------
+
+# step 2.a: replacing NA values with 0 for the stem_hollow.area
+# purpose: highlights solid vs. hollow stems + good for math in step 2.b
+soft_calculations <- soft_calculations %>% 
+  mutate(stem_hollow.area = replace_na(stem_hollow.area, 0))
+
+
+## step 2.b: calculating solid cross-sectional area: whole.area - hollow.area
+## last step for dealing with hollow stems! can move on to volume calculations 
+soft_calculations$stem_area.solid <- 
+  soft_calculations$stem_total.area - soft_calculations$stem_hollow.area
+
+
+## step 3: calculating volume  ----------
+# formula V = (stem_area.solid) X length of stem, units typically in 
+# mgmm–3
+
+# converting length from cm to mm
+soft_calculations$stem_length_mm <- soft_calculations$stem_length_cm * 10
+
+## converting the area from mm^2 to cm^2 MRK: want to be in mm^2
+# soft_calculations$stem_area.solid_cm2 <- soft_calculations$stem_area.solid / 100
+
+# calculating volume: V = (0.5D)^2 x pi x L
+soft_calculations$stem_volume.dimensional_mm3 <- 
+  soft_calculations$stem_area.solid * soft_calculations$stem_length_mm
+
+# converting stem dry weight g to mg
+soft_calculations$stem_dry_mg <- 
+  soft_calculations$stem_dry_g * 1000
+
+## step 4: calculating SSD
+soft_calculations$ssd_dimensional <- 
+  soft_calculations$stem_dry_mg / soft_calculations$stem_volume.dimensional_mm3
+
+
+## 02) water-displacement method calculations ---------- (might be off/ wrong)
+# small samples, = needed more reps? Not really sure what doing wrong here. 
+# use dimensional values, has full data anyway (mostly)
+
+
+## step 2: calculating ssd 
+# volume physically calculated in lab, no math required other than ssd calc. 
+ soft_calculations$ssd_displacement <- 
+   soft_calculations$stem_dry_mg / soft_calculations$stem_water.displaced.g
+
+
+### carbon and nitrogen concentration ------------------------------------------
+## total of sample (µg)/ sample weight (mg)
+
+# carbon
+soft_calculations$c_concentration <- 
+  soft_calculations$c_total / soft_calculations$cn_sample.weight
+
+# nitrogen
+soft_calculations$n_concentration <- 
+  soft_calculations$n_total / soft_calculations$cn_sample.weight
+
+
+### carbon nitrogen ration (c:n) -----------------------------------------------
+## carbon concentration / nitrogen concentration
+
+soft_calculations$cn_ratio <- 
+  soft_calculations$c_concentration / soft_calculations$n_concentration
+
+
+### soft plant data calculated creating new data frame  ------------------------
+soft_full <- soft_calculations
+
+## looking over data for qc/qa
+# write.csv(soft_full, "../data/03_rproducts/soft_full.csv")
+# MRK: looks good, except sample "sevi_39_boer_1_491", the CN isotope values
+# seemed to have an issue from the lab, removing data error. 
+
+# removing CN isotope issue sample
+soft_full <- 
+  soft_full[soft_full$id_full != "sevi_39_boer_1_491", ]
+
+################################################################################
+## soft traits - models
+################################################################################
+
+## stopped here!! Create modesl for both the raw and cwm, and create figures
+## and plots, follow tempalte like that was used at ESA. 
