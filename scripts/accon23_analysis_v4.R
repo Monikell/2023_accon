@@ -63,7 +63,7 @@ names(soft_calculations) <- tolower(colnames(soft_calculations))
 
 # creating shorter version of plot metadata
 metadata_plot_treatment <- 
-  metadata_plots[,c("site_code","Treatment","plot","block")]
+  metadata_plots[,c("site_code","site","Treatment","plot","block")]
 
 # easier to merge col. names
 names(metadata_plot_treatment) <- tolower(colnames(metadata_plot_treatment))
@@ -90,6 +90,8 @@ spcomp_avg.cover <- spcomp_avg.cover %>%
 ## adding sp. comp data to the soft data. might be better to add 
 ## to average values per taxon code.. later? 
 # soft_calculations <- left_join(soft_calculations, spcomp_avg.cover)
+
+
 
 ################################################################################
 ## soft traits - calculating soft plant traits
@@ -194,7 +196,7 @@ soft_calculations$stem_area.solid <-
 soft_calculations$stem_length_mm <- soft_calculations$stem_length_cm * 10
 
 ## converting the area from mm^2 to cm^2 MRK: want to be in mm^2
-# soft_calculations$stem_area.solid_cm2 <- soft_calculations$stem_area.solid / 100
+# soft_calculations$stem_area.solid_cm2 <- soft_calculations$stem_area.solid/100
 
 # calculating volume: V = (0.5D)^2 x pi x L
 soft_calculations$stem_volume.dimensional_mm3 <- 
@@ -242,17 +244,11 @@ soft_calculations$cn_ratio <-
 ### soft plant data calculated creating new data frame  ------------------------
 soft_full <- soft_calculations
 
-## looking over data for qc/qa
-# write.csv(soft_full, "../data/03_rproducts/soft_full.csv")
-# MRK: looks good, except sample "sevi_39_boer_1_491", the CN isotope values
-# seemed to have an issue from the lab, removing data error. 
-
-# removing CN isotope issue sample, extremely high (and likely bad/wrong) value
-soft_full <- 
-  soft_full[soft_full$id_full != "sevi_39_boer_1_491", ]
 
 
 ### merging values for community weighted means (cwm) --------------------------
+
+spcomp_avg.cover
 
 soft_spcomp_full <- left_join(soft_full, metadata_species.list, 
                               by = c("site", "taxon_code"))
@@ -298,8 +294,7 @@ emmeans(sla_lmer_raw, ~site)
 cld(emmeans(sla_lmer_raw, ~treatment))
 
 
-
-# plotting
+## plotting
 fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
                                             fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
@@ -319,11 +314,11 @@ fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg,
   scale_fill_manual(values = colors) + 
   facet_wrap( ~ site, scale = "free_y")
 
-
-png('../figures/fig_sla_raw.png',
-    width = 12, height = 8, units = 'in', res = 1500)
-fig_sla_raw
-dev.off()
+## save the image
+# png('../figures/fig_sla_raw.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_raw
+# dev.off()
 
 
 fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
@@ -350,14 +345,41 @@ png('../figures/fig_sla_raw.sites.png',
 fig_sla_raw.sites
 dev.off()
 
+
 ## SLA cwm ----------
 
-# cwm calculation
-sla_cwm <- data_soft.spcomp %>%
+
+## percentage of NA to zero, top 5 individuals 0% cover in some plots
+# will use for all community weighted means
+cwm_soft_spcomp <- soft_spcomp_full
+cwm_soft_spcomp$average.cover[is.na(cwm_soft_spcomp$average.cover)] <- 0
+
+cwm_spcomp_averages <- subset(cwm_soft_spcomp, 
+                              select = c("site", "plot", "taxon_code", 
+                                         "average.cover"))
+
+## lemon want the average cover for each species, including zeros 
+cwm_spcomp_averages <- cwm_spcomp_averages %>%
+  group_by(site, plot, taxon_code) %>%
+  summarise(average.cover = mean(average.cover, na.rm = TRUE))
+                          
+## average sla
+sla_cwm <- cwm_soft_spcomp %>%
+  group_by(site_code, plot, taxon_code) %>%
+  summarise(sla_avg = mean(sla_m2.kg, na.rm = TRUE))
+
+## merging back in plot information and the cover percentages  
+sla_cwm <- left_join(sla_cwm, metadata_plot_treatment)
+sla_cwm <- left_join(sla_cwm, cwm_spcomp_averages, 
+                     by = c("site","plot","taxon_code"))
+
+## cwm calculation ############################################################### LEMON NOT SURE ABOUT THE COMMUNITY WEIGHTED MEANS, the log??
+sla_cwm <- sla_cwm %>%
   group_by(site, plot, treatment, block) %>% 
-  summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
+  summarise(sla_avg = log(weighted.mean(sla_m2.kg, average.cover)))
 
-
+hist(sla_cwm$average.cover)
+hist(sla_cwm$sla_avg)
 
 # visualize data
 hist(soft_spcomp_full$sla_m2.kg)
@@ -437,4 +459,12 @@ dev.off()
 
 
 
+
+
+
+
+## save this for the CN analysis
+# removing CN isotope issue sample, extremely high (and likely bad/wrong) value
+soft_full <- 
+  soft_full[soft_full$id_full != "sevi_39_boer_1_491", ]
 

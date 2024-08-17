@@ -273,7 +273,7 @@ data_soft.spcomp$average.cover[is.na(data_soft.spcomp$average.cover)] <- 0
 #write.csv(data_soft.spcomp, "../data/03_rproducts/data_soft.spcomp.csv")
 
 
-### acquisition strategies SLA -------------------------------------------------- LEMON
+### acquisition strategies SLA -------------------------------------------------
 ## adding rank based on SLA values 
 
 
@@ -334,7 +334,7 @@ qqnorm(data_soft.spcomp$sla) ; qqline(data_soft.spcomp$sla, col = "red")
 qqnorm(log(data_soft.spcomp$sla)) ; qqline(log(data_soft.spcomp$sla))
 
 
-## cwm calculation
+## cwm calculation #### =================================================================== LEMON
 cwm_sla_summarize <- data_soft.spcomp %>%
   group_by(site, plot, treatment, block) %>% 
   summarise(cwm_sla = log(weighted.mean(sla, average.cover)))
