@@ -279,23 +279,23 @@ qqline(log(soft_spcomp_full$sla_m2.kg))
 # log needed
 
 # model
-sla_lmer_raw <- lmer(log(sla_m2.kg) ~ treatment * site + (1|plot) + (1|block),
+sla_raw_lmer <- lmer(log(sla_m2.kg) ~ treatment * site + (1|plot) + (1|block),
                      data = (soft_spcomp_full))
 
 # residual plots
-plot(resid(sla_lmer_raw) ~fitted(sla_lmer_raw))
-plot(sla_lmer_raw, which = 2)
+plot(resid(sla_raw_lmer) ~fitted(sla_raw_lmer))
+plot(sla_raw_lmer, which = 2)
 
 # anova
-Anova(sla_lmer_raw) # site ***
+Anova(sla_raw_lmer) # site ***
 
 # emmeans 
-emmeans(sla_lmer_raw, ~site)
-cld(emmeans(sla_lmer_raw, ~treatment))
+emmeans(sla_raw_lmer, ~site)
+cld(emmeans(sla_raw_lmer, ~treatment))
 
 
 ## plotting
-fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+fig_sla_raw_sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
                                             fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
@@ -317,11 +317,11 @@ fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg,
 ## save the image
 # png('../figures/fig_sla_raw.png',
 #     width = 12, height = 8, units = 'in', res = 1500)
-# fig_sla_raw
+# fig_sla_raw_sites
 # dev.off()
 
 
-fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+fig_sla_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
                                             fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
@@ -340,19 +340,19 @@ fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg,
   scale_fill_manual(values = colors)
 
 
-png('../figures/fig_sla_raw.sites.png',
-    width = 12, height = 8, units = 'in', res = 1500)
-fig_sla_raw.sites
-dev.off()
+# png('../figures/fig_sla_raw.sites.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_raw_all
+# dev.off()
 
 
-## SLA cwm ----------
-
+## SLA cwm ---------- 
 
 ## percentage of NA to zero, top 5 individuals 0% cover in some plots
 # will use for all community weighted means
 cwm_soft_spcomp <- soft_spcomp_full
 cwm_soft_spcomp$average.cover[is.na(cwm_soft_spcomp$average.cover)] <- 0
+
 
 cwm_spcomp_averages <- subset(cwm_soft_spcomp, 
                               select = c("site", "plot", "taxon_code", 
@@ -362,10 +362,11 @@ cwm_spcomp_averages <- subset(cwm_soft_spcomp,
 cwm_spcomp_averages <- cwm_spcomp_averages %>%
   group_by(site, plot, taxon_code) %>%
   summarise(average.cover = mean(average.cover, na.rm = TRUE))
-                          
+
+
 ## average sla
 sla_cwm <- cwm_soft_spcomp %>%
-  group_by(site_code, plot, taxon_code) %>%
+  group_by(site, plot, taxon_code) %>%
   summarise(sla_avg = mean(sla_m2.kg, na.rm = TRUE))
 
 ## merging back in plot information and the cover percentages  
@@ -373,44 +374,41 @@ sla_cwm <- left_join(sla_cwm, metadata_plot_treatment)
 sla_cwm <- left_join(sla_cwm, cwm_spcomp_averages, 
                      by = c("site","plot","taxon_code"))
 
-## cwm calculation ############################################################### LEMON NOT SURE ABOUT THE COMMUNITY WEIGHTED MEANS, the log??
-sla_cwm <- sla_cwm %>%
+## cwm calculation 
+sla_cwm_calculated <- sla_cwm %>%
   group_by(site, plot, treatment, block) %>% 
-  summarise(sla_avg = log(weighted.mean(sla_m2.kg, average.cover)))
+  summarise(sla_cwm = weighted.mean(sla_avg, average.cover))
 
-hist(sla_cwm$average.cover)
-hist(sla_cwm$sla_avg)
 
-# visualize data
-hist(soft_spcomp_full$sla_m2.kg)
-hist(log(soft_spcomp_full$sla_m2.kg))
-qqnorm(log(soft_spcomp_full$sla_m2.kg))
-qqline(log(soft_spcomp_full$sla_m2.kg))
-# log needed
+## visualizing
+hist(log(sla_cwm_calculated$sla_cwm))
+qqnorm(log(sla_cwm_calculated$sla_cwm))
+qqline(log(sla_cwm_calculated$sla_cwm))
+qqnorm(sla_cwm_calculated$sla_cwm)
+qqline(sla_cwm_calculated$sla_cwm)
+# log looks a little better
 
 # model
-sla_lmer_raw <- lmer(log(sla_m2.kg) ~ treatment * site + (1|plot) + (1|block),
-                     data = (soft_spcomp_full))
+sla_cwm_lmer <- lmer(log(sla_cwm) ~ treatment * site + (1|plot) + (1|block),
+                     data = (sla_cwm_calculated))
 
 # residual plots
-plot(resid(sla_lmer_raw) ~fitted(sla_lmer_raw))
-plot(sla_lmer_raw, which = 2)
+plot(resid(sla_cwm_lmer) ~fitted(sla_cwm_lmer))
+plot(sla_cwm_lmer, which = 2)
 
 # anova
-Anova(sla_lmer_raw) # site ***
+Anova(sla_cwm_lmer) # site ***
 
 # emmeans 
-emmeans(sla_lmer_raw, ~site)
-cld(emmeans(sla_lmer_raw, ~treatment))
-
-
+emmeans(sla_cwm_lmer, ~site)
+cld(emmeans(sla_cwm_lmer, ~treatment))
 
 # plotting
-fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+fig_sla_cwm_sites <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
                                             fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
-  ggtitle("sla raw") +
+  ggtitle("sla cwm") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5, size = 20),
@@ -426,17 +424,17 @@ fig_sla_raw <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg,
   facet_wrap( ~ site, scale = "free_y")
 
 
-png('../figures/fig_sla_raw.png',
-    width = 12, height = 8, units = 'in', res = 1500)
-fig_sla_raw
-dev.off()
+# png('../figures/fig_sla_cwm_sites.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_cwm_sites
+# dev.off()
 
 
-fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg, 
+fig_sla_cwm_all <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
                                                   fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
-  ggtitle("sla raw sites combined") +
+  ggtitle("sla cwm") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5, size = 20),
@@ -451,20 +449,226 @@ fig_sla_raw.sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = sla_m2.kg,
   scale_fill_manual(values = colors)
 
 
-png('../figures/fig_sla_raw.sites.png',
-    width = 12, height = 8, units = 'in', res = 1500)
-fig_sla_raw.sites
-dev.off()
+# png('../figures/fig_sla_cwm_all.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_cwm_all
+# dev.off()
 
 
 
 
+### C:N ratio ------------------------------------------------------------------
+
+## CN raw ----------
+
+# visualize data
+hist(soft_spcomp_full$cn_ratio)
+hist(log(soft_spcomp_full$cn_ratio))
+qqnorm(soft_spcomp_full$cn_ratio)
+qqline(soft_spcomp_full$cn_ratio)
+qqnorm(log(soft_spcomp_full$cn_ratio))
+qqline(log(soft_spcomp_full$cn_ratio))
+# log needed
+
+# model
+cn_raw_lmer <- lmer(log(cn_ratio) ~ treatment * site + (1|plot) + (1|block),
+                     data = (soft_spcomp_full))
+
+# residual plots
+plot(resid(cn_raw_lmer) ~fitted(cn_raw_lmer))
+plot(cn_raw_lmer, which = 2)
+
+# anova
+Anova(cn_raw_lmer) # site ***, treatment *
+
+# emmeans 
+emmeans(cn_raw_lmer, ~site)
+emmeans(cn_raw_lmer, ~treatment)
+emmeans(cn_raw_lmer, ~site*treatment)
+cld(emmeans(cn_raw_lmer, ~treatment))
+
+pairs(emmeans(cn_raw_lmer, ~treatment)) # 0.03 !!
+
+
+## plotting
+fig_cn_raw_sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
+                                                  fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("C:N raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+## save the image
+ png('../figures/fig_cn_raw_sites.png',
+     width = 12, height = 8, units = 'in', res = 1500)
+ fig_cn_raw_sites
+ dev.off()
+
+
+fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
+                                                fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("cn raw sites combined") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+## save the image
+png('../figures/fig_cn_raw_all.png',
+     width = 12, height = 8, units = 'in', res = 1500)
+fig_cn_raw_all
+ dev.off()
+
+
+## CN cwm ---------- 
+
+## percentage of NA to zero, top 5 individuals 0% cover in some plots
+# will use for all community weighted means
+cwm_soft_spcomp <- soft_spcomp_full
+cwm_soft_spcomp$average.cover[is.na(cwm_soft_spcomp$average.cover)] <- 0
+
+
+cwm_spcomp_averages <- subset(cwm_soft_spcomp, 
+                              select = c("site", "plot", "taxon_code", 
+                                         "average.cover"))
+
+## lemon want the average cover for each species, including zeros 
+cwm_spcomp_averages <- cwm_spcomp_averages %>%
+  group_by(site, plot, taxon_code) %>%
+  summarise(average.cover = mean(average.cover, na.rm = TRUE))
+
+
+## average sla
+sla_cwm <- cwm_soft_spcomp %>%
+  group_by(site, plot, taxon_code) %>%
+  summarise(sla_avg = mean(sla_m2.kg, na.rm = TRUE))
+
+## merging back in plot information and the cover percentages  
+sla_cwm <- left_join(sla_cwm, metadata_plot_treatment)
+sla_cwm <- left_join(sla_cwm, cwm_spcomp_averages, 
+                     by = c("site","plot","taxon_code"))
+
+## cwm calculation 
+sla_cwm_calculated <- sla_cwm %>%
+  group_by(site, plot, treatment, block) %>% 
+  summarise(sla_cwm = weighted.mean(sla_avg, average.cover))
+
+
+## visualizing
+hist(log(sla_cwm_calculated$sla_cwm))
+qqnorm(log(sla_cwm_calculated$sla_cwm))
+qqline(log(sla_cwm_calculated$sla_cwm))
+qqnorm(sla_cwm_calculated$sla_cwm)
+qqline(sla_cwm_calculated$sla_cwm)
+# log looks a little better
+
+# model
+sla_cwm_lmer <- lmer(log(sla_cwm) ~ treatment * site + (1|plot) + (1|block),
+                     data = (sla_cwm_calculated))
+
+# residual plots
+plot(resid(sla_cwm_lmer) ~fitted(sla_cwm_lmer))
+plot(sla_cwm_lmer, which = 2)
+
+# anova
+Anova(sla_cwm_lmer) # site ***
+
+# emmeans 
+emmeans(sla_cwm_lmer, ~site)
+cld(emmeans(sla_cwm_lmer, ~treatment))
+
+# plotting
+fig_sla_cwm_sites <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
+                                                    fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla cwm") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+
+# png('../figures/fig_sla_cwm_sites.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_cwm_sites
+# dev.off()
+
+
+fig_sla_cwm_all <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
+                                                  fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("sla cwm") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+
+# png('../figures/fig_sla_cwm_all.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_sla_cwm_all
+# dev.off()
 
 
 
 
 ## save this for the CN analysis
 # removing CN isotope issue sample, extremely high (and likely bad/wrong) value
+# also remove NA values
 soft_full <- 
   soft_full[soft_full$id_full != "sevi_39_boer_1_491", ]
+
+
+
+fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
+                                               fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", 
+               outlier.fill = "red") +
+  ggtitle("cn raw sites combined") +
+  theme_minimal()
+
+##mk probably remove the NA values, and the really large value??
+
+write.csv(soft_spcomp_full, "../data/03_rproducts/soft_spcomp_full.csv")
 
