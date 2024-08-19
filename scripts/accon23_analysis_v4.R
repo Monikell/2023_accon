@@ -97,7 +97,7 @@ spcomp_avg.cover <- spcomp_avg.cover %>%
 ## soft traits - calculating soft plant traits
 
 # traits: leaf thickness, SLA, carbon concentration, nitrogen concentration, 
-# C:N ratio, SSD, plant height, δ13C, δ15N, LDMC 
+# C:N ratio, SSD, plant height, δ13C (c_delta.13), δ15N, LDMC 
 # Coming: phosphorous and potassium
 ################################################################################
 
@@ -511,10 +511,10 @@ fig_cn_raw_sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio,
   facet_wrap( ~ site, scale = "free_y")
 
 ## save the image
- png('../figures/fig_cn_raw_sites.png',
-     width = 12, height = 8, units = 'in', res = 1500)
- fig_cn_raw_sites
- dev.off()
+ # png('../figures/fig_cn_raw_sites.png',
+ #     width = 12, height = 8, units = 'in', res = 1500)
+ # fig_cn_raw_sites
+ # dev.off()
 
 
 fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
@@ -536,12 +536,13 @@ fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio,
   scale_fill_manual(values = colors)
 
 ## save the image
-png('../figures/fig_cn_raw_all.png',
-     width = 12, height = 8, units = 'in', res = 1500)
-fig_cn_raw_all
- dev.off()
+# png('../figures/fig_cn_raw_all.png',
+#      width = 12, height = 8, units = 'in', res = 1500)
+# fig_cn_raw_all
+#  dev.off()
 
 
+ 
 ## CN cwm ---------- 
 
 ## percentage of NA to zero, top 5 individuals 0% cover in some plots
@@ -549,62 +550,76 @@ fig_cn_raw_all
 cwm_soft_spcomp <- soft_spcomp_full
 cwm_soft_spcomp$average.cover[is.na(cwm_soft_spcomp$average.cover)] <- 0
 
-
+# new cover that includes all species, even those with percent cover "0", which
+# should be the "top 5" species, as those were sampled for soft traits
+# regardless of presence for each plot
 cwm_spcomp_averages <- subset(cwm_soft_spcomp, 
                               select = c("site", "plot", "taxon_code", 
                                          "average.cover"))
 
-## lemon want the average cover for each species, including zeros 
+# merging together "duplicate" values, those with replicates. 
 cwm_spcomp_averages <- cwm_spcomp_averages %>%
   group_by(site, plot, taxon_code) %>%
   summarise(average.cover = mean(average.cover, na.rm = TRUE))
 
 
-## average sla
-sla_cwm <- cwm_soft_spcomp %>%
+## average cn_ratio, per site, plot, & species
+cn_ratio_cwm <- cwm_soft_spcomp %>%
   group_by(site, plot, taxon_code) %>%
-  summarise(sla_avg = mean(sla_m2.kg, na.rm = TRUE))
+  summarise(cn_ratio_avg = mean(cn_ratio, na.rm = TRUE))
 
 ## merging back in plot information and the cover percentages  
-sla_cwm <- left_join(sla_cwm, metadata_plot_treatment)
-sla_cwm <- left_join(sla_cwm, cwm_spcomp_averages, 
+cn_ratio_cwm <- left_join(cn_ratio_cwm, metadata_plot_treatment)
+cn_ratio_cwm <- left_join(cn_ratio_cwm, cwm_spcomp_averages, 
                      by = c("site","plot","taxon_code"))
 
-## cwm calculation 
-sla_cwm_calculated <- sla_cwm %>%
+## cwm calculation,
+cn_ratio_cwm_calculated <- cn_ratio_cwm %>%
   group_by(site, plot, treatment, block) %>% 
-  summarise(sla_cwm = weighted.mean(sla_avg, average.cover))
+  summarise(cn_ratio_cwm = 
+              weighted.mean(cn_ratio_avg, average.cover, na.rm=TRUE))
 
 
 ## visualizing
-hist(log(sla_cwm_calculated$sla_cwm))
-qqnorm(log(sla_cwm_calculated$sla_cwm))
-qqline(log(sla_cwm_calculated$sla_cwm))
-qqnorm(sla_cwm_calculated$sla_cwm)
-qqline(sla_cwm_calculated$sla_cwm)
+hist(cn_ratio_cwm_calculated$cn_ratio_cwm)
+hist(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqnorm(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqline(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqnorm(cn_ratio_cwm_calculated$cn_ratio_cwm)
+qqline(cn_ratio_cwm_calculated$cn_ratio_cwm)
 # log looks a little better
 
 # model
-sla_cwm_lmer <- lmer(log(sla_cwm) ~ treatment * site + (1|plot) + (1|block),
-                     data = (sla_cwm_calculated))
+cn_ratio_cwm_lmer <- lmer(log(cn_ratio_cwm) ~ treatment *
+                            site + (1|plot) + (1|block),
+                     data = (cn_ratio_cwm_calculated))
 
 # residual plots
-plot(resid(sla_cwm_lmer) ~fitted(sla_cwm_lmer))
-plot(sla_cwm_lmer, which = 2)
+plot(resid(cn_ratio_cwm_lmer) ~fitted(cn_ratio_cwm_lmer))
+plot(cn_ratio_cwm_lmer, which = 2)
 
 # anova
-Anova(sla_cwm_lmer) # site ***
+Anova(cn_ratio_cwm_lmer) # site ***, treatment **, treatment:site **
 
 # emmeans 
-emmeans(sla_cwm_lmer, ~site)
-cld(emmeans(sla_cwm_lmer, ~treatment))
+cld(emmeans(cn_ratio_cwm_lmer, ~site))
+cld(emmeans(cn_ratio_cwm_lmer, ~treatment))
+cld(emmeans(cn_ratio_cwm_lmer, ~treatment*site))
+
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='temple'))) #0.0129
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='sevi'))) #0.0104
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='arch'))) #0.3624
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='lubb'))) #0.7572
+pairs((emmeans(cn_ratio_cwm_lmer, ~treatment))) #0.0119
+
 
 # plotting
-fig_sla_cwm_sites <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
-                                                    fill = treatment)) +
+fig_cn_ratio_cwm_sites <- ggplot(cn_ratio_cwm_calculated, 
+                                 aes(x = treatment, y = cn_ratio_cwm, 
+                                     fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
-  ggtitle("sla cwm") +
+  ggtitle("C:N cwm") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5, size = 20),
@@ -620,17 +635,18 @@ fig_sla_cwm_sites <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm,
   facet_wrap( ~ site, scale = "free_y")
 
 
-# png('../figures/fig_sla_cwm_sites.png',
-#     width = 12, height = 8, units = 'in', res = 1500)
-# fig_sla_cwm_sites
-# dev.off()
+# png('../figures/fig_cn_ratio_cwm_sites.png',
+#      width = 12, height = 8, units = 'in', res = 1500)
+# fig_cn_ratio_cwm_sites
+#  dev.off()
 
 
-fig_sla_cwm_all <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm, 
+fig_cn_ratio_cwm_all <- ggplot(cn_ratio_cwm_calculated, 
+                          aes(x = treatment, y = cn_ratio_cwm, 
                                                   fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
                outlier.fill = "white") +
-  ggtitle("sla cwm") +
+  ggtitle("C:N cwm") +
   theme_minimal() +
   theme(
     plot.title = element_text(hjust = 0.5, size = 20),
@@ -645,15 +661,293 @@ fig_sla_cwm_all <- ggplot(sla_cwm_calculated, aes(x = treatment, y = sla_cwm,
   scale_fill_manual(values = colors)
 
 
-# png('../figures/fig_sla_cwm_all.png',
+ # png('../figures/fig_cn_ratio_cwm_all.png',
+ #     width = 12, height = 8, units = 'in', res = 1500)
+ # fig_cn_ratio_cwm_all
+ # dev.off()
+
+
+
+
+
+
+### δ13C, (c_delta.13) ---------------------------------------------------------
+
+## δ13C, (c_delta.13) raw ----------
+# bi-modal data, c3 and c4 plants have diff. delta 13 values, separating.
+cd13_c3 <- subset(soft_spcomp_full, photo_pathway == "c3")
+cd13_c4 <- subset(soft_spcomp_full, photo_pathway == "c4")
+
+# removing issue sample, "contained less C than smallest reference"
+cd13_c4 <- cd13_c4[cd13_c4$id_full != "sevi_39_boer_1_491", ]
+
+# removing NA rows, data not sent/ issues with sample
+cd13_c3 <- subset(cd13_c3, !is.na(c_delta.13))
+
+
+# visualize data
+hist(cd13_c3$c_delta.13) #c3
+qqnorm(cd13_c3$c_delta.13) #c3
+qqline(cd13_c3$c_delta.13) #c3
+
+hist(cd13_c4$c_delta.13) #c4
+qqnorm(cd13_c4$c_delta.13) #c4
+qqline(cd13_c4$c_delta.13) #c4 
+
+# model C3
+cd13_c3_raw_lmer <- lmer((c_delta.13) ~ treatment * site + 
+                           (1|plot) + (1|block), data = (cd13_c3)) #c3
+
+# model c4
+cd13_c4_raw_lmer <- lmer((c_delta.13) ~ treatment * site + 
+                           (1|plot) + (1|block), data = (cd13_c4)) #c4
+
+
+# residual plots
+plot(cd13_c3_raw_lmer, which = 2) #c3
+plot(cd13_c4_raw_lmer, which = 2) #c4
+
+
+# anova
+Anova(cd13_c3_raw_lmer) # site ***, treatment:site . #c3
+Anova(cd13_c4_raw_lmer) # site ***,  site #c4
+
+
+# emmeans C3
+cld(emmeans(cd13_c3_raw_lmer, ~site))
+cld(emmeans(cd13_c3_raw_lmer, ~treatment))
+cld(emmeans(cd13_c3_raw_lmer, ~site*treatment))
+
+pairs(emmeans(cd13_c3_raw_lmer, ~treatment)) # 0.9419
+pairs(emmeans(cd13_c3_raw_lmer, ~treatment, at = list(site = 'sevi'))) #0.31
+pairs(emmeans(cd13_c3_raw_lmer, ~treatment, at = list(site = 'temple'))) #0.07 *
+pairs(emmeans(cd13_c3_raw_lmer, ~treatment, at = list(site = 'arch'))) #0.26
+pairs(emmeans(cd13_c3_raw_lmer, ~treatment, at = list(site = 'lubb'))) #0.51
+
+
+
+## plotting C3 raw across sites
+fig_cd13_c3_raw_sites <- ggplot(cd13_c3, aes(x = treatment, y = c_delta.13, 
+                                                 fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("δ13C C3 raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+# # save the image
+#  png('../figures/fig_cd13_c3_raw_sites.png',
+#      width = 12, height = 8, units = 'in', res = 1500)
+#  fig_cd13_c3_raw_sites
+#  dev.off()
+
+ 
+ ## plotting C4 raw across sites
+fig_cd13_c4_raw_sites <- ggplot(cd13_c4, aes(x = treatment, y = c_delta.13, 
+                                                 fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("δ13C C4 raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+# # save the image
+#  png('../figures/fig_cd13_c4_raw_sites.png',
+#      width = 12, height = 8, units = 'in', res = 1500)
+#  fig_cd13_c4_raw_sites
+#  dev.off()
+ 
+
+## plotting C3 all
+fig_cd13_c3_raw_all <- ggplot(cd13_c3, aes(x = treatment, y = c_delta.13, 
+                                               fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("δ13C C3 raw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+# save the image
+ png('../figures/fig_cd13_c3_raw_all.png',
+      width = 12, height = 8, units = 'in', res = 1500)
+ fig_cd13_c3_raw_all
+  dev.off()
+
+  
+fig_cd13_c4_raw_all <- ggplot(cd13_c4, aes(x = treatment, y = c_delta.13, 
+                                             fill = treatment)) +
+    geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+                 outlier.fill = "white") +
+    ggtitle("δ13C C4 raw") +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5, size = 20),
+      axis.title.x = element_text(size = 15),
+      axis.title.y = element_text(size = 15),
+      axis.text = element_text(size = 13),
+      strip.text = element_text(size = 24),  # Increase size of facet titles
+      legend.position = "none",  # Remove the legend
+      panel.spacing = unit(1, "lines"),  # Increase space between the plots
+      panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+    ) +
+    scale_fill_manual(values = colors)
+
+# # save the image
+# png('../figures/fig_cd13_c4_raw_all.png',
 #     width = 12, height = 8, units = 'in', res = 1500)
-# fig_sla_cwm_all
+# fig_cd13_c4_raw_all
 # dev.off()
 
 
 
 
-## save this for the CN analysis
+## δ13C, (c_delta.13) cwm ------------------------------------------------------ LEMON
+
+cd13_c3$c_delta.13
+cd14_c4
+
+## average per site, plot, & species - C3
+cd13_c3_cwm <- cd13_c3 %>%
+  group_by(site, plot, taxon_code) %>%
+  summarise(cd13_c3_avg = mean(c_delta.13, na.rm = TRUE))
+
+## merging back in plot information and the cover percentages  
+cn_ratio_cwm <- left_join(cn_ratio_cwm, metadata_plot_treatment)
+cn_ratio_cwm <- left_join(cn_ratio_cwm, cwm_spcomp_averages, 
+                          by = c("site","plot","taxon_code"))
+
+## cwm calculation,
+cn_ratio_cwm_calculated <- cn_ratio_cwm %>%
+  group_by(site, plot, treatment, block) %>% 
+  summarise(cn_ratio_cwm = 
+              weighted.mean(cn_ratio_avg, average.cover, na.rm=TRUE))
+
+
+## visualizing
+hist(cn_ratio_cwm_calculated$cn_ratio_cwm)
+hist(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqnorm(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqline(log(cn_ratio_cwm_calculated$cn_ratio_cwm))
+qqnorm(cn_ratio_cwm_calculated$cn_ratio_cwm)
+qqline(cn_ratio_cwm_calculated$cn_ratio_cwm)
+# log looks a little better
+
+# model
+cn_ratio_cwm_lmer <- lmer(log(cn_ratio_cwm) ~ treatment *
+                            site + (1|plot) + (1|block),
+                          data = (cn_ratio_cwm_calculated))
+
+# residual plots
+plot(resid(cn_ratio_cwm_lmer) ~fitted(cn_ratio_cwm_lmer))
+plot(cn_ratio_cwm_lmer, which = 2)
+
+# anova
+Anova(cn_ratio_cwm_lmer) # site ***, treatment **, treatment:site **
+
+# emmeans 
+cld(emmeans(cn_ratio_cwm_lmer, ~site))
+cld(emmeans(cn_ratio_cwm_lmer, ~treatment))
+cld(emmeans(cn_ratio_cwm_lmer, ~treatment*site))
+
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='temple'))) #0.0129
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='sevi'))) #0.0104
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='arch'))) #0.3624
+pairs(emmeans(cn_ratio_cwm_lmer, ~treatment, at = list(site='lubb'))) #0.7572
+pairs((emmeans(cn_ratio_cwm_lmer, ~treatment))) #0.0119
+
+
+# plotting
+fig_cn_ratio_cwm_sites <- ggplot(cn_ratio_cwm_calculated, 
+                                 aes(x = treatment, y = cn_ratio_cwm, 
+                                     fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("C:N cwm") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors) + 
+  facet_wrap( ~ site, scale = "free_y")
+
+
+# png('../figures/fig_cn_ratio_cwm_sites.png',
+#      width = 12, height = 8, units = 'in', res = 1500)
+# fig_cn_ratio_cwm_sites
+#  dev.off()
+
+
+fig_cn_ratio_cwm_all <- ggplot(cn_ratio_cwm_calculated, 
+                               aes(x = treatment, y = cn_ratio_cwm, 
+                                   fill = treatment)) +
+  geom_boxplot(color = "black", outlier.color = "black", outlier.shape = NA, 
+               outlier.fill = "white") +
+  ggtitle("C:N cwm") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text = element_text(size = 13),
+    strip.text = element_text(size = 24),  # Increase size of facet titles
+    legend.position = "none",  # Remove the legend
+    panel.spacing = unit(1, "lines"),  # Increase space between the plots
+    panel.border = element_rect(colour = "black", fill = NA, size = 1.5)
+  ) +
+  scale_fill_manual(values = colors)
+
+
+# png('../figures/fig_cn_ratio_cwm_all.png',
+#     width = 12, height = 8, units = 'in', res = 1500)
+# fig_cn_ratio_cwm_all
+# dev.off()
+
+
+
+
+
+
+
+## save this for the CN analysis -----------------------------------
 # removing CN isotope issue sample, extremely high (and likely bad/wrong) value
 # also remove NA values
 soft_full <- 
@@ -661,7 +955,7 @@ soft_full <-
 
 
 
-fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
+ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
                                                fill = treatment)) +
   geom_boxplot(color = "black", outlier.color = "black", 
                outlier.fill = "red") +
@@ -669,6 +963,6 @@ fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio,
   theme_minimal()
 
 ##mk probably remove the NA values, and the really large value??
-
+## actually data looks okay for the ratio, might be okay
 write.csv(soft_spcomp_full, "../data/03_rproducts/soft_spcomp_full.csv")
 

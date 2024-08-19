@@ -9,6 +9,7 @@
 # LEMON = last stopped
 # HELP = issue/ not sure
 
+setwd("~/git/2023_accon/scripts")
 
 ### load libraries -------------------------------------------------------------
 
@@ -40,13 +41,13 @@ library(factoextra)
 ## data
 # soft data = field and lab data collected
 raw_data_soft <- read.csv("../data/02_cleaned/field/accon_field.lab_2023.csv")
-raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023_subtype.csv")
+raw_data_species.comp <- read.csv("../data/02_cleaned/field/accon_species.comp_2023.csv")
 
 ## metadata
 metadata_plots <- read.csv("../data/00_meta/plot-descriptions-02-August-2019.csv")
 metadata_species.list <- read.csv("../data/00_meta/species_list.csv")
-metadata_sla_high.low <- read.csv("../data/00_meta/sla_high.low.csv")
-metadata_sp.sub_types <- read.csv("../data/00_meta/species_subtypes.csv")
+# metadata_sla_high.low <- read.csv("../data/00_meta/sla_high.low.csv")
+# metadata_sp.sub_types <- read.csv("../data/00_meta/species_subtypes.csv")
 
 
 ################################################################################
