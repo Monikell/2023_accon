@@ -510,11 +510,11 @@ fig_cn_raw_sites <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio,
   scale_fill_manual(values = colors) + 
   facet_wrap( ~ site, scale = "free_y")
 
-## save the image
- # png('../figures/fig_cn_raw_sites.png',
- #     width = 12, height = 8, units = 'in', res = 1500)
- # fig_cn_raw_sites
- # dev.off()
+# ## save the image
+#   png('../figures/fig_cn_raw_sites.png',
+#       width = 12, height = 8, units = 'in', res = 1500)
+#   fig_cn_raw_sites
+#   dev.off()
 
 
 fig_cn_raw_all <- ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio, 
@@ -635,10 +635,10 @@ fig_cn_ratio_cwm_sites <- ggplot(cn_ratio_cwm_calculated,
   facet_wrap( ~ site, scale = "free_y")
 
 
-# png('../figures/fig_cn_ratio_cwm_sites.png',
-#      width = 12, height = 8, units = 'in', res = 1500)
-# fig_cn_ratio_cwm_sites
-#  dev.off()
+ # png('../figures/fig_cn_ratio_cwm_sites.png',
+ #      width = 12, height = 8, units = 'in', res = 1500)
+ # fig_cn_ratio_cwm_sites
+ #  dev.off()
 
 
 fig_cn_ratio_cwm_all <- ggplot(cn_ratio_cwm_calculated, 
@@ -661,10 +661,10 @@ fig_cn_ratio_cwm_all <- ggplot(cn_ratio_cwm_calculated,
   scale_fill_manual(values = colors)
 
 
- # png('../figures/fig_cn_ratio_cwm_all.png',
- #     width = 12, height = 8, units = 'in', res = 1500)
- # fig_cn_ratio_cwm_all
- # dev.off()
+  # png('../figures/fig_cn_ratio_cwm_all.png',
+  #     width = 12, height = 8, units = 'in', res = 1500)
+  # fig_cn_ratio_cwm_all
+  # dev.off()
 
 
 
@@ -833,26 +833,39 @@ fig_cd13_c4_raw_all <- ggplot(cd13_c4, aes(x = treatment, y = c_delta.13,
 
 
 
-## δ13C, (c_delta.13) cwm ------------------------------------------------------ LEMON
+## δ13C, (c_delta.13) cwm ------------------------------------------------------ 
 
 cd13_c3$c_delta.13
 cd14_c4
 
-## average per site, plot, & species - C3
+## average per site, plot, & species - c3
 cd13_c3_cwm <- cd13_c3 %>%
   group_by(site, plot, taxon_code) %>%
   summarise(cd13_c3_avg = mean(c_delta.13, na.rm = TRUE))
 
-## merging back in plot information and the cover percentages  
-cn_ratio_cwm <- left_join(cn_ratio_cwm, metadata_plot_treatment)
-cn_ratio_cwm <- left_join(cn_ratio_cwm, cwm_spcomp_averages, 
+
+## average per site, plot, & species - c4
+cd13_c4_cwm <- cd13_c4 %>%
+  group_by(site, plot, taxon_code) %>%
+  summarise(cd13_c4_avg = mean(c_delta.13, na.rm = TRUE))
+
+## merging back in plot information and the cover percentages - c3
+cd13_c3_cwm <- left_join(cd13_c3_cwm, metadata_plot_treatment)
+cd13_c3_cwm <- left_join(cd13_c3_cwm, cwm_spcomp_averages, 
                           by = c("site","plot","taxon_code"))
 
-## cwm calculation,
-cn_ratio_cwm_calculated <- cn_ratio_cwm %>%
+## merging back in plot information and the cover percentages - c4
+cd13_c4_cwm <- left_join(cd13_c4_cwm, metadata_plot_treatment)
+cd13_c4_cwm <- left_join(cd13_c4_cwm, cwm_spcomp_averages, 
+                         by = c("site","plot","taxon_code"))
+
+
+
+## cwm calculation - c3 -------------------------------------------------------- LEMON
+cd13_c3_cwm_calculated <- cd13_c3_cwm %>%
   group_by(site, plot, treatment, block) %>% 
-  summarise(cn_ratio_cwm = 
-              weighted.mean(cn_ratio_avg, average.cover, na.rm=TRUE))
+  summarise(cd13_c3_cwm = 
+              weighted.mean(cd13_c4_avg, average.cover, na.rm=TRUE))
 
 
 ## visualizing
@@ -965,4 +978,16 @@ ggplot(soft_spcomp_full, aes(x = treatment, y = cn_ratio,
 ##mk probably remove the NA values, and the really large value??
 ## actually data looks okay for the ratio, might be okay
 write.csv(soft_spcomp_full, "../data/03_rproducts/soft_spcomp_full.csv")
+
+
+
+### site counts ----------------------------------------------------------------
+unique_taxon_counts <- cwm_spcomp_averages %>%
+  group_by(site) %>%
+  summarize(unique_taxon_count = n_distinct(taxon_code))
+
+unique_samples <- soft_spcomp_full %>%
+  group_by(site) %>%
+  summarise(samples = n_distinct(id_unique))
+  
 
