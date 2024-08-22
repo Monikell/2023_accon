@@ -628,6 +628,7 @@ cn_ratio_cwm_lmer <- lmer(log(cn_ratio_cwm) ~ treatment *
                             site + (1|plot) + (1|block),
                      data = (cn_ratio_cwm_calculated))
 
+
 # residual plots
 plot(resid(cn_ratio_cwm_lmer) ~fitted(cn_ratio_cwm_lmer))
 plot(cn_ratio_cwm_lmer, which = 2)
@@ -1158,4 +1159,8 @@ unique_samples <- soft_spcomp_full %>%
   group_by(site) %>%
   summarise(samples = n_distinct(id_unique))
   
+soft_spcomp_full$photo_pathway
 
+c3_c4_counts <- soft_spcomp_full %>%
+  group_by(photo_pathway) %>%
+  summarize(unique_taxon = n_distinct(taxon_code))
