@@ -286,8 +286,13 @@ qqline(log(soft_spcomp_full$sla_cm2.g1))
 # log needed
 
 # model
-sla_raw_lmer <- lmer(log(sla_cm2.g1) ~ treatment * site + (1|plot) + (1|block),
+sla_raw_lmer <- lmer(log(sla_cm2.g1) ~ treatment * site + (1|block : site),
                      data = (soft_spcomp_full))
+
+##NGS: need to include species, are likely to have similar sites. taxon code.
+## phylogeny constrained models, those measurements were take on the same species.
+## 
+
 
 # residual plots
 plot(resid(sla_raw_lmer) ~fitted(sla_raw_lmer))
@@ -1348,7 +1353,6 @@ x_calc$site <- factor(x_calc$site,
                                 levels = c("arch", "temple", "lubb", "sevi"))
 
 
-
 # figure sites
 z_x_c3_raw_all <- ggplot(data = subset(x_calc, photo_pathway == "c3"), 
                                aes(x = treatment, y = chi, 
@@ -1435,9 +1439,9 @@ qqnorm(log(x_cwm_calculated$x_cwm))
 qqline(log(x_cwm_calculated$x_cwm))
 # log looks a little better??
 
-# model
+# model, nested lemer ---------------------------------------------------------- NGS
 x_cwm_lmer <- lmer(log(x_cwm) ~ treatment *
-                            site + (1|plot) + (1|block),
+                            site + (1|block : site),
                           data = (x_cwm_calculated))
 
 
