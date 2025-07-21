@@ -548,6 +548,8 @@ qqline(log(soft_spcomp_full$cn_ratio))
 cn_raw_lmer <- lmer(log(cn_ratio) ~ treatment * site + (1|plot) + (1|block),
                      data = (soft_spcomp_full))
 
+summary(cn_raw_lmer)
+
 # testing to see if the dropping block is fine? 
 cn_raw_lmerv2 <- lmer(log(cn_ratio) ~ treatment * site + (1|plot), data = soft_spcomp_full)
 
@@ -2338,7 +2340,6 @@ model_results_cwm <- traits %>%
 
 
 
-
 ## forest
 ggplot(model_results_cwm, aes(x = estimate, y = reorder(trait, estimate), color = significant)) +
   geom_point(size = 3) +
@@ -2413,70 +2414,11 @@ z_forest <- ggplot(model_results, aes(x = estimate, y = reorder(trait, estimate)
 
 # saving the plot
 
-png('../figures/fig_forest.png',
-    width = 17, height = 8, units = 'in', res = 1000)
-z_forest
-dev.off()
+# png('../figures/fig_forest.png',
+#     width = 17, height = 8, units = 'in', res = 1000)
+# z_forest
+# dev.off()
 
 
 ### try to add the delta 13C stuff...
 
-
-
-# model C3
-cd13_c3_raw_lmer <- lmer((c_delta.13) ~ treatment * site + 
-                           (1|plot) + (1|block), data = (cd13_c3)) #c3
-
-# model c4
-cd13_c4_raw_lmer <- lmer((c_delta.13) ~ treatment * site + 
-                           (1|plot) + (1|block), data = (cd13_c4)) #c4
-
-
-c3_result <- tidy(cd13_c3_raw_lmer, effects = "fixed", conf.int = TRUE) %>%
-  filter(term == "treatmentNPK") %>%
-  mutate(trait = "δ13C (C3)", source = "Individual")
-
-
-c4_result <- tidy(cd13_c4_raw_lmer, effects = "fixed", conf.int = TRUE) %>%
-  filter(term == "treatmentNPK") %>%
-  mutate(trait = "δ13C (C4)", source = "Individual")
-
-
-
-
-model_results <- bind_rows(model_results, c3_result, c4_result)
-
-model_results <- model_results %>%
-  mutate(significant = !(conf.low <= 0 & conf.high >= 0))
-
-
-trait_order <- model_results %>%
-  filter(source == "Individual") %>%
-  arrange(estimate) %>%
-  pull(trait) %>%
-  unique()
-
-model_results <- model_results %>%
-  mutate(trait = factor(trait, levels = trait_order))
-
-
-
-
-ggplot(model_results, aes(x = estimate, y = trait, color = significant)) +
-  geom_point(size = 3) +
-  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = 0.2, size = 1) +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "gray") +
-  scale_color_manual(values = c("gray30", "red3")) +
-  labs(
-    title = "Effect of NPK Treatment on Plant Traits",
-    x = "Estimate (NPK vs Control)",
-    y = NULL,
-    color = "Significant\n(CI excludes 0)"
-  ) +
-  theme_minimal(base_size = 13) +
-  theme(
-    plot.title = element_text(hjust = 0, size = 20),
-    axis.text.x = element_text(size = 20),
-    axis.text.y = element_text(size = 20, color = "black"),
-    panel.border = element_rect(color = "black", fill = NA, size = 1.5)
-  )
